@@ -3,6 +3,19 @@ import ply.yacc as yacc
 import sys
 #xml start and Basic info
 tokens=[
+    'XML_VERSION',
+    'COMMENT_OPEN',
+    'COMMENT_CLOSE',
+
+    'OFFICE_DOCUMENT_OPEN',
+    'OFFICE_DOCUMENT_CLOSE',
+    'OFFICE_MODEL_OPEN',
+    'OFFICE_MODEL_CLOSE',
+    'MODEL_NODES_OPEN',
+    'MODEL_NODES_CLOSE',
+    'MODEL_NODE_OPEN',
+    'MODEL_NODE_CLOSE',
+
     'BASIC_INFORMATION_OPEN',
     'BASIC_INFORMATION_CLOSE',
     'COMPONENT_NAME_OPEN',
@@ -28,7 +41,19 @@ tokens=[
     'STRING'
 
 ]
-
+#DOCUMENT START AND END
+t_XML_VERSION=r'<\?xml\sversion=".+"\sencoding=".+"\?>'
+t_COMMENT_OPEN=r'<!--'
+t_COMMENT_CLOSE=r'-->'
+t_OFFICE_DOCUMENT_OPEN=r'<office:document-model\soffice:version=".+">'
+t_OFFICE_DOCUMENT_CLOSE=r'</office:document-model>'
+t_OFFICE_MODEL_OPEN=r'<office:model>'
+t_OFFICE_MODEL_CLOSE=r'</office:model>'
+t_MODEL_NODES_OPEN=r'<model:nodes>'
+t_MODEL_NODES_CLOSE=r'</model:nodes>'
+t_MODEL_NODE_OPEN=r'<model:node\snode-id=".+">'
+t_MODEL_NODE_CLOSE=r'</model:node>'
+#BASIC INFO
 t_BASIC_INFORMATION_OPEN=r'<node:basic-information>'
 t_BASIC_INFORMATION_CLOSE=r'</node:basic-information>'
 t_COMPONENT_NAME_OPEN=r'<basic-information:component-name>'
@@ -51,7 +76,7 @@ t_PROPERTIES_WEIGHT_OPEN=r'<component-intrinsical-properties:weight>'
 t_PROPERTIES_WEIGHT_CLOSE=r'</component-intrinsical-properties:weight>'
 t_PROPERTIES_OTHER_OPEN=r'<basic-information:other-details>'
 t_PROPERTIES_OTHER_CLOSE=r'</basic-information:other-details>'
-t_STRING=r'[a-zA-Z0-9_\s,./]+'
+t_STRING=r'[a-zA-Z0-9_\s,./:,ó]+'
 # Ignored characters
 t_ignore = " \n\t"
 
