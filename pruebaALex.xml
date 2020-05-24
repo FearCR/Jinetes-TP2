@@ -1,0 +1,14 @@
+        <node:basic-information>
+          <basic-information:component-name>Cup</basic-information:component-name>
+          <basic-information:component-overview>Cup to be packed for transportation</basic-information:component-overview>
+          <basic-information:component-categories>
+            <component-categories:component-category category-id=""></component-categories:component-category>
+          </basic-information:component-categories>
+          <basic-information:component-intrinsical-properties>
+            <component-intrinsical-properties:color> Transparent </component-intrinsical-properties:color>
+            <component-intrinsical-properties:material> Glass </component-intrinsical-properties:material>
+            <component-intrinsical-properties:height> 15cm </component-intrinsical-properties:height>
+            <component-intrinsical-properties:weight> 30g  </component-intrinsical-properties:weight>
+          </basic-information:component-intrinsical-properties>
+          <basic-information:other-details></basic-information:other-details>
+        </node:basic-information>
