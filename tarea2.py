@@ -5,21 +5,29 @@
 # -----------------------------------------------------------------------------
 
 tokens = (
-    'NAME','NUMBER',
-    'PLUS','MINUS','TIMES','DIVIDE','EQUALS',
-    'LPAREN','RPAREN',
+    'STRING',
+    'VULN_NAME_OPEN','VULN_NAME_CLOSE',
+    'REF_SECURITY_OPEN','REF_SECURITY_CLOSE','VULN_OVERVIEW_OPEN','VULN_OVERVIEW_CLOSE',
+    'VULN_DESCRIPTION_OPEN','VULN_DESCRIPTION_CLOSE','VULN_IMPACT_OPEN','VULN_IMPACT_CLOSE',
+    'VULN_SEVERITY_OPEN','VULN_SEVERITY_CLOSE',
     )
 
-# Tokens
-
-t_PLUS    = r'\+'
-t_MINUS   = r'-'
-t_TIMES   = r'\*'
-t_DIVIDE  = r'/'
-t_EQUALS  = r'='
-t_LPAREN  = r'\('
-t_RPAREN  = r'\)'
-t_NAME    = r'[a-zA-Z_][a-zA-Z0-9_]*'
+#TOKENS JULIAN
+t_STRING                  = r'[a-zA-Z0-9_\s,./]+'
+t_VULN_NAME_OPEN        = '<vulnerability:name>'
+t_VULN_NAME_CLOSE       = '</vulnerability:name>'
+#t_VULN_REFERENCE_OPEN   = '<vulnerability:reference-security-services>'
+#t_VULN_REFERENCE_CLOSE  = '</vulnerability:reference-security-service>'
+t_REF_SECURITY_OPEN     = '<reference-security-services:reference-security-service>'
+t_REF_SECURITY_CLOSE    = '</reference-security-services:reference-security-service>'
+t_VULN_OVERVIEW_OPEN    = '<vulnerability:overview>'
+t_VULN_OVERVIEW_CLOSE   = '</vulnerability:overview>'
+t_VULN_DESCRIPTION_OPEN = '<vulnerability:description>'
+t_VULN_DESCRIPTION_CLOSE= '</vulnerability:description>'
+t_VULN_IMPACT_OPEN      = '<vulnerability:impact>'
+t_VULN_IMPACT_CLOSE     = '</vulnerability:impact>'
+t_VULN_SEVERITY_OPEN    = '<vulnerability:severity>'
+t_VULN_SEVERITY_CLOSE   = '</vulnerability:severity>'
 
 def t_NUMBER(t):
     r'\d+'
@@ -48,22 +56,17 @@ lexer = lex.lex()
 # Parsing rules
 
 precedence = (
-    ('left','PLUS','MINUS'),
-    ('left','TIMES','DIVIDE'),
-    ('right','UMINUS'),
+
     )
 
 # dictionary of names
 names = { }
 
-def p_statement_assign(t):
-    'statement : NAME EQUALS expression'
-    names[t[1]] = t[3]
-
+""" ESTAS SON FUNCIONES VIEJAS DE LA CALCULADORA 
 def p_statement_expr(t):
     'statement : expression'
     print(t[1])
-
+    
 def p_expression_binop(t):
     '''expression : expression PLUS expression
                   | expression MINUS expression
@@ -73,44 +76,53 @@ def p_expression_binop(t):
     elif t[2] == '-': t[0] = t[1] - t[3]
     elif t[2] == '*': t[0] = t[1] * t[3]
     elif t[2] == '/': t[0] = t[1] / t[3]
-
-def p_expression_uminus(t):
-    'expression : MINUS expression %prec UMINUS'
-    t[0] = -t[2]
-
-def p_expression_group(t):
-    'expression : LPAREN expression RPAREN'
-    t[0] = t[2]
-
-def p_expression_number(t):
-    'expression : NUMBER'
-    t[0] = t[1]
-
-def p_expression_name(t):
-    'expression : NAME'
-    try:
-        t[0] = names[t[1]]
-    except LookupError:
-        print("Undefined name '%s'" % t[1])
-        t[0] = 0
-
+"""
+    
+#EXPRESIONES JULIAN          
+def p_expression_vulnerability_name(t):
+    'expression : VULN_NAME_OPEN STRING VULN_NAME_CLOSE'
+    print("VULNERABILITY NAME")
+"""
+def p_expression_vulnerability_refSecurity(t):
+    'expression : VULN_REFERENCE_OPEN expression VULN_REFERENCE_CLOSE'
+    print("VULNERABILITY REFERENCE SECURITY")
+"""
+def p_expression_refSecurity(t):
+    'expression : REF_SECURITY_OPEN STRING REF_SECURITY_CLOSE'
+    print("REFERENC SECURITY")
+def p_expression_vulnerability_overview(t):
+    'expression : VULN_OVERVIEW_OPEN STRING VULN_OVERVIEW_CLOSE'
+    print("VULNERABILITY OVERVIEW")
+def p_expression_vulnerability_description(t):
+    'expression : VULN_DESCRIPTION_OPEN STRING VULN_DESCRIPTION_CLOSE'
+    print("VULNERABILITY DESCRIPTION")
+def p_expression_vulnerability_impact(t):
+    'expression : VULN_IMPACT_OPEN STRING VULN_IMPACT_CLOSE'
+    print("VULNERABILITY IMPACT")
+def p_expression_vulnerability_severity(t):
+    'expression : VULN_SEVERITY_OPEN STRING VULN_SEVERITY_CLOSE'
+    print("VULNERABILITY SEVERITY")
+ 
 def p_error(t):
     print("Syntax error at '%s'" % t.value)
 
+
 import ply.yacc as yacc
 parser = yacc.yacc()
-
-arregloLineas=[]
-file1 = open('example.xml', 'r')
-count = 0
+""" LEER POR INPUT CALCULADORA
 while True:
-    count += 1
-    # Get next line from file
-    line = file1.readline()
-    # if line is empty
-    # end of file is reached
-    if not line:
+    try:
+        s = input('calc > ')   # Use raw_input on Python 2
+    except EOFError:
         break
-    arregloLineas.append(line)
-
-print(len(arregloLineas))
+    parser.parse(s)
+"""
+#LEER ARCHIVO
+file = open('prueba.xml','r')
+count = 0
+for line in file:
+    try:
+        parser.parse(line)
+    except EOFError:
+        break
+file.close() 
