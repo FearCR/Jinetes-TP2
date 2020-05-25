@@ -1,47 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-Autores: Bryan Ulate, Ricardo Villalón
-Unidad:  CITIC
-Universidad de Costa Rica
--->
-<office:document-model office:version="1.2">
-  <office:model>
-    <model:nodes>
-      <model:node node-id="Cup1">
 
-        <node:basic-information>
-          <basic-information:component-name>Cup</basic-information:component-name>
-          <basic-information:component-overview>Cup to be packed for transportation</basic-information:component-overview>
-          <basic-information:component-categories>
-            <component-categories:component-category category-id=""></component-categories:component-category>            <!-- Llenar -->
-          </basic-information:component-categories>
-          <basic-information:component-intrinsical-properties>
-            <component-intrinsical-properties:color> Transparent </component-intrinsical-properties:color>
-            <component-intrinsical-properties:material> Glass </component-intrinsical-properties:material>
-            <component-intrinsical-properties:height> 15cm </component-intrinsical-properties:height>
-            <component-intrinsical-properties:weight> 30g  </component-intrinsical-properties:weight>
-          </basic-information:component-intrinsical-properties>
-          <basic-information:other-details></basic-information:other-details>
-        </node:basic-information>
-
-        <node:threats>
-          <threats:threat threat-id="Cup-hit">
-            <threat:name>Cup being hit</threat:name>
-            <threat:description>Container or Cup 2 may hit Cup 1 during transport</threat:description>
-            <threat:vulnerabilities>
-              <vulnerabilities:vulnerability-id>Cup-fragility</vulnerabilities:vulnerability-id>
-            </threat:vulnerabilities>
-          </threats:threat>
-          <threats:threat threat-id="Cup-loss">
-            <threat:name>Cup being lost/stolen</threat:name>
-            <threat:description>The cup may be taken/stolen</threat:description>
-            <threat:vulnerabilities>
-              <vulnerabilities:vulnerability-id>Cup-loss</vulnerabilities:vulnerability-id>
-            </threat:vulnerabilities>
-          </threats:threat>
-        </node:threats>
-
-      </model:node>
-    </model:nodes>
-  </office:model>
-</office:document-model>
+<node:basic-information>
+  <basic-information:component-name>Cup</basic-information:component-name>
+  <basic-information:component-overview>Cup to be packed for transportation</basic-information:component-overview>
+  <basic-information:component-categories>
+    <component-categories:component-category category-id=""></component-categories:component-category>
+  </basic-information:component-categories>
+  <basic-information:component-intrinsical-properties>
+    <component-intrinsical-properties:color> Transparent </component-intrinsical-properties:color>
+    <component-intrinsical-properties:material> Glass </component-intrinsical-properties:material>
+    <component-intrinsical-properties:height> 15cm </component-intrinsical-properties:height>
+    <component-intrinsical-properties:weight> 30g  </component-intrinsical-properties:weight>
+  </basic-information:component-intrinsical-properties>
+  <basic-information:other-details></basic-information:other-details>
+</node:basic-information>
