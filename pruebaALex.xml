@@ -8,6 +8,7 @@ Universidad de Costa Rica
   <office:model>
     <model:nodes>
       <model:node node-id="Cup1">
+
         <node:basic-information>
           <basic-information:component-name>Cup</basic-information:component-name>
           <basic-information:component-overview>Cup to be packed for transportation</basic-information:component-overview>
@@ -22,7 +23,25 @@ Universidad de Costa Rica
           </basic-information:component-intrinsical-properties>
           <basic-information:other-details></basic-information:other-details>
         </node:basic-information>
-        </model:node>
-      </model:nodes>
-    </office:model>
-  </office:document-model>
+
+        <node:threats>
+          <threats:threat threat-id="Cup-hit">
+            <threat:name>Cup being hit</threat:name>
+            <threat:description>Container or Cup 2 may hit Cup 1 during transport</threat:description>
+            <threat:vulnerabilities>
+              <vulnerabilities:vulnerability-id>Cup-fragility</vulnerabilities:vulnerability-id>
+            </threat:vulnerabilities>
+          </threats:threat>
+          <threats:threat threat-id="Cup-loss">
+            <threat:name>Cup being lost/stolen</threat:name>
+            <threat:description>The cup may be taken/stolen</threat:description>
+            <threat:vulnerabilities>
+              <vulnerabilities:vulnerability-id>Cup-loss</vulnerabilities:vulnerability-id>
+            </threat:vulnerabilities>
+          </threats:threat>
+        </node:threats>
+
+      </model:node>
+    </model:nodes>
+  </office:model>
+</office:document-model>

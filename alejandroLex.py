@@ -3,10 +3,10 @@ import ply.yacc as yacc
 import sys
 #xml start and Basic info
 tokens=[
+#DOCUMENT START AND END
     'XML_VERSION',
     'COMMENT_OPEN',
     'COMMENT_CLOSE',
-
     'OFFICE_DOCUMENT_OPEN',
     'OFFICE_DOCUMENT_CLOSE',
     'OFFICE_MODEL_OPEN',
@@ -15,7 +15,7 @@ tokens=[
     'MODEL_NODES_CLOSE',
     'MODEL_NODE_OPEN',
     'MODEL_NODE_CLOSE',
-
+    #BASIC INFO
     'BASIC_INFORMATION_OPEN',
     'BASIC_INFORMATION_CLOSE',
     'COMPONENT_NAME_OPEN',
@@ -38,13 +38,27 @@ tokens=[
     'PROPERTIES_WEIGHT_CLOSE',
     'PROPERTIES_OTHER_OPEN',
     'PROPERTIES_OTHER_CLOSE',
+    #THREATS
+    'THREATS_OPEN',
+    'THREATS_CLOSE',
+    'THREAT_OPEN',
+    'THREAT_CLOSE',
+    'THREAT_NAME_OPEN',
+    'THREAT_NAME_CLOSE',
+    'THREAT_DESCRIPTION_OPEN',
+    'THREAT_DESCRIPTION_CLOSE',
+    'THREAT_VULNERABILITIES_OPEN',
+    'THREAT_VULNERABILITIES_CLOSE',
+    'VULNERABILITIES_VULNERABILITY_OPEN',
+    'VULNERABILITIES_VULNERABILITY_CLOSE',
+    #STRING
     'STRING'
 
 ]
 #DOCUMENT START AND END
 t_XML_VERSION=r'<\?xml\sversion=".+"\sencoding=".+"\?>'
 t_COMMENT_OPEN=r'<!--'
-t_COMMENT_CLOSE=r'-->'
+t_COMMENT_CLOSE=r'--*>'
 t_OFFICE_DOCUMENT_OPEN=r'<office:document-model\soffice:version=".+">'
 t_OFFICE_DOCUMENT_CLOSE=r'</office:document-model>'
 t_OFFICE_MODEL_OPEN=r'<office:model>'
@@ -76,7 +90,21 @@ t_PROPERTIES_WEIGHT_OPEN=r'<component-intrinsical-properties:weight>'
 t_PROPERTIES_WEIGHT_CLOSE=r'</component-intrinsical-properties:weight>'
 t_PROPERTIES_OTHER_OPEN=r'<basic-information:other-details>'
 t_PROPERTIES_OTHER_CLOSE=r'</basic-information:other-details>'
-t_STRING=r'[a-zA-Z0-9_\s,./:,ó]+'
+#THREATS
+t_THREATS_OPEN=r'<node:threats>'
+t_THREATS_CLOSE=r'</node:threats>'
+t_THREAT_OPEN=r'<threats:threat\sthreat-id=".+">'
+t_THREAT_CLOSE=r'</threats:threat>'
+t_THREAT_NAME_OPEN=r'<threat:name>'
+t_THREAT_NAME_CLOSE=r'</threat:name>'
+t_THREAT_DESCRIPTION_OPEN=r'<threat:description>'
+t_THREAT_DESCRIPTION_CLOSE=r'</threat:description>'
+t_THREAT_VULNERABILITIES_OPEN=r'<threat:vulnerabilities>'
+t_THREAT_VULNERABILITIES_CLOSE=r'</threat:vulnerabilities>'
+t_VULNERABILITIES_VULNERABILITY_OPEN=r'<vulnerabilities:vulnerability-id>'
+t_VULNERABILITIES_VULNERABILITY_CLOSE=r'</vulnerabilities:vulnerability-id>'
+
+t_STRING=r'[a-zA-Z0-9_\s,./:,ó]+\s?-?\s?[a-zA-Z0-9_\s,./:,ó]*'
 # Ignored characters
 t_ignore = " \n\t"
 
