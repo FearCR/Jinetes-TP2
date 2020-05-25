@@ -97,7 +97,7 @@ def p_intrinsical_properties(t):
 #adentro tiene component_category
 def p_component_categories(t):
     'component_categories : COMPONENT_CATEGORIES_OPEN component_category COMPONENT_CATEGORIES_CLOSE'
-    print("se cerro correctamente propiedades categorias del componente")
+    print("se cerro correctamente categorias del componente")
     return
 
 #no contiene nada dentro
