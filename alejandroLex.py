@@ -142,7 +142,7 @@ def p_string(t):
               | STRING
               | empty
     '''
-    print("se capturo correctamente el string")
+    print("se capturo correctamente el string",t[1])
     return
 def p_empty(p):
     'empty : '
