@@ -1,0 +1,10 @@
+<vulnerability:name> Loss </vulnerability:name>
+			  <reference-security-services:reference-security-service> Availability </reference-security-services:reference-security-service>
+              <vulnerability:overview>The cup may be lost/stolen</vulnerability:overview>
+              <vulnerability:description> The cup could be taken by someone, or it could be lost in transit</vulnerability:description>
+              <vulnerability:impact> The cup could be lost/stolen </vulnerability:impact>
+              <vulnerability:severity> High </vulnerability:severity>
+			  <additional-information:comment></additional-information:comment> 	  
+			  <security-control:name>Cup hit protection</security-control:name>
+			  <security-control:description>Install a soft padded protection around every cup, such that they do not hit to each other, and they do not move or hit the box</security-control:description>
+			                  <security-policies:security-policy-id> DO[1][1] </security-policies:security-policy-id>
