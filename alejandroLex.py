@@ -1,56 +1,23 @@
 import ply.lex as lex
 import ply.yacc as yacc
 import sys
-#xml start and Basic info
+
 tokens=[
 #DOCUMENT START AND END
-    'XML_VERSION',
-    'COMMENT_OPEN',
-    'COMMENT_CLOSE',
-    'OFFICE_DOCUMENT_OPEN',
-    'OFFICE_DOCUMENT_CLOSE',
-    'OFFICE_MODEL_OPEN',
-    'OFFICE_MODEL_CLOSE',
-    'MODEL_NODES_OPEN',
-    'MODEL_NODES_CLOSE',
-    'MODEL_NODE_OPEN',
+    'XML_VERSION','COMMENT_OPEN','COMMENT_CLOSE','OFFICE_DOCUMENT_OPEN','OFFICE_DOCUMENT_CLOSE',
+    'OFFICE_MODEL_OPEN','OFFICE_MODEL_CLOSE','MODEL_NODES_OPEN','MODEL_NODES_CLOSE','MODEL_NODE_OPEN',
     'MODEL_NODE_CLOSE',
     #BASIC INFO
-    'BASIC_INFORMATION_OPEN',
-    'BASIC_INFORMATION_CLOSE',
-    'COMPONENT_NAME_OPEN',
-    'COMPONENT_NAME_CLOSE',
-    'COMPONENT_OVERVIEW_OPEN',
-    'COMPONENT_OVERVIEW_CLOSE',
-    'COMPONENT_CATEGORIES_OPEN',
-    'COMPONENT_CATEGORIES_CLOSE',
-    'COMPONENT_CATEGORY_OPEN',
-    'COMPONENT_CATEGORY_CLOSE',
-    'INTRINSICAL_PROPERTIES_OPEN',
-    'INTRINSICAL_PROPERTIES_CLOSE',
-    'PROPERTIES_COLOR_OPEN',
-    'PROPERTIES_COLOR_CLOSE',
-    'PROPERTIES_MATERIAL_OPEN',
-    'PROPERTIES_MATERIAL_CLOSE',
-    'PROPERTIES_HEIGHT_OPEN',
-    'PROPERTIES_HEIGHT_CLOSE',
-    'PROPERTIES_WEIGHT_OPEN',
-    'PROPERTIES_WEIGHT_CLOSE',
-    'PROPERTIES_OTHER_OPEN',
-    'PROPERTIES_OTHER_CLOSE',
+    'BASIC_INFORMATION_OPEN','BASIC_INFORMATION_CLOSE','COMPONENT_NAME_OPEN','COMPONENT_NAME_CLOSE',
+    'COMPONENT_OVERVIEW_OPEN','COMPONENT_OVERVIEW_CLOSE','COMPONENT_CATEGORIES_OPEN','COMPONENT_CATEGORIES_CLOSE',
+    'COMPONENT_CATEGORY_OPEN','COMPONENT_CATEGORY_CLOSE','INTRINSICAL_PROPERTIES_OPEN','INTRINSICAL_PROPERTIES_CLOSE',
+    'PROPERTIES_COLOR_OPEN','PROPERTIES_COLOR_CLOSE','PROPERTIES_MATERIAL_OPEN','PROPERTIES_MATERIAL_CLOSE',
+    'PROPERTIES_HEIGHT_OPEN','PROPERTIES_HEIGHT_CLOSE','PROPERTIES_WEIGHT_OPEN','PROPERTIES_WEIGHT_CLOSE',
+    'PROPERTIES_OTHER_OPEN','PROPERTIES_OTHER_CLOSE',
     #THREATS
-    'THREATS_OPEN',
-    'THREATS_CLOSE',
-    'THREAT_OPEN',
-    'THREAT_CLOSE',
-    'THREAT_NAME_OPEN',
-    'THREAT_NAME_CLOSE',
-    'THREAT_DESCRIPTION_OPEN',
-    'THREAT_DESCRIPTION_CLOSE',
-    'THREAT_VULNERABILITIES_OPEN',
-    'THREAT_VULNERABILITIES_CLOSE',
-    'VULNERABILITIES_VULNERABILITY_OPEN',
-    'VULNERABILITIES_VULNERABILITY_CLOSE',
+    'THREATS_OPEN','THREATS_CLOSE','THREAT_OPEN','THREAT_CLOSE','THREAT_NAME_OPEN','THREAT_NAME_CLOSE',
+    'THREAT_DESCRIPTION_OPEN','THREAT_DESCRIPTION_CLOSE','THREAT_VULNERABILITIES_OPEN','THREAT_VULNERABILITIES_CLOSE',
+    'VULNERABILITIES_VULNERABILITY_OPEN','VULNERABILITIES_VULNERABILITY_CLOSE',
     #STRING
     'STRING'
 
@@ -107,11 +74,56 @@ t_VULNERABILITIES_VULNERABILITY_CLOSE=r'</vulnerabilities:vulnerability-id>'
 t_STRING=r'[a-zA-Z0-9_\s,./:,ó]+\s?-?\s?[a-zA-Z0-9_\s,./:,ó]*'
 # Ignored characters
 t_ignore = " \n\t"
-
 def t_error(t):
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
+#adentro tiene todo basic information
+def p_basic_information(t):
+    ''
+    return
+#adentro tiene intrinsical properties
+def p_intrinsical_properties(t):
+    ''
+    return
+#adentro tiene component_category
+def p_component_categories(t):
+    'component_categories : COMPONENT_CATEGORIES_OPEN component_category COMPONENT_CATEGORIES_CLOSE'
+    return
+#no contiene nada dentro
+def p_component_name(t):
+    ''
+    return
+#no contiene nada dentro
+def p_component_overview(t):
+    ''
+    return
+#no contiene nada dentro
+def p_other_details(t):
+    ''
+    return
+#no contiene nada dentro
+def p_component_category(t):
+    'component_category : COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE'
+    return
+#no contiene nada dentro
+def p_properties_color(t):
+    ''
+    return
+#no contiene nada dentro
+def p_properties_material(t):
+    ''
+    return
+#no contiene nada dentro
+def p_properties_height(t):
+    ''
+    return
+#no contiene nada dentro      
+def p_properties_weight(t):
+    ''
+    return
 
+
+print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
 file = open('pruebaALex.xml','r')
 count = 0
 for line in file:
@@ -126,3 +138,12 @@ for line in file:
     except EOFError:
         break
 file.close()
+print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
+print("\n\n\n")
+print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
+with open('pruebaALex.xml','r') as myfile:
+    data=myfile.read()
+
+parser=yacc.yacc()
+parser.parse(data)
+print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
