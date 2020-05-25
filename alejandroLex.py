@@ -82,47 +82,58 @@ def t_error(t):
 #adentro tiene todo basic information
 def p_basic_information(t):
     'basic_info : BASIC_INFORMATION_OPEN component_name component_overview component_categories intrinsical_properties other_details BASIC_INFORMATION_CLOSE'
+    print("se cerro correctamente informacion basica")
     return
 #no contiene nada dentro
-def p_component_name(t):
+def p_component_name(p):
     'component_name : COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE'
+    print("se cerro correctamente el nompre del componente")
     return
 #adentro tiene intrinsical properties
 def p_intrinsical_properties(t):
     'intrinsical_properties : INTRINSICAL_PROPERTIES_OPEN properties_color properties_material properties_height properties_weight INTRINSICAL_PROPERTIES_CLOSE'
+    print("se cerro correctamente propiedades intrinsicas")
     return
 #adentro tiene component_category
 def p_component_categories(t):
     'component_categories : COMPONENT_CATEGORIES_OPEN component_category COMPONENT_CATEGORIES_CLOSE'
+    print("se cerro correctamente propiedades categorias del componente")
     return
 
 #no contiene nada dentro
 def p_component_overview(t):
     'component_overview : COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE'
+    print("se cerro correctamente propiedades overview")
     return
 #no contiene nada dentro
 def p_other_details(t):
     'other_details : PROPERTIES_OTHER_OPEN str PROPERTIES_OTHER_CLOSE'
+    print("se cerro correctamente propiedades otros detalles")
     return
 #no contiene nada dentro
 def p_component_category(t):
     'component_category : COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE'
+    print("se cerro correctamente categoria del componente")
     return
 #no contiene nada dentro
 def p_properties_color(t):
     'properties_color : PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE'
+    print("se cerro correctamente color")
     return
 #no contiene nada dentro
 def p_properties_material(t):
     'properties_material : PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE'
+    print("se cerro correctamente material")
     return
 #no contiene nada dentro
 def p_properties_height(t):
     'properties_height : PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE'
+    print("se cerro correctamente altura")
     return
 #no contiene nada dentro
 def p_properties_weight(t):
     'properties_weight : PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE'
+    print("se cerro correctamente peso")
     return
 
 def p_string(t):
@@ -131,6 +142,7 @@ def p_string(t):
               | STRING
               | empty
     '''
+    print("se capturo correctamente el string")
     return
 def p_empty(p):
     'empty : '
