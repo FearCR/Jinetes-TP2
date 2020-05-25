@@ -117,12 +117,14 @@ def p_properties_material(t):
 def p_properties_height(t):
     ''
     return
-#no contiene nada dentro      
+#no contiene nada dentro
 def p_properties_weight(t):
     ''
     return
 
-
+def p_error(p):
+    print("Syntax error found")
+    
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
 file = open('pruebaALex.xml','r')
 count = 0
