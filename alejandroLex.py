@@ -103,12 +103,12 @@ def p_component_categories(t):
 #no contiene nada dentro
 def p_component_overview(t):
     'component_overview : COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE'
-    print("se cerro correctamente propiedades overview")
+    print("se cerro correctamente overview")
     return
 #no contiene nada dentro
 def p_other_details(t):
     'other_details : PROPERTIES_OTHER_OPEN str PROPERTIES_OTHER_CLOSE'
-    print("se cerro correctamente propiedades otros detalles")
+    print("se cerro correctamente otros detalles")
     return
 #no contiene nada dentro
 def p_component_category(t):
