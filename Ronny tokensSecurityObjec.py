@@ -74,6 +74,7 @@ def p_node_security_objective(t):
 
 def p_security_objective_obj(t):
     #'security_objective_obj : SECUOBJ_OBJ_OPEN security_objective_name security_objective_description SECUOBJ_OBJ_CLOSE'
+
     '''security_objective_obj : SECUOBJ_OBJ_OPEN security_objective_obj
                               | security_objective_name security_objective_obj
                               | security_objective_description security_objective_obj
@@ -86,52 +87,73 @@ def p_security_objective_obj(t):
 
 def p_security_objective_name(t):
     'security_objective_name : SECUOBJ_NAME_OPEN DATA SECUOBJ_NAME_CLOSE'
-    print(t[2])
+    print("Nombre del objetivo", t[2])
 
 
 def p_security_objective_description(t):
     'security_objective_description : SECUOBJ_DESCRIP_OPEN DATA SECUOBJ_DESCRIP_CLOSE'
-    print(t[2])
+    print("Descripcion: ", t[2])
 
 
 
 def p_security_objective_objective_type(t):
     'security_objective_objective_type : SECUOBJ_OBJTYPE_OPEN DATA SECUOBJ_OBJTYPE_CLOSE'
-    print(t[2])
+    print("Tipo de objetivo: ",t[2])
 
 
 def p_security_objective_security_service(t):
     'security_objective_security_service : SECUOBJ_SECUSERV_OPEN DATA SECUOBJ_SECUSERV_CLOSE'
-    print(t[2])
+    print("security-service: ",t[2])
 
 
 def p_security_objective_temporality(t):
     'security_objective_temporality : SECUOBJ_TEMP_OPEN DATA SECUOBJ_TEMP_CLOSE'
-    print(t[2])
+    print("temporality: ", t[2])
 
 
 
 def p_security_additional_information(t):
     'security_additional_information : SECUOBJ_ADDINFO_OPEN security_additional_information_Comment SECUOBJ_ADDINFO_CLOSE'
-    print(t[3])
+
 
 
 def p_security_additional_information_Comment(t):
     'security_additional_information_Comment : SECUOBJ_ADDINFOCOMM_OPEN SECUOBJ_ADDINFOCOMM_CLOSE'
-    print(t[2])
+
 
 def p_security_objective_source(t):
     'security_objective_source : SECUOBJ_OBJSOUR_OPEN DATA SECUOBJ_OBJSOUR_CLOSE'
-    print(t[2])
+    print("objective-source: ",t[2])
 
 
 def p_error(t):
     print("Syntax error at '%s'" % t.value)
 
 
+print("------------------RECONOCIMIENTO DE TOKENS------------------")
+file = open('Prueba securityObjec.xml','r')
+count = 0
+for line in file:
+    try:
+        lexer=lex.lex()
+        lexer.input(line)
+        while True:
+            tok=lexer.token()
+            if not tok:
+                break
+            print(tok)
+    except EOFError:
+        break
+file.close()
+print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
+
+
+
+
+
 import ply.yacc as yacc
 parser = yacc.yacc()
-with open('securityObjec.xml', 'r') as myfile:
+with open('Prueba securityObjec.xml', 'r') as myfile:
     data=myfile.read()
 
 parser=yacc.yacc()
