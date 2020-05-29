@@ -1,0 +1,6 @@
+ <node:risks>
+    <risks:risk risk-id="Cup-Package-hit">
+        <risk:name>Cup-Package damage</risk:name>
+        <risk:objective-id>IO[7][1]</risk:objective-id>
+    </risks:risk>
+ </node:risks>
