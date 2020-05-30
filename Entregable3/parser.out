@@ -1,0 +1,2916 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> doc_model
+Rule 1     doc_model -> XML_VERSION doc_model
+Rule 2     doc_model -> doc_comment doc_model
+Rule 3     doc_model -> OFFICE_DOCUMENT_OPEN office_model OFFICE_DOCUMENT_CLOSE
+Rule 4     office_model -> OFFICE_MODEL_OPEN model_nodes OFFICE_MODEL_CLOSE
+Rule 5     model_nodes -> MODEL_NODES_OPEN model_node model_nodes
+Rule 6     model_nodes -> model_node model_nodes
+Rule 7     model_nodes -> MODEL_NODES_CLOSE
+Rule 8     model_node -> MODEL_NODE_OPEN model_node
+Rule 9     model_node -> basic_info model_node
+Rule 10    model_node -> threats model_node
+Rule 11    model_node -> MODEL_NODE_CLOSE
+Rule 12    basic_info -> BASIC_INFORMATION_OPEN basic_info
+Rule 13    basic_info -> component_name basic_info
+Rule 14    basic_info -> component_overview basic_info
+Rule 15    basic_info -> component_categories basic_info
+Rule 16    basic_info -> intrinsical_properties basic_info
+Rule 17    basic_info -> other_details basic_info
+Rule 18    basic_info -> BASIC_INFORMATION_CLOSE
+Rule 19    component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+Rule 20    intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+Rule 21    intrinsical_properties -> properties_color intrinsical_properties
+Rule 22    intrinsical_properties -> properties_material intrinsical_properties
+Rule 23    intrinsical_properties -> properties_height intrinsical_properties
+Rule 24    intrinsical_properties -> properties_weight intrinsical_properties
+Rule 25    intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE
+Rule 26    component_categories -> COMPONENT_CATEGORIES_OPEN component_categories
+Rule 27    component_categories -> component_category component_categories
+Rule 28    component_categories -> COMPONENT_CATEGORIES_CLOSE
+Rule 29    component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+Rule 30    other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+Rule 31    component_category -> COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+Rule 32    properties_color -> PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+Rule 33    properties_material -> PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+Rule 34    properties_height -> PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+Rule 35    properties_weight -> PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+Rule 36    threats -> THREATS_OPEN threats
+Rule 37    threats -> threat threats
+Rule 38    threats -> THREATS_CLOSE
+Rule 39    threat -> THREAT_OPEN threat
+Rule 40    threat -> threat_name threat
+Rule 41    threat -> threat_description threat
+Rule 42    threat -> threat_vulnerabilities threat
+Rule 43    threat -> THREAT_CLOSE
+Rule 44    threat_name -> THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+Rule 45    threat_description -> THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+Rule 46    threat_vulnerabilities -> THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+Rule 47    threat_vulnerabilities -> threat_vulnerability threat_vulnerabilities
+Rule 48    threat_vulnerabilities -> THREAT_VULNERABILITIES_CLOSE
+Rule 49    threat_vulnerability -> VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+Rule 50    doc_comment -> COMMENT_OPEN doc_comment
+Rule 51    doc_comment -> str doc_comment
+Rule 52    doc_comment -> COMMENT_CLOSE
+Rule 53    str -> STRING str
+Rule 54    str -> STRING
+Rule 55    str -> <empty>
+
+Terminals, with rules where they appear
+
+BASIC_INFORMATION_CLOSE : 18
+BASIC_INFORMATION_OPEN : 12
+COMMENT_CLOSE        : 52
+COMMENT_OPEN         : 50
+COMPONENT_CATEGORIES_CLOSE : 28
+COMPONENT_CATEGORIES_OPEN : 26
+COMPONENT_CATEGORY_CLOSE : 31
+COMPONENT_CATEGORY_OPEN : 31
+COMPONENT_NAME_CLOSE : 19
+COMPONENT_NAME_OPEN  : 19
+COMPONENT_OVERVIEW_CLOSE : 29
+COMPONENT_OVERVIEW_OPEN : 29
+INTRINSICAL_PROPERTIES_CLOSE : 25
+INTRINSICAL_PROPERTIES_OPEN : 20
+MODEL_NODES_CLOSE    : 7
+MODEL_NODES_OPEN     : 5
+MODEL_NODE_CLOSE     : 11
+MODEL_NODE_OPEN      : 8
+OFFICE_DOCUMENT_CLOSE : 3
+OFFICE_DOCUMENT_OPEN : 3
+OFFICE_MODEL_CLOSE   : 4
+OFFICE_MODEL_OPEN    : 4
+PROPERTIES_COLOR_CLOSE : 32
+PROPERTIES_COLOR_OPEN : 32
+PROPERTIES_HEIGHT_CLOSE : 34
+PROPERTIES_HEIGHT_OPEN : 34
+PROPERTIES_MATERIAL_CLOSE : 33
+PROPERTIES_MATERIAL_OPEN : 33
+PROPERTIES_OTHER_CLOSE : 30
+PROPERTIES_OTHER_OPEN : 30
+PROPERTIES_WEIGHT_CLOSE : 35
+PROPERTIES_WEIGHT_OPEN : 35
+STRING               : 53 54
+THREATS_CLOSE        : 38
+THREATS_OPEN         : 36
+THREAT_CLOSE         : 43
+THREAT_DESCRIPTION_CLOSE : 45
+THREAT_DESCRIPTION_OPEN : 45
+THREAT_NAME_CLOSE    : 44
+THREAT_NAME_OPEN     : 44
+THREAT_OPEN          : 39
+THREAT_VULNERABILITIES_CLOSE : 48
+THREAT_VULNERABILITIES_OPEN : 46
+VULNERABILITIES_VULNERABILITY_CLOSE : 49
+VULNERABILITIES_VULNERABILITY_OPEN : 49
+XML_VERSION          : 1
+error                : 
+
+Nonterminals, with rules where they appear
+
+basic_info           : 9 12 13 14 15 16 17
+component_categories : 15 26 27
+component_category   : 27
+component_name       : 13
+component_overview   : 14
+doc_comment          : 2 50 51
+doc_model            : 1 2 0
+intrinsical_properties : 16 20 21 22 23 24
+model_node           : 5 6 8 9 10
+model_nodes          : 4 5 6
+office_model         : 3
+other_details        : 17
+properties_color     : 21
+properties_height    : 23
+properties_material  : 22
+properties_weight    : 24
+str                  : 19 29 32 33 34 35 44 45 49 51 53
+threat               : 37 39 40 41 42
+threat_description   : 41
+threat_name          : 40
+threat_vulnerabilities : 42 46 47
+threat_vulnerability : 47
+threats              : 10 36 37
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . doc_model
+    (1) doc_model -> . XML_VERSION doc_model
+    (2) doc_model -> . doc_comment doc_model
+    (3) doc_model -> . OFFICE_DOCUMENT_OPEN office_model OFFICE_DOCUMENT_CLOSE
+    (50) doc_comment -> . COMMENT_OPEN doc_comment
+    (51) doc_comment -> . str doc_comment
+    (52) doc_comment -> . COMMENT_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+  ! shift/reduce conflict for COMMENT_OPEN resolved as shift
+  ! shift/reduce conflict for COMMENT_CLOSE resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+    XML_VERSION     shift and go to state 2
+    OFFICE_DOCUMENT_OPEN shift and go to state 4
+    COMMENT_OPEN    shift and go to state 5
+    COMMENT_CLOSE   shift and go to state 7
+    STRING          shift and go to state 8
+
+  ! COMMENT_OPEN    [ reduce using rule 55 (str -> .) ]
+  ! COMMENT_CLOSE   [ reduce using rule 55 (str -> .) ]
+  ! STRING          [ reduce using rule 55 (str -> .) ]
+
+    doc_model                      shift and go to state 1
+    doc_comment                    shift and go to state 3
+    str                            shift and go to state 6
+
+state 1
+
+    (0) S' -> doc_model .
+
+
+
+state 2
+
+    (1) doc_model -> XML_VERSION . doc_model
+    (1) doc_model -> . XML_VERSION doc_model
+    (2) doc_model -> . doc_comment doc_model
+    (3) doc_model -> . OFFICE_DOCUMENT_OPEN office_model OFFICE_DOCUMENT_CLOSE
+    (50) doc_comment -> . COMMENT_OPEN doc_comment
+    (51) doc_comment -> . str doc_comment
+    (52) doc_comment -> . COMMENT_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+  ! shift/reduce conflict for COMMENT_OPEN resolved as shift
+  ! shift/reduce conflict for COMMENT_CLOSE resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+    XML_VERSION     shift and go to state 2
+    OFFICE_DOCUMENT_OPEN shift and go to state 4
+    COMMENT_OPEN    shift and go to state 5
+    COMMENT_CLOSE   shift and go to state 7
+    STRING          shift and go to state 8
+
+  ! COMMENT_OPEN    [ reduce using rule 55 (str -> .) ]
+  ! COMMENT_CLOSE   [ reduce using rule 55 (str -> .) ]
+  ! STRING          [ reduce using rule 55 (str -> .) ]
+
+    doc_model                      shift and go to state 9
+    doc_comment                    shift and go to state 3
+    str                            shift and go to state 6
+
+state 3
+
+    (2) doc_model -> doc_comment . doc_model
+    (1) doc_model -> . XML_VERSION doc_model
+    (2) doc_model -> . doc_comment doc_model
+    (3) doc_model -> . OFFICE_DOCUMENT_OPEN office_model OFFICE_DOCUMENT_CLOSE
+    (50) doc_comment -> . COMMENT_OPEN doc_comment
+    (51) doc_comment -> . str doc_comment
+    (52) doc_comment -> . COMMENT_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+  ! shift/reduce conflict for COMMENT_OPEN resolved as shift
+  ! shift/reduce conflict for COMMENT_CLOSE resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+    XML_VERSION     shift and go to state 2
+    OFFICE_DOCUMENT_OPEN shift and go to state 4
+    COMMENT_OPEN    shift and go to state 5
+    COMMENT_CLOSE   shift and go to state 7
+    STRING          shift and go to state 8
+
+  ! COMMENT_OPEN    [ reduce using rule 55 (str -> .) ]
+  ! COMMENT_CLOSE   [ reduce using rule 55 (str -> .) ]
+  ! STRING          [ reduce using rule 55 (str -> .) ]
+
+    doc_comment                    shift and go to state 3
+    doc_model                      shift and go to state 10
+    str                            shift and go to state 6
+
+state 4
+
+    (3) doc_model -> OFFICE_DOCUMENT_OPEN . office_model OFFICE_DOCUMENT_CLOSE
+    (4) office_model -> . OFFICE_MODEL_OPEN model_nodes OFFICE_MODEL_CLOSE
+
+    OFFICE_MODEL_OPEN shift and go to state 12
+
+    office_model                   shift and go to state 11
+
+state 5
+
+    (50) doc_comment -> COMMENT_OPEN . doc_comment
+    (50) doc_comment -> . COMMENT_OPEN doc_comment
+    (51) doc_comment -> . str doc_comment
+    (52) doc_comment -> . COMMENT_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+  ! shift/reduce conflict for COMMENT_OPEN resolved as shift
+  ! shift/reduce conflict for COMMENT_CLOSE resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+    COMMENT_OPEN    shift and go to state 5
+    COMMENT_CLOSE   shift and go to state 7
+    STRING          shift and go to state 8
+
+  ! COMMENT_OPEN    [ reduce using rule 55 (str -> .) ]
+  ! COMMENT_CLOSE   [ reduce using rule 55 (str -> .) ]
+  ! STRING          [ reduce using rule 55 (str -> .) ]
+
+    doc_comment                    shift and go to state 13
+    str                            shift and go to state 6
+
+state 6
+
+    (51) doc_comment -> str . doc_comment
+    (50) doc_comment -> . COMMENT_OPEN doc_comment
+    (51) doc_comment -> . str doc_comment
+    (52) doc_comment -> . COMMENT_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+  ! shift/reduce conflict for COMMENT_OPEN resolved as shift
+  ! shift/reduce conflict for COMMENT_CLOSE resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+    COMMENT_OPEN    shift and go to state 5
+    COMMENT_CLOSE   shift and go to state 7
+    STRING          shift and go to state 8
+
+  ! COMMENT_OPEN    [ reduce using rule 55 (str -> .) ]
+  ! COMMENT_CLOSE   [ reduce using rule 55 (str -> .) ]
+  ! STRING          [ reduce using rule 55 (str -> .) ]
+
+    str                            shift and go to state 6
+    doc_comment                    shift and go to state 14
+
+state 7
+
+    (52) doc_comment -> COMMENT_CLOSE .
+
+    XML_VERSION     reduce using rule 52 (doc_comment -> COMMENT_CLOSE .)
+    OFFICE_DOCUMENT_OPEN reduce using rule 52 (doc_comment -> COMMENT_CLOSE .)
+    COMMENT_OPEN    reduce using rule 52 (doc_comment -> COMMENT_CLOSE .)
+    COMMENT_CLOSE   reduce using rule 52 (doc_comment -> COMMENT_CLOSE .)
+    STRING          reduce using rule 52 (doc_comment -> COMMENT_CLOSE .)
+
+
+state 8
+
+    (53) str -> STRING . str
+    (54) str -> STRING .
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+  ! shift/reduce conflict for STRING resolved as shift
+  ! reduce/reduce conflict for COMMENT_OPEN resolved using rule 54 (str -> STRING .)
+  ! reduce/reduce conflict for COMMENT_CLOSE resolved using rule 54 (str -> STRING .)
+  ! shift/reduce conflict for STRING resolved as shift
+  ! reduce/reduce conflict for COMPONENT_NAME_CLOSE resolved using rule 54 (str -> STRING .)
+  ! reduce/reduce conflict for COMPONENT_OVERVIEW_CLOSE resolved using rule 54 (str -> STRING .)
+  ! reduce/reduce conflict for PROPERTIES_COLOR_CLOSE resolved using rule 54 (str -> STRING .)
+  ! reduce/reduce conflict for PROPERTIES_MATERIAL_CLOSE resolved using rule 54 (str -> STRING .)
+  ! reduce/reduce conflict for PROPERTIES_HEIGHT_CLOSE resolved using rule 54 (str -> STRING .)
+  ! reduce/reduce conflict for PROPERTIES_WEIGHT_CLOSE resolved using rule 54 (str -> STRING .)
+  ! reduce/reduce conflict for THREAT_NAME_CLOSE resolved using rule 54 (str -> STRING .)
+  ! reduce/reduce conflict for THREAT_DESCRIPTION_CLOSE resolved using rule 54 (str -> STRING .)
+  ! reduce/reduce conflict for VULNERABILITIES_VULNERABILITY_CLOSE resolved using rule 54 (str -> STRING .)
+    COMMENT_OPEN    reduce using rule 54 (str -> STRING .)
+    COMMENT_CLOSE   reduce using rule 54 (str -> STRING .)
+    COMPONENT_NAME_CLOSE reduce using rule 54 (str -> STRING .)
+    COMPONENT_OVERVIEW_CLOSE reduce using rule 54 (str -> STRING .)
+    PROPERTIES_COLOR_CLOSE reduce using rule 54 (str -> STRING .)
+    PROPERTIES_MATERIAL_CLOSE reduce using rule 54 (str -> STRING .)
+    PROPERTIES_HEIGHT_CLOSE reduce using rule 54 (str -> STRING .)
+    PROPERTIES_WEIGHT_CLOSE reduce using rule 54 (str -> STRING .)
+    THREAT_NAME_CLOSE reduce using rule 54 (str -> STRING .)
+    THREAT_DESCRIPTION_CLOSE reduce using rule 54 (str -> STRING .)
+    VULNERABILITIES_VULNERABILITY_CLOSE reduce using rule 54 (str -> STRING .)
+    STRING          shift and go to state 8
+
+  ! STRING          [ reduce using rule 54 (str -> STRING .) ]
+  ! COMMENT_OPEN    [ reduce using rule 55 (str -> .) ]
+  ! COMMENT_CLOSE   [ reduce using rule 55 (str -> .) ]
+  ! STRING          [ reduce using rule 55 (str -> .) ]
+  ! COMPONENT_NAME_CLOSE [ reduce using rule 55 (str -> .) ]
+  ! COMPONENT_OVERVIEW_CLOSE [ reduce using rule 55 (str -> .) ]
+  ! PROPERTIES_COLOR_CLOSE [ reduce using rule 55 (str -> .) ]
+  ! PROPERTIES_MATERIAL_CLOSE [ reduce using rule 55 (str -> .) ]
+  ! PROPERTIES_HEIGHT_CLOSE [ reduce using rule 55 (str -> .) ]
+  ! PROPERTIES_WEIGHT_CLOSE [ reduce using rule 55 (str -> .) ]
+  ! THREAT_NAME_CLOSE [ reduce using rule 55 (str -> .) ]
+  ! THREAT_DESCRIPTION_CLOSE [ reduce using rule 55 (str -> .) ]
+  ! VULNERABILITIES_VULNERABILITY_CLOSE [ reduce using rule 55 (str -> .) ]
+
+    str                            shift and go to state 15
+
+state 9
+
+    (1) doc_model -> XML_VERSION doc_model .
+
+    $end            reduce using rule 1 (doc_model -> XML_VERSION doc_model .)
+
+
+state 10
+
+    (2) doc_model -> doc_comment doc_model .
+
+    $end            reduce using rule 2 (doc_model -> doc_comment doc_model .)
+
+
+state 11
+
+    (3) doc_model -> OFFICE_DOCUMENT_OPEN office_model . OFFICE_DOCUMENT_CLOSE
+
+    OFFICE_DOCUMENT_CLOSE shift and go to state 16
+
+
+state 12
+
+    (4) office_model -> OFFICE_MODEL_OPEN . model_nodes OFFICE_MODEL_CLOSE
+    (5) model_nodes -> . MODEL_NODES_OPEN model_node model_nodes
+    (6) model_nodes -> . model_node model_nodes
+    (7) model_nodes -> . MODEL_NODES_CLOSE
+    (8) model_node -> . MODEL_NODE_OPEN model_node
+    (9) model_node -> . basic_info model_node
+    (10) model_node -> . threats model_node
+    (11) model_node -> . MODEL_NODE_CLOSE
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (36) threats -> . THREATS_OPEN threats
+    (37) threats -> . threat threats
+    (38) threats -> . THREATS_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    MODEL_NODES_OPEN shift and go to state 18
+    MODEL_NODES_CLOSE shift and go to state 20
+    MODEL_NODE_OPEN shift and go to state 21
+    MODEL_NODE_CLOSE shift and go to state 24
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    THREATS_OPEN    shift and go to state 32
+    THREATS_CLOSE   shift and go to state 34
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    model_nodes                    shift and go to state 17
+    model_node                     shift and go to state 19
+    basic_info                     shift and go to state 22
+    threats                        shift and go to state 23
+    component_name                 shift and go to state 26
+    component_overview             shift and go to state 27
+    component_categories           shift and go to state 28
+    intrinsical_properties         shift and go to state 29
+    other_details                  shift and go to state 30
+    threat                         shift and go to state 33
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+    threat_name                    shift and go to state 48
+    threat_description             shift and go to state 49
+    threat_vulnerabilities         shift and go to state 50
+    threat_vulnerability           shift and go to state 60
+
+state 13
+
+    (50) doc_comment -> COMMENT_OPEN doc_comment .
+
+    XML_VERSION     reduce using rule 50 (doc_comment -> COMMENT_OPEN doc_comment .)
+    OFFICE_DOCUMENT_OPEN reduce using rule 50 (doc_comment -> COMMENT_OPEN doc_comment .)
+    COMMENT_OPEN    reduce using rule 50 (doc_comment -> COMMENT_OPEN doc_comment .)
+    COMMENT_CLOSE   reduce using rule 50 (doc_comment -> COMMENT_OPEN doc_comment .)
+    STRING          reduce using rule 50 (doc_comment -> COMMENT_OPEN doc_comment .)
+
+
+state 14
+
+    (51) doc_comment -> str doc_comment .
+
+    XML_VERSION     reduce using rule 51 (doc_comment -> str doc_comment .)
+    OFFICE_DOCUMENT_OPEN reduce using rule 51 (doc_comment -> str doc_comment .)
+    COMMENT_OPEN    reduce using rule 51 (doc_comment -> str doc_comment .)
+    COMMENT_CLOSE   reduce using rule 51 (doc_comment -> str doc_comment .)
+    STRING          reduce using rule 51 (doc_comment -> str doc_comment .)
+
+
+state 15
+
+    (53) str -> STRING str .
+
+    COMMENT_OPEN    reduce using rule 53 (str -> STRING str .)
+    COMMENT_CLOSE   reduce using rule 53 (str -> STRING str .)
+    STRING          reduce using rule 53 (str -> STRING str .)
+    COMPONENT_NAME_CLOSE reduce using rule 53 (str -> STRING str .)
+    COMPONENT_OVERVIEW_CLOSE reduce using rule 53 (str -> STRING str .)
+    PROPERTIES_COLOR_CLOSE reduce using rule 53 (str -> STRING str .)
+    PROPERTIES_MATERIAL_CLOSE reduce using rule 53 (str -> STRING str .)
+    PROPERTIES_HEIGHT_CLOSE reduce using rule 53 (str -> STRING str .)
+    PROPERTIES_WEIGHT_CLOSE reduce using rule 53 (str -> STRING str .)
+    THREAT_NAME_CLOSE reduce using rule 53 (str -> STRING str .)
+    THREAT_DESCRIPTION_CLOSE reduce using rule 53 (str -> STRING str .)
+    VULNERABILITIES_VULNERABILITY_CLOSE reduce using rule 53 (str -> STRING str .)
+
+
+state 16
+
+    (3) doc_model -> OFFICE_DOCUMENT_OPEN office_model OFFICE_DOCUMENT_CLOSE .
+
+    $end            reduce using rule 3 (doc_model -> OFFICE_DOCUMENT_OPEN office_model OFFICE_DOCUMENT_CLOSE .)
+
+
+state 17
+
+    (4) office_model -> OFFICE_MODEL_OPEN model_nodes . OFFICE_MODEL_CLOSE
+
+    OFFICE_MODEL_CLOSE shift and go to state 63
+
+
+state 18
+
+    (5) model_nodes -> MODEL_NODES_OPEN . model_node model_nodes
+    (8) model_node -> . MODEL_NODE_OPEN model_node
+    (9) model_node -> . basic_info model_node
+    (10) model_node -> . threats model_node
+    (11) model_node -> . MODEL_NODE_CLOSE
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (36) threats -> . THREATS_OPEN threats
+    (37) threats -> . threat threats
+    (38) threats -> . THREATS_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    MODEL_NODE_OPEN shift and go to state 21
+    MODEL_NODE_CLOSE shift and go to state 24
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    THREATS_OPEN    shift and go to state 32
+    THREATS_CLOSE   shift and go to state 34
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    model_node                     shift and go to state 64
+    basic_info                     shift and go to state 22
+    threats                        shift and go to state 23
+    component_name                 shift and go to state 26
+    component_overview             shift and go to state 27
+    component_categories           shift and go to state 28
+    intrinsical_properties         shift and go to state 29
+    other_details                  shift and go to state 30
+    threat                         shift and go to state 33
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+    threat_name                    shift and go to state 48
+    threat_description             shift and go to state 49
+    threat_vulnerabilities         shift and go to state 50
+    threat_vulnerability           shift and go to state 60
+
+state 19
+
+    (6) model_nodes -> model_node . model_nodes
+    (5) model_nodes -> . MODEL_NODES_OPEN model_node model_nodes
+    (6) model_nodes -> . model_node model_nodes
+    (7) model_nodes -> . MODEL_NODES_CLOSE
+    (8) model_node -> . MODEL_NODE_OPEN model_node
+    (9) model_node -> . basic_info model_node
+    (10) model_node -> . threats model_node
+    (11) model_node -> . MODEL_NODE_CLOSE
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (36) threats -> . THREATS_OPEN threats
+    (37) threats -> . threat threats
+    (38) threats -> . THREATS_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    MODEL_NODES_OPEN shift and go to state 18
+    MODEL_NODES_CLOSE shift and go to state 20
+    MODEL_NODE_OPEN shift and go to state 21
+    MODEL_NODE_CLOSE shift and go to state 24
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    THREATS_OPEN    shift and go to state 32
+    THREATS_CLOSE   shift and go to state 34
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    model_node                     shift and go to state 19
+    model_nodes                    shift and go to state 65
+    basic_info                     shift and go to state 22
+    threats                        shift and go to state 23
+    component_name                 shift and go to state 26
+    component_overview             shift and go to state 27
+    component_categories           shift and go to state 28
+    intrinsical_properties         shift and go to state 29
+    other_details                  shift and go to state 30
+    threat                         shift and go to state 33
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+    threat_name                    shift and go to state 48
+    threat_description             shift and go to state 49
+    threat_vulnerabilities         shift and go to state 50
+    threat_vulnerability           shift and go to state 60
+
+state 20
+
+    (7) model_nodes -> MODEL_NODES_CLOSE .
+
+    OFFICE_MODEL_CLOSE reduce using rule 7 (model_nodes -> MODEL_NODES_CLOSE .)
+
+
+state 21
+
+    (8) model_node -> MODEL_NODE_OPEN . model_node
+    (8) model_node -> . MODEL_NODE_OPEN model_node
+    (9) model_node -> . basic_info model_node
+    (10) model_node -> . threats model_node
+    (11) model_node -> . MODEL_NODE_CLOSE
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (36) threats -> . THREATS_OPEN threats
+    (37) threats -> . threat threats
+    (38) threats -> . THREATS_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    MODEL_NODE_OPEN shift and go to state 21
+    MODEL_NODE_CLOSE shift and go to state 24
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    THREATS_OPEN    shift and go to state 32
+    THREATS_CLOSE   shift and go to state 34
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    model_node                     shift and go to state 66
+    basic_info                     shift and go to state 22
+    threats                        shift and go to state 23
+    component_name                 shift and go to state 26
+    component_overview             shift and go to state 27
+    component_categories           shift and go to state 28
+    intrinsical_properties         shift and go to state 29
+    other_details                  shift and go to state 30
+    threat                         shift and go to state 33
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+    threat_name                    shift and go to state 48
+    threat_description             shift and go to state 49
+    threat_vulnerabilities         shift and go to state 50
+    threat_vulnerability           shift and go to state 60
+
+state 22
+
+    (9) model_node -> basic_info . model_node
+    (8) model_node -> . MODEL_NODE_OPEN model_node
+    (9) model_node -> . basic_info model_node
+    (10) model_node -> . threats model_node
+    (11) model_node -> . MODEL_NODE_CLOSE
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (36) threats -> . THREATS_OPEN threats
+    (37) threats -> . threat threats
+    (38) threats -> . THREATS_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    MODEL_NODE_OPEN shift and go to state 21
+    MODEL_NODE_CLOSE shift and go to state 24
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    THREATS_OPEN    shift and go to state 32
+    THREATS_CLOSE   shift and go to state 34
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    basic_info                     shift and go to state 22
+    model_node                     shift and go to state 67
+    threats                        shift and go to state 23
+    component_name                 shift and go to state 26
+    component_overview             shift and go to state 27
+    component_categories           shift and go to state 28
+    intrinsical_properties         shift and go to state 29
+    other_details                  shift and go to state 30
+    threat                         shift and go to state 33
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+    threat_name                    shift and go to state 48
+    threat_description             shift and go to state 49
+    threat_vulnerabilities         shift and go to state 50
+    threat_vulnerability           shift and go to state 60
+
+state 23
+
+    (10) model_node -> threats . model_node
+    (8) model_node -> . MODEL_NODE_OPEN model_node
+    (9) model_node -> . basic_info model_node
+    (10) model_node -> . threats model_node
+    (11) model_node -> . MODEL_NODE_CLOSE
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (36) threats -> . THREATS_OPEN threats
+    (37) threats -> . threat threats
+    (38) threats -> . THREATS_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    MODEL_NODE_OPEN shift and go to state 21
+    MODEL_NODE_CLOSE shift and go to state 24
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    THREATS_OPEN    shift and go to state 32
+    THREATS_CLOSE   shift and go to state 34
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    threats                        shift and go to state 23
+    model_node                     shift and go to state 68
+    basic_info                     shift and go to state 22
+    component_name                 shift and go to state 26
+    component_overview             shift and go to state 27
+    component_categories           shift and go to state 28
+    intrinsical_properties         shift and go to state 29
+    other_details                  shift and go to state 30
+    threat                         shift and go to state 33
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+    threat_name                    shift and go to state 48
+    threat_description             shift and go to state 49
+    threat_vulnerabilities         shift and go to state 50
+    threat_vulnerability           shift and go to state 60
+
+state 24
+
+    (11) model_node -> MODEL_NODE_CLOSE .
+
+    MODEL_NODES_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    MODEL_NODES_CLOSE reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    MODEL_NODE_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    MODEL_NODE_CLOSE reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    BASIC_INFORMATION_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    BASIC_INFORMATION_CLOSE reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    THREATS_OPEN    reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    THREATS_CLOSE   reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    COMPONENT_NAME_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    PROPERTIES_OTHER_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    THREAT_OPEN     reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    THREAT_CLOSE    reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    PROPERTIES_COLOR_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    THREAT_NAME_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 11 (model_node -> MODEL_NODE_CLOSE .)
+
+
+state 25
+
+    (12) basic_info -> BASIC_INFORMATION_OPEN . basic_info
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+
+    basic_info                     shift and go to state 69
+    component_name                 shift and go to state 26
+    component_overview             shift and go to state 27
+    component_categories           shift and go to state 28
+    intrinsical_properties         shift and go to state 29
+    other_details                  shift and go to state 30
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+
+state 26
+
+    (13) basic_info -> component_name . basic_info
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+
+    component_name                 shift and go to state 26
+    basic_info                     shift and go to state 70
+    component_overview             shift and go to state 27
+    component_categories           shift and go to state 28
+    intrinsical_properties         shift and go to state 29
+    other_details                  shift and go to state 30
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+
+state 27
+
+    (14) basic_info -> component_overview . basic_info
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+
+    component_overview             shift and go to state 27
+    basic_info                     shift and go to state 71
+    component_name                 shift and go to state 26
+    component_categories           shift and go to state 28
+    intrinsical_properties         shift and go to state 29
+    other_details                  shift and go to state 30
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+
+state 28
+
+    (15) basic_info -> component_categories . basic_info
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+
+    component_categories           shift and go to state 28
+    basic_info                     shift and go to state 72
+    component_name                 shift and go to state 26
+    component_overview             shift and go to state 27
+    intrinsical_properties         shift and go to state 29
+    other_details                  shift and go to state 30
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+
+state 29
+
+    (16) basic_info -> intrinsical_properties . basic_info
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+
+    intrinsical_properties         shift and go to state 29
+    basic_info                     shift and go to state 73
+    component_name                 shift and go to state 26
+    component_overview             shift and go to state 27
+    component_categories           shift and go to state 28
+    other_details                  shift and go to state 30
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+
+state 30
+
+    (17) basic_info -> other_details . basic_info
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+
+    other_details                  shift and go to state 30
+    basic_info                     shift and go to state 74
+    component_name                 shift and go to state 26
+    component_overview             shift and go to state 27
+    component_categories           shift and go to state 28
+    intrinsical_properties         shift and go to state 29
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+
+state 31
+
+    (18) basic_info -> BASIC_INFORMATION_CLOSE .
+
+    MODEL_NODE_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    MODEL_NODE_CLOSE reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    BASIC_INFORMATION_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    BASIC_INFORMATION_CLOSE reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    THREATS_OPEN    reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    THREATS_CLOSE   reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    COMPONENT_NAME_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    PROPERTIES_OTHER_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    THREAT_OPEN     reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    THREAT_CLOSE    reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    PROPERTIES_COLOR_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    THREAT_NAME_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 18 (basic_info -> BASIC_INFORMATION_CLOSE .)
+
+
+state 32
+
+    (36) threats -> THREATS_OPEN . threats
+    (36) threats -> . THREATS_OPEN threats
+    (37) threats -> . threat threats
+    (38) threats -> . THREATS_CLOSE
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    THREATS_OPEN    shift and go to state 32
+    THREATS_CLOSE   shift and go to state 34
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    threats                        shift and go to state 75
+    threat                         shift and go to state 33
+    threat_name                    shift and go to state 48
+    threat_description             shift and go to state 49
+    threat_vulnerabilities         shift and go to state 50
+    threat_vulnerability           shift and go to state 60
+
+state 33
+
+    (37) threats -> threat . threats
+    (36) threats -> . THREATS_OPEN threats
+    (37) threats -> . threat threats
+    (38) threats -> . THREATS_CLOSE
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    THREATS_OPEN    shift and go to state 32
+    THREATS_CLOSE   shift and go to state 34
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    threat                         shift and go to state 33
+    threats                        shift and go to state 76
+    threat_name                    shift and go to state 48
+    threat_description             shift and go to state 49
+    threat_vulnerabilities         shift and go to state 50
+    threat_vulnerability           shift and go to state 60
+
+state 34
+
+    (38) threats -> THREATS_CLOSE .
+
+    MODEL_NODE_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    MODEL_NODE_CLOSE reduce using rule 38 (threats -> THREATS_CLOSE .)
+    BASIC_INFORMATION_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    BASIC_INFORMATION_CLOSE reduce using rule 38 (threats -> THREATS_CLOSE .)
+    THREATS_OPEN    reduce using rule 38 (threats -> THREATS_CLOSE .)
+    THREATS_CLOSE   reduce using rule 38 (threats -> THREATS_CLOSE .)
+    COMPONENT_NAME_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 38 (threats -> THREATS_CLOSE .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 38 (threats -> THREATS_CLOSE .)
+    PROPERTIES_OTHER_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    THREAT_OPEN     reduce using rule 38 (threats -> THREATS_CLOSE .)
+    THREAT_CLOSE    reduce using rule 38 (threats -> THREATS_CLOSE .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    PROPERTIES_COLOR_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    THREAT_NAME_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 38 (threats -> THREATS_CLOSE .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 38 (threats -> THREATS_CLOSE .)
+
+
+state 35
+
+    (19) component_name -> COMPONENT_NAME_OPEN . str COMPONENT_NAME_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+    STRING          shift and go to state 8
+    COMPONENT_NAME_CLOSE reduce using rule 55 (str -> .)
+
+    str                            shift and go to state 77
+
+state 36
+
+    (29) component_overview -> COMPONENT_OVERVIEW_OPEN . str COMPONENT_OVERVIEW_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+    STRING          shift and go to state 8
+    COMPONENT_OVERVIEW_CLOSE reduce using rule 55 (str -> .)
+
+    str                            shift and go to state 78
+
+state 37
+
+    (26) component_categories -> COMPONENT_CATEGORIES_OPEN . component_categories
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+
+    component_categories           shift and go to state 79
+    component_category             shift and go to state 38
+
+state 38
+
+    (27) component_categories -> component_category . component_categories
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+
+    component_category             shift and go to state 38
+    component_categories           shift and go to state 80
+
+state 39
+
+    (28) component_categories -> COMPONENT_CATEGORIES_CLOSE .
+
+    BASIC_INFORMATION_OPEN reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    BASIC_INFORMATION_CLOSE reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    COMPONENT_NAME_OPEN reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    PROPERTIES_OTHER_OPEN reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    PROPERTIES_COLOR_OPEN reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 28 (component_categories -> COMPONENT_CATEGORIES_CLOSE .)
+
+
+state 40
+
+    (20) intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN . intrinsical_properties
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+
+    intrinsical_properties         shift and go to state 81
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+
+state 41
+
+    (21) intrinsical_properties -> properties_color . intrinsical_properties
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+
+    properties_color               shift and go to state 41
+    intrinsical_properties         shift and go to state 82
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+
+state 42
+
+    (22) intrinsical_properties -> properties_material . intrinsical_properties
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+
+    properties_material            shift and go to state 42
+    intrinsical_properties         shift and go to state 83
+    properties_color               shift and go to state 41
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+
+state 43
+
+    (23) intrinsical_properties -> properties_height . intrinsical_properties
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+
+    properties_height              shift and go to state 43
+    intrinsical_properties         shift and go to state 84
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_weight              shift and go to state 44
+
+state 44
+
+    (24) intrinsical_properties -> properties_weight . intrinsical_properties
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+
+    properties_weight              shift and go to state 44
+    intrinsical_properties         shift and go to state 85
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+
+state 45
+
+    (25) intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .
+
+    BASIC_INFORMATION_OPEN reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    BASIC_INFORMATION_CLOSE reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    COMPONENT_NAME_OPEN reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    PROPERTIES_OTHER_OPEN reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    PROPERTIES_COLOR_OPEN reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 25 (intrinsical_properties -> INTRINSICAL_PROPERTIES_CLOSE .)
+
+
+state 46
+
+    (30) other_details -> PROPERTIES_OTHER_OPEN . PROPERTIES_OTHER_CLOSE
+
+    PROPERTIES_OTHER_CLOSE shift and go to state 86
+
+
+state 47
+
+    (39) threat -> THREAT_OPEN . threat
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    threat                         shift and go to state 87
+    threat_name                    shift and go to state 48
+    threat_description             shift and go to state 49
+    threat_vulnerabilities         shift and go to state 50
+    threat_vulnerability           shift and go to state 60
+
+state 48
+
+    (40) threat -> threat_name . threat
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    threat_name                    shift and go to state 48
+    threat                         shift and go to state 88
+    threat_description             shift and go to state 49
+    threat_vulnerabilities         shift and go to state 50
+    threat_vulnerability           shift and go to state 60
+
+state 49
+
+    (41) threat -> threat_description . threat
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    threat_description             shift and go to state 49
+    threat                         shift and go to state 89
+    threat_name                    shift and go to state 48
+    threat_vulnerabilities         shift and go to state 50
+    threat_vulnerability           shift and go to state 60
+
+state 50
+
+    (42) threat -> threat_vulnerabilities . threat
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    threat_vulnerabilities         shift and go to state 50
+    threat                         shift and go to state 90
+    threat_name                    shift and go to state 48
+    threat_description             shift and go to state 49
+    threat_vulnerability           shift and go to state 60
+
+state 51
+
+    (43) threat -> THREAT_CLOSE .
+
+    THREATS_OPEN    reduce using rule 43 (threat -> THREAT_CLOSE .)
+    THREATS_CLOSE   reduce using rule 43 (threat -> THREAT_CLOSE .)
+    THREAT_OPEN     reduce using rule 43 (threat -> THREAT_CLOSE .)
+    THREAT_CLOSE    reduce using rule 43 (threat -> THREAT_CLOSE .)
+    THREAT_NAME_OPEN reduce using rule 43 (threat -> THREAT_CLOSE .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 43 (threat -> THREAT_CLOSE .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 43 (threat -> THREAT_CLOSE .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 43 (threat -> THREAT_CLOSE .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 43 (threat -> THREAT_CLOSE .)
+
+
+state 52
+
+    (31) component_category -> COMPONENT_CATEGORY_OPEN . COMPONENT_CATEGORY_CLOSE
+
+    COMPONENT_CATEGORY_CLOSE shift and go to state 91
+
+
+state 53
+
+    (32) properties_color -> PROPERTIES_COLOR_OPEN . str PROPERTIES_COLOR_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+    STRING          shift and go to state 8
+    PROPERTIES_COLOR_CLOSE reduce using rule 55 (str -> .)
+
+    str                            shift and go to state 92
+
+state 54
+
+    (33) properties_material -> PROPERTIES_MATERIAL_OPEN . str PROPERTIES_MATERIAL_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+    STRING          shift and go to state 8
+    PROPERTIES_MATERIAL_CLOSE reduce using rule 55 (str -> .)
+
+    str                            shift and go to state 93
+
+state 55
+
+    (34) properties_height -> PROPERTIES_HEIGHT_OPEN . str PROPERTIES_HEIGHT_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+    STRING          shift and go to state 8
+    PROPERTIES_HEIGHT_CLOSE reduce using rule 55 (str -> .)
+
+    str                            shift and go to state 94
+
+state 56
+
+    (35) properties_weight -> PROPERTIES_WEIGHT_OPEN . str PROPERTIES_WEIGHT_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+    STRING          shift and go to state 8
+    PROPERTIES_WEIGHT_CLOSE reduce using rule 55 (str -> .)
+
+    str                            shift and go to state 95
+
+state 57
+
+    (44) threat_name -> THREAT_NAME_OPEN . str THREAT_NAME_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+    STRING          shift and go to state 8
+    THREAT_NAME_CLOSE reduce using rule 55 (str -> .)
+
+    str                            shift and go to state 96
+
+state 58
+
+    (45) threat_description -> THREAT_DESCRIPTION_OPEN . str THREAT_DESCRIPTION_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+    STRING          shift and go to state 8
+    THREAT_DESCRIPTION_CLOSE reduce using rule 55 (str -> .)
+
+    str                            shift and go to state 97
+
+state 59
+
+    (46) threat_vulnerabilities -> THREAT_VULNERABILITIES_OPEN . threat_vulnerabilities
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    threat_vulnerabilities         shift and go to state 98
+    threat_vulnerability           shift and go to state 60
+
+state 60
+
+    (47) threat_vulnerabilities -> threat_vulnerability . threat_vulnerabilities
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    threat_vulnerability           shift and go to state 60
+    threat_vulnerabilities         shift and go to state 99
+
+state 61
+
+    (48) threat_vulnerabilities -> THREAT_VULNERABILITIES_CLOSE .
+
+    THREAT_OPEN     reduce using rule 48 (threat_vulnerabilities -> THREAT_VULNERABILITIES_CLOSE .)
+    THREAT_CLOSE    reduce using rule 48 (threat_vulnerabilities -> THREAT_VULNERABILITIES_CLOSE .)
+    THREAT_NAME_OPEN reduce using rule 48 (threat_vulnerabilities -> THREAT_VULNERABILITIES_CLOSE .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 48 (threat_vulnerabilities -> THREAT_VULNERABILITIES_CLOSE .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 48 (threat_vulnerabilities -> THREAT_VULNERABILITIES_CLOSE .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 48 (threat_vulnerabilities -> THREAT_VULNERABILITIES_CLOSE .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 48 (threat_vulnerabilities -> THREAT_VULNERABILITIES_CLOSE .)
+
+
+state 62
+
+    (49) threat_vulnerability -> VULNERABILITIES_VULNERABILITY_OPEN . str VULNERABILITIES_VULNERABILITY_CLOSE
+    (53) str -> . STRING str
+    (54) str -> . STRING
+    (55) str -> .
+
+    STRING          shift and go to state 8
+    VULNERABILITIES_VULNERABILITY_CLOSE reduce using rule 55 (str -> .)
+
+    str                            shift and go to state 100
+
+state 63
+
+    (4) office_model -> OFFICE_MODEL_OPEN model_nodes OFFICE_MODEL_CLOSE .
+
+    OFFICE_DOCUMENT_CLOSE reduce using rule 4 (office_model -> OFFICE_MODEL_OPEN model_nodes OFFICE_MODEL_CLOSE .)
+
+
+state 64
+
+    (5) model_nodes -> MODEL_NODES_OPEN model_node . model_nodes
+    (5) model_nodes -> . MODEL_NODES_OPEN model_node model_nodes
+    (6) model_nodes -> . model_node model_nodes
+    (7) model_nodes -> . MODEL_NODES_CLOSE
+    (8) model_node -> . MODEL_NODE_OPEN model_node
+    (9) model_node -> . basic_info model_node
+    (10) model_node -> . threats model_node
+    (11) model_node -> . MODEL_NODE_CLOSE
+    (12) basic_info -> . BASIC_INFORMATION_OPEN basic_info
+    (13) basic_info -> . component_name basic_info
+    (14) basic_info -> . component_overview basic_info
+    (15) basic_info -> . component_categories basic_info
+    (16) basic_info -> . intrinsical_properties basic_info
+    (17) basic_info -> . other_details basic_info
+    (18) basic_info -> . BASIC_INFORMATION_CLOSE
+    (36) threats -> . THREATS_OPEN threats
+    (37) threats -> . threat threats
+    (38) threats -> . THREATS_CLOSE
+    (19) component_name -> . COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
+    (29) component_overview -> . COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
+    (26) component_categories -> . COMPONENT_CATEGORIES_OPEN component_categories
+    (27) component_categories -> . component_category component_categories
+    (28) component_categories -> . COMPONENT_CATEGORIES_CLOSE
+    (20) intrinsical_properties -> . INTRINSICAL_PROPERTIES_OPEN intrinsical_properties
+    (21) intrinsical_properties -> . properties_color intrinsical_properties
+    (22) intrinsical_properties -> . properties_material intrinsical_properties
+    (23) intrinsical_properties -> . properties_height intrinsical_properties
+    (24) intrinsical_properties -> . properties_weight intrinsical_properties
+    (25) intrinsical_properties -> . INTRINSICAL_PROPERTIES_CLOSE
+    (30) other_details -> . PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
+    (39) threat -> . THREAT_OPEN threat
+    (40) threat -> . threat_name threat
+    (41) threat -> . threat_description threat
+    (42) threat -> . threat_vulnerabilities threat
+    (43) threat -> . THREAT_CLOSE
+    (31) component_category -> . COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
+    (32) properties_color -> . PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
+    (33) properties_material -> . PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
+    (34) properties_height -> . PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
+    (35) properties_weight -> . PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
+    (44) threat_name -> . THREAT_NAME_OPEN str THREAT_NAME_CLOSE
+    (45) threat_description -> . THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
+    (46) threat_vulnerabilities -> . THREAT_VULNERABILITIES_OPEN threat_vulnerabilities
+    (47) threat_vulnerabilities -> . threat_vulnerability threat_vulnerabilities
+    (48) threat_vulnerabilities -> . THREAT_VULNERABILITIES_CLOSE
+    (49) threat_vulnerability -> . VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
+
+    MODEL_NODES_OPEN shift and go to state 18
+    MODEL_NODES_CLOSE shift and go to state 20
+    MODEL_NODE_OPEN shift and go to state 21
+    MODEL_NODE_CLOSE shift and go to state 24
+    BASIC_INFORMATION_OPEN shift and go to state 25
+    BASIC_INFORMATION_CLOSE shift and go to state 31
+    THREATS_OPEN    shift and go to state 32
+    THREATS_CLOSE   shift and go to state 34
+    COMPONENT_NAME_OPEN shift and go to state 35
+    COMPONENT_OVERVIEW_OPEN shift and go to state 36
+    COMPONENT_CATEGORIES_OPEN shift and go to state 37
+    COMPONENT_CATEGORIES_CLOSE shift and go to state 39
+    INTRINSICAL_PROPERTIES_OPEN shift and go to state 40
+    INTRINSICAL_PROPERTIES_CLOSE shift and go to state 45
+    PROPERTIES_OTHER_OPEN shift and go to state 46
+    THREAT_OPEN     shift and go to state 47
+    THREAT_CLOSE    shift and go to state 51
+    COMPONENT_CATEGORY_OPEN shift and go to state 52
+    PROPERTIES_COLOR_OPEN shift and go to state 53
+    PROPERTIES_MATERIAL_OPEN shift and go to state 54
+    PROPERTIES_HEIGHT_OPEN shift and go to state 55
+    PROPERTIES_WEIGHT_OPEN shift and go to state 56
+    THREAT_NAME_OPEN shift and go to state 57
+    THREAT_DESCRIPTION_OPEN shift and go to state 58
+    THREAT_VULNERABILITIES_OPEN shift and go to state 59
+    THREAT_VULNERABILITIES_CLOSE shift and go to state 61
+    VULNERABILITIES_VULNERABILITY_OPEN shift and go to state 62
+
+    model_node                     shift and go to state 19
+    model_nodes                    shift and go to state 101
+    basic_info                     shift and go to state 22
+    threats                        shift and go to state 23
+    component_name                 shift and go to state 26
+    component_overview             shift and go to state 27
+    component_categories           shift and go to state 28
+    intrinsical_properties         shift and go to state 29
+    other_details                  shift and go to state 30
+    threat                         shift and go to state 33
+    component_category             shift and go to state 38
+    properties_color               shift and go to state 41
+    properties_material            shift and go to state 42
+    properties_height              shift and go to state 43
+    properties_weight              shift and go to state 44
+    threat_name                    shift and go to state 48
+    threat_description             shift and go to state 49
+    threat_vulnerabilities         shift and go to state 50
+    threat_vulnerability           shift and go to state 60
+
+state 65
+
+    (6) model_nodes -> model_node model_nodes .
+
+    OFFICE_MODEL_CLOSE reduce using rule 6 (model_nodes -> model_node model_nodes .)
+
+
+state 66
+
+    (8) model_node -> MODEL_NODE_OPEN model_node .
+
+    MODEL_NODES_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    MODEL_NODES_CLOSE reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    MODEL_NODE_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    MODEL_NODE_CLOSE reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    BASIC_INFORMATION_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    BASIC_INFORMATION_CLOSE reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    THREATS_OPEN    reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    THREATS_CLOSE   reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    COMPONENT_NAME_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    PROPERTIES_OTHER_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    THREAT_OPEN     reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    THREAT_CLOSE    reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    PROPERTIES_COLOR_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    THREAT_NAME_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 8 (model_node -> MODEL_NODE_OPEN model_node .)
+
+
+state 67
+
+    (9) model_node -> basic_info model_node .
+
+    MODEL_NODES_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    MODEL_NODES_CLOSE reduce using rule 9 (model_node -> basic_info model_node .)
+    MODEL_NODE_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    MODEL_NODE_CLOSE reduce using rule 9 (model_node -> basic_info model_node .)
+    BASIC_INFORMATION_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    BASIC_INFORMATION_CLOSE reduce using rule 9 (model_node -> basic_info model_node .)
+    THREATS_OPEN    reduce using rule 9 (model_node -> basic_info model_node .)
+    THREATS_CLOSE   reduce using rule 9 (model_node -> basic_info model_node .)
+    COMPONENT_NAME_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 9 (model_node -> basic_info model_node .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 9 (model_node -> basic_info model_node .)
+    PROPERTIES_OTHER_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    THREAT_OPEN     reduce using rule 9 (model_node -> basic_info model_node .)
+    THREAT_CLOSE    reduce using rule 9 (model_node -> basic_info model_node .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    PROPERTIES_COLOR_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    THREAT_NAME_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 9 (model_node -> basic_info model_node .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 9 (model_node -> basic_info model_node .)
+
+
+state 68
+
+    (10) model_node -> threats model_node .
+
+    MODEL_NODES_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    MODEL_NODES_CLOSE reduce using rule 10 (model_node -> threats model_node .)
+    MODEL_NODE_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    MODEL_NODE_CLOSE reduce using rule 10 (model_node -> threats model_node .)
+    BASIC_INFORMATION_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    BASIC_INFORMATION_CLOSE reduce using rule 10 (model_node -> threats model_node .)
+    THREATS_OPEN    reduce using rule 10 (model_node -> threats model_node .)
+    THREATS_CLOSE   reduce using rule 10 (model_node -> threats model_node .)
+    COMPONENT_NAME_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 10 (model_node -> threats model_node .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 10 (model_node -> threats model_node .)
+    PROPERTIES_OTHER_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    THREAT_OPEN     reduce using rule 10 (model_node -> threats model_node .)
+    THREAT_CLOSE    reduce using rule 10 (model_node -> threats model_node .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    PROPERTIES_COLOR_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    THREAT_NAME_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 10 (model_node -> threats model_node .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 10 (model_node -> threats model_node .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 10 (model_node -> threats model_node .)
+
+
+state 69
+
+    (12) basic_info -> BASIC_INFORMATION_OPEN basic_info .
+
+    MODEL_NODE_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    MODEL_NODE_CLOSE reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    BASIC_INFORMATION_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    BASIC_INFORMATION_CLOSE reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    THREATS_OPEN    reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    THREATS_CLOSE   reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    COMPONENT_NAME_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    PROPERTIES_OTHER_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    THREAT_OPEN     reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    THREAT_CLOSE    reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    PROPERTIES_COLOR_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    THREAT_NAME_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 12 (basic_info -> BASIC_INFORMATION_OPEN basic_info .)
+
+
+state 70
+
+    (13) basic_info -> component_name basic_info .
+
+    MODEL_NODE_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    MODEL_NODE_CLOSE reduce using rule 13 (basic_info -> component_name basic_info .)
+    BASIC_INFORMATION_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    BASIC_INFORMATION_CLOSE reduce using rule 13 (basic_info -> component_name basic_info .)
+    THREATS_OPEN    reduce using rule 13 (basic_info -> component_name basic_info .)
+    THREATS_CLOSE   reduce using rule 13 (basic_info -> component_name basic_info .)
+    COMPONENT_NAME_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 13 (basic_info -> component_name basic_info .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 13 (basic_info -> component_name basic_info .)
+    PROPERTIES_OTHER_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    THREAT_OPEN     reduce using rule 13 (basic_info -> component_name basic_info .)
+    THREAT_CLOSE    reduce using rule 13 (basic_info -> component_name basic_info .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    PROPERTIES_COLOR_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    THREAT_NAME_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 13 (basic_info -> component_name basic_info .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 13 (basic_info -> component_name basic_info .)
+
+
+state 71
+
+    (14) basic_info -> component_overview basic_info .
+
+    MODEL_NODE_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    MODEL_NODE_CLOSE reduce using rule 14 (basic_info -> component_overview basic_info .)
+    BASIC_INFORMATION_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    BASIC_INFORMATION_CLOSE reduce using rule 14 (basic_info -> component_overview basic_info .)
+    THREATS_OPEN    reduce using rule 14 (basic_info -> component_overview basic_info .)
+    THREATS_CLOSE   reduce using rule 14 (basic_info -> component_overview basic_info .)
+    COMPONENT_NAME_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 14 (basic_info -> component_overview basic_info .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 14 (basic_info -> component_overview basic_info .)
+    PROPERTIES_OTHER_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    THREAT_OPEN     reduce using rule 14 (basic_info -> component_overview basic_info .)
+    THREAT_CLOSE    reduce using rule 14 (basic_info -> component_overview basic_info .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    PROPERTIES_COLOR_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    THREAT_NAME_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 14 (basic_info -> component_overview basic_info .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 14 (basic_info -> component_overview basic_info .)
+
+
+state 72
+
+    (15) basic_info -> component_categories basic_info .
+
+    MODEL_NODE_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    MODEL_NODE_CLOSE reduce using rule 15 (basic_info -> component_categories basic_info .)
+    BASIC_INFORMATION_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    BASIC_INFORMATION_CLOSE reduce using rule 15 (basic_info -> component_categories basic_info .)
+    THREATS_OPEN    reduce using rule 15 (basic_info -> component_categories basic_info .)
+    THREATS_CLOSE   reduce using rule 15 (basic_info -> component_categories basic_info .)
+    COMPONENT_NAME_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 15 (basic_info -> component_categories basic_info .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 15 (basic_info -> component_categories basic_info .)
+    PROPERTIES_OTHER_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    THREAT_OPEN     reduce using rule 15 (basic_info -> component_categories basic_info .)
+    THREAT_CLOSE    reduce using rule 15 (basic_info -> component_categories basic_info .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    PROPERTIES_COLOR_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    THREAT_NAME_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 15 (basic_info -> component_categories basic_info .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 15 (basic_info -> component_categories basic_info .)
+
+
+state 73
+
+    (16) basic_info -> intrinsical_properties basic_info .
+
+    MODEL_NODE_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    MODEL_NODE_CLOSE reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    BASIC_INFORMATION_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    BASIC_INFORMATION_CLOSE reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    THREATS_OPEN    reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    THREATS_CLOSE   reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    COMPONENT_NAME_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    PROPERTIES_OTHER_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    THREAT_OPEN     reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    THREAT_CLOSE    reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    PROPERTIES_COLOR_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    THREAT_NAME_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 16 (basic_info -> intrinsical_properties basic_info .)
+
+
+state 74
+
+    (17) basic_info -> other_details basic_info .
+
+    MODEL_NODE_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    MODEL_NODE_CLOSE reduce using rule 17 (basic_info -> other_details basic_info .)
+    BASIC_INFORMATION_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    BASIC_INFORMATION_CLOSE reduce using rule 17 (basic_info -> other_details basic_info .)
+    THREATS_OPEN    reduce using rule 17 (basic_info -> other_details basic_info .)
+    THREATS_CLOSE   reduce using rule 17 (basic_info -> other_details basic_info .)
+    COMPONENT_NAME_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 17 (basic_info -> other_details basic_info .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 17 (basic_info -> other_details basic_info .)
+    PROPERTIES_OTHER_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    THREAT_OPEN     reduce using rule 17 (basic_info -> other_details basic_info .)
+    THREAT_CLOSE    reduce using rule 17 (basic_info -> other_details basic_info .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    PROPERTIES_COLOR_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    THREAT_NAME_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 17 (basic_info -> other_details basic_info .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 17 (basic_info -> other_details basic_info .)
+
+
+state 75
+
+    (36) threats -> THREATS_OPEN threats .
+
+    MODEL_NODE_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    MODEL_NODE_CLOSE reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    BASIC_INFORMATION_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    BASIC_INFORMATION_CLOSE reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    THREATS_OPEN    reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    THREATS_CLOSE   reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    COMPONENT_NAME_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    PROPERTIES_OTHER_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    THREAT_OPEN     reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    THREAT_CLOSE    reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    PROPERTIES_COLOR_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    THREAT_NAME_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 36 (threats -> THREATS_OPEN threats .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 36 (threats -> THREATS_OPEN threats .)
+
+
+state 76
+
+    (37) threats -> threat threats .
+
+    MODEL_NODE_OPEN reduce using rule 37 (threats -> threat threats .)
+    MODEL_NODE_CLOSE reduce using rule 37 (threats -> threat threats .)
+    BASIC_INFORMATION_OPEN reduce using rule 37 (threats -> threat threats .)
+    BASIC_INFORMATION_CLOSE reduce using rule 37 (threats -> threat threats .)
+    THREATS_OPEN    reduce using rule 37 (threats -> threat threats .)
+    THREATS_CLOSE   reduce using rule 37 (threats -> threat threats .)
+    COMPONENT_NAME_OPEN reduce using rule 37 (threats -> threat threats .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 37 (threats -> threat threats .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 37 (threats -> threat threats .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 37 (threats -> threat threats .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 37 (threats -> threat threats .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 37 (threats -> threat threats .)
+    PROPERTIES_OTHER_OPEN reduce using rule 37 (threats -> threat threats .)
+    THREAT_OPEN     reduce using rule 37 (threats -> threat threats .)
+    THREAT_CLOSE    reduce using rule 37 (threats -> threat threats .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 37 (threats -> threat threats .)
+    PROPERTIES_COLOR_OPEN reduce using rule 37 (threats -> threat threats .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 37 (threats -> threat threats .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 37 (threats -> threat threats .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 37 (threats -> threat threats .)
+    THREAT_NAME_OPEN reduce using rule 37 (threats -> threat threats .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 37 (threats -> threat threats .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 37 (threats -> threat threats .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 37 (threats -> threat threats .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 37 (threats -> threat threats .)
+
+
+state 77
+
+    (19) component_name -> COMPONENT_NAME_OPEN str . COMPONENT_NAME_CLOSE
+
+    COMPONENT_NAME_CLOSE shift and go to state 102
+
+
+state 78
+
+    (29) component_overview -> COMPONENT_OVERVIEW_OPEN str . COMPONENT_OVERVIEW_CLOSE
+
+    COMPONENT_OVERVIEW_CLOSE shift and go to state 103
+
+
+state 79
+
+    (26) component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .
+
+    BASIC_INFORMATION_OPEN reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    BASIC_INFORMATION_CLOSE reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    COMPONENT_NAME_OPEN reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    PROPERTIES_OTHER_OPEN reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    PROPERTIES_COLOR_OPEN reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 26 (component_categories -> COMPONENT_CATEGORIES_OPEN component_categories .)
+
+
+state 80
+
+    (27) component_categories -> component_category component_categories .
+
+    BASIC_INFORMATION_OPEN reduce using rule 27 (component_categories -> component_category component_categories .)
+    BASIC_INFORMATION_CLOSE reduce using rule 27 (component_categories -> component_category component_categories .)
+    COMPONENT_NAME_OPEN reduce using rule 27 (component_categories -> component_category component_categories .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 27 (component_categories -> component_category component_categories .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 27 (component_categories -> component_category component_categories .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 27 (component_categories -> component_category component_categories .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 27 (component_categories -> component_category component_categories .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 27 (component_categories -> component_category component_categories .)
+    PROPERTIES_OTHER_OPEN reduce using rule 27 (component_categories -> component_category component_categories .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 27 (component_categories -> component_category component_categories .)
+    PROPERTIES_COLOR_OPEN reduce using rule 27 (component_categories -> component_category component_categories .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 27 (component_categories -> component_category component_categories .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 27 (component_categories -> component_category component_categories .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 27 (component_categories -> component_category component_categories .)
+
+
+state 81
+
+    (20) intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .
+
+    BASIC_INFORMATION_OPEN reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    BASIC_INFORMATION_CLOSE reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    COMPONENT_NAME_OPEN reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    PROPERTIES_OTHER_OPEN reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    PROPERTIES_COLOR_OPEN reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 20 (intrinsical_properties -> INTRINSICAL_PROPERTIES_OPEN intrinsical_properties .)
+
+
+state 82
+
+    (21) intrinsical_properties -> properties_color intrinsical_properties .
+
+    BASIC_INFORMATION_OPEN reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    BASIC_INFORMATION_CLOSE reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    COMPONENT_NAME_OPEN reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    PROPERTIES_OTHER_OPEN reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    PROPERTIES_COLOR_OPEN reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 21 (intrinsical_properties -> properties_color intrinsical_properties .)
+
+
+state 83
+
+    (22) intrinsical_properties -> properties_material intrinsical_properties .
+
+    BASIC_INFORMATION_OPEN reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    BASIC_INFORMATION_CLOSE reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    COMPONENT_NAME_OPEN reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    PROPERTIES_OTHER_OPEN reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    PROPERTIES_COLOR_OPEN reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 22 (intrinsical_properties -> properties_material intrinsical_properties .)
+
+
+state 84
+
+    (23) intrinsical_properties -> properties_height intrinsical_properties .
+
+    BASIC_INFORMATION_OPEN reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    BASIC_INFORMATION_CLOSE reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    COMPONENT_NAME_OPEN reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    PROPERTIES_OTHER_OPEN reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    PROPERTIES_COLOR_OPEN reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 23 (intrinsical_properties -> properties_height intrinsical_properties .)
+
+
+state 85
+
+    (24) intrinsical_properties -> properties_weight intrinsical_properties .
+
+    BASIC_INFORMATION_OPEN reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    BASIC_INFORMATION_CLOSE reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    COMPONENT_NAME_OPEN reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    PROPERTIES_OTHER_OPEN reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    PROPERTIES_COLOR_OPEN reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 24 (intrinsical_properties -> properties_weight intrinsical_properties .)
+
+
+state 86
+
+    (30) other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .
+
+    BASIC_INFORMATION_OPEN reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    BASIC_INFORMATION_CLOSE reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    COMPONENT_NAME_OPEN reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    PROPERTIES_OTHER_OPEN reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    PROPERTIES_COLOR_OPEN reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 30 (other_details -> PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE .)
+
+
+state 87
+
+    (39) threat -> THREAT_OPEN threat .
+
+    THREATS_OPEN    reduce using rule 39 (threat -> THREAT_OPEN threat .)
+    THREATS_CLOSE   reduce using rule 39 (threat -> THREAT_OPEN threat .)
+    THREAT_OPEN     reduce using rule 39 (threat -> THREAT_OPEN threat .)
+    THREAT_CLOSE    reduce using rule 39 (threat -> THREAT_OPEN threat .)
+    THREAT_NAME_OPEN reduce using rule 39 (threat -> THREAT_OPEN threat .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 39 (threat -> THREAT_OPEN threat .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 39 (threat -> THREAT_OPEN threat .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 39 (threat -> THREAT_OPEN threat .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 39 (threat -> THREAT_OPEN threat .)
+
+
+state 88
+
+    (40) threat -> threat_name threat .
+
+    THREATS_OPEN    reduce using rule 40 (threat -> threat_name threat .)
+    THREATS_CLOSE   reduce using rule 40 (threat -> threat_name threat .)
+    THREAT_OPEN     reduce using rule 40 (threat -> threat_name threat .)
+    THREAT_CLOSE    reduce using rule 40 (threat -> threat_name threat .)
+    THREAT_NAME_OPEN reduce using rule 40 (threat -> threat_name threat .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 40 (threat -> threat_name threat .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 40 (threat -> threat_name threat .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 40 (threat -> threat_name threat .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 40 (threat -> threat_name threat .)
+
+
+state 89
+
+    (41) threat -> threat_description threat .
+
+    THREATS_OPEN    reduce using rule 41 (threat -> threat_description threat .)
+    THREATS_CLOSE   reduce using rule 41 (threat -> threat_description threat .)
+    THREAT_OPEN     reduce using rule 41 (threat -> threat_description threat .)
+    THREAT_CLOSE    reduce using rule 41 (threat -> threat_description threat .)
+    THREAT_NAME_OPEN reduce using rule 41 (threat -> threat_description threat .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 41 (threat -> threat_description threat .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 41 (threat -> threat_description threat .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 41 (threat -> threat_description threat .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 41 (threat -> threat_description threat .)
+
+
+state 90
+
+    (42) threat -> threat_vulnerabilities threat .
+
+    THREATS_OPEN    reduce using rule 42 (threat -> threat_vulnerabilities threat .)
+    THREATS_CLOSE   reduce using rule 42 (threat -> threat_vulnerabilities threat .)
+    THREAT_OPEN     reduce using rule 42 (threat -> threat_vulnerabilities threat .)
+    THREAT_CLOSE    reduce using rule 42 (threat -> threat_vulnerabilities threat .)
+    THREAT_NAME_OPEN reduce using rule 42 (threat -> threat_vulnerabilities threat .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 42 (threat -> threat_vulnerabilities threat .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 42 (threat -> threat_vulnerabilities threat .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 42 (threat -> threat_vulnerabilities threat .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 42 (threat -> threat_vulnerabilities threat .)
+
+
+state 91
+
+    (31) component_category -> COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE .
+
+    COMPONENT_CATEGORIES_OPEN reduce using rule 31 (component_category -> COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 31 (component_category -> COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 31 (component_category -> COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE .)
+
+
+state 92
+
+    (32) properties_color -> PROPERTIES_COLOR_OPEN str . PROPERTIES_COLOR_CLOSE
+
+    PROPERTIES_COLOR_CLOSE shift and go to state 104
+
+
+state 93
+
+    (33) properties_material -> PROPERTIES_MATERIAL_OPEN str . PROPERTIES_MATERIAL_CLOSE
+
+    PROPERTIES_MATERIAL_CLOSE shift and go to state 105
+
+
+state 94
+
+    (34) properties_height -> PROPERTIES_HEIGHT_OPEN str . PROPERTIES_HEIGHT_CLOSE
+
+    PROPERTIES_HEIGHT_CLOSE shift and go to state 106
+
+
+state 95
+
+    (35) properties_weight -> PROPERTIES_WEIGHT_OPEN str . PROPERTIES_WEIGHT_CLOSE
+
+    PROPERTIES_WEIGHT_CLOSE shift and go to state 107
+
+
+state 96
+
+    (44) threat_name -> THREAT_NAME_OPEN str . THREAT_NAME_CLOSE
+
+    THREAT_NAME_CLOSE shift and go to state 108
+
+
+state 97
+
+    (45) threat_description -> THREAT_DESCRIPTION_OPEN str . THREAT_DESCRIPTION_CLOSE
+
+    THREAT_DESCRIPTION_CLOSE shift and go to state 109
+
+
+state 98
+
+    (46) threat_vulnerabilities -> THREAT_VULNERABILITIES_OPEN threat_vulnerabilities .
+
+    THREAT_OPEN     reduce using rule 46 (threat_vulnerabilities -> THREAT_VULNERABILITIES_OPEN threat_vulnerabilities .)
+    THREAT_CLOSE    reduce using rule 46 (threat_vulnerabilities -> THREAT_VULNERABILITIES_OPEN threat_vulnerabilities .)
+    THREAT_NAME_OPEN reduce using rule 46 (threat_vulnerabilities -> THREAT_VULNERABILITIES_OPEN threat_vulnerabilities .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 46 (threat_vulnerabilities -> THREAT_VULNERABILITIES_OPEN threat_vulnerabilities .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 46 (threat_vulnerabilities -> THREAT_VULNERABILITIES_OPEN threat_vulnerabilities .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 46 (threat_vulnerabilities -> THREAT_VULNERABILITIES_OPEN threat_vulnerabilities .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 46 (threat_vulnerabilities -> THREAT_VULNERABILITIES_OPEN threat_vulnerabilities .)
+
+
+state 99
+
+    (47) threat_vulnerabilities -> threat_vulnerability threat_vulnerabilities .
+
+    THREAT_OPEN     reduce using rule 47 (threat_vulnerabilities -> threat_vulnerability threat_vulnerabilities .)
+    THREAT_CLOSE    reduce using rule 47 (threat_vulnerabilities -> threat_vulnerability threat_vulnerabilities .)
+    THREAT_NAME_OPEN reduce using rule 47 (threat_vulnerabilities -> threat_vulnerability threat_vulnerabilities .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 47 (threat_vulnerabilities -> threat_vulnerability threat_vulnerabilities .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 47 (threat_vulnerabilities -> threat_vulnerability threat_vulnerabilities .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 47 (threat_vulnerabilities -> threat_vulnerability threat_vulnerabilities .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 47 (threat_vulnerabilities -> threat_vulnerability threat_vulnerabilities .)
+
+
+state 100
+
+    (49) threat_vulnerability -> VULNERABILITIES_VULNERABILITY_OPEN str . VULNERABILITIES_VULNERABILITY_CLOSE
+
+    VULNERABILITIES_VULNERABILITY_CLOSE shift and go to state 110
+
+
+state 101
+
+    (5) model_nodes -> MODEL_NODES_OPEN model_node model_nodes .
+
+    OFFICE_MODEL_CLOSE reduce using rule 5 (model_nodes -> MODEL_NODES_OPEN model_node model_nodes .)
+
+
+state 102
+
+    (19) component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .
+
+    BASIC_INFORMATION_OPEN reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    BASIC_INFORMATION_CLOSE reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    COMPONENT_NAME_OPEN reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    PROPERTIES_OTHER_OPEN reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    PROPERTIES_COLOR_OPEN reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 19 (component_name -> COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE .)
+
+
+state 103
+
+    (29) component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .
+
+    BASIC_INFORMATION_OPEN reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    BASIC_INFORMATION_CLOSE reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    COMPONENT_NAME_OPEN reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    COMPONENT_OVERVIEW_OPEN reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    COMPONENT_CATEGORIES_OPEN reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    COMPONENT_CATEGORIES_CLOSE reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    PROPERTIES_OTHER_OPEN reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    COMPONENT_CATEGORY_OPEN reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    PROPERTIES_COLOR_OPEN reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 29 (component_overview -> COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE .)
+
+
+state 104
+
+    (32) properties_color -> PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE .
+
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 32 (properties_color -> PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 32 (properties_color -> PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE .)
+    PROPERTIES_COLOR_OPEN reduce using rule 32 (properties_color -> PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 32 (properties_color -> PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 32 (properties_color -> PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 32 (properties_color -> PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE .)
+
+
+state 105
+
+    (33) properties_material -> PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE .
+
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 33 (properties_material -> PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 33 (properties_material -> PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE .)
+    PROPERTIES_COLOR_OPEN reduce using rule 33 (properties_material -> PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 33 (properties_material -> PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 33 (properties_material -> PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 33 (properties_material -> PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE .)
+
+
+state 106
+
+    (34) properties_height -> PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE .
+
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 34 (properties_height -> PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 34 (properties_height -> PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE .)
+    PROPERTIES_COLOR_OPEN reduce using rule 34 (properties_height -> PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 34 (properties_height -> PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 34 (properties_height -> PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 34 (properties_height -> PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE .)
+
+
+state 107
+
+    (35) properties_weight -> PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE .
+
+    INTRINSICAL_PROPERTIES_OPEN reduce using rule 35 (properties_weight -> PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE .)
+    INTRINSICAL_PROPERTIES_CLOSE reduce using rule 35 (properties_weight -> PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE .)
+    PROPERTIES_COLOR_OPEN reduce using rule 35 (properties_weight -> PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE .)
+    PROPERTIES_MATERIAL_OPEN reduce using rule 35 (properties_weight -> PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE .)
+    PROPERTIES_HEIGHT_OPEN reduce using rule 35 (properties_weight -> PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE .)
+    PROPERTIES_WEIGHT_OPEN reduce using rule 35 (properties_weight -> PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE .)
+
+
+state 108
+
+    (44) threat_name -> THREAT_NAME_OPEN str THREAT_NAME_CLOSE .
+
+    THREAT_OPEN     reduce using rule 44 (threat_name -> THREAT_NAME_OPEN str THREAT_NAME_CLOSE .)
+    THREAT_CLOSE    reduce using rule 44 (threat_name -> THREAT_NAME_OPEN str THREAT_NAME_CLOSE .)
+    THREAT_NAME_OPEN reduce using rule 44 (threat_name -> THREAT_NAME_OPEN str THREAT_NAME_CLOSE .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 44 (threat_name -> THREAT_NAME_OPEN str THREAT_NAME_CLOSE .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 44 (threat_name -> THREAT_NAME_OPEN str THREAT_NAME_CLOSE .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 44 (threat_name -> THREAT_NAME_OPEN str THREAT_NAME_CLOSE .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 44 (threat_name -> THREAT_NAME_OPEN str THREAT_NAME_CLOSE .)
+
+
+state 109
+
+    (45) threat_description -> THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE .
+
+    THREAT_OPEN     reduce using rule 45 (threat_description -> THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE .)
+    THREAT_CLOSE    reduce using rule 45 (threat_description -> THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE .)
+    THREAT_NAME_OPEN reduce using rule 45 (threat_description -> THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE .)
+    THREAT_DESCRIPTION_OPEN reduce using rule 45 (threat_description -> THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE .)
+    THREAT_VULNERABILITIES_OPEN reduce using rule 45 (threat_description -> THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 45 (threat_description -> THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 45 (threat_description -> THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE .)
+
+
+state 110
+
+    (49) threat_vulnerability -> VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE .
+
+    THREAT_VULNERABILITIES_OPEN reduce using rule 49 (threat_vulnerability -> VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE .)
+    THREAT_VULNERABILITIES_CLOSE reduce using rule 49 (threat_vulnerability -> VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE .)
+    VULNERABILITIES_VULNERABILITY_OPEN reduce using rule 49 (threat_vulnerability -> VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for COMMENT_OPEN in state 0 resolved as shift
+WARNING: shift/reduce conflict for COMMENT_CLOSE in state 0 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 0 resolved as shift
+WARNING: shift/reduce conflict for COMMENT_OPEN in state 2 resolved as shift
+WARNING: shift/reduce conflict for COMMENT_CLOSE in state 2 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 2 resolved as shift
+WARNING: shift/reduce conflict for COMMENT_OPEN in state 3 resolved as shift
+WARNING: shift/reduce conflict for COMMENT_CLOSE in state 3 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 3 resolved as shift
+WARNING: shift/reduce conflict for COMMENT_OPEN in state 5 resolved as shift
+WARNING: shift/reduce conflict for COMMENT_CLOSE in state 5 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 5 resolved as shift
+WARNING: shift/reduce conflict for COMMENT_OPEN in state 6 resolved as shift
+WARNING: shift/reduce conflict for COMMENT_CLOSE in state 6 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 6 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 8 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 8 resolved as shift
+WARNING: reduce/reduce conflict in state 8 resolved using rule (str -> STRING)
+WARNING: rejected rule (str -> <empty>) in state 8
