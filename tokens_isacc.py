@@ -56,24 +56,24 @@ def p_expression_linked_node(t):
 
 def p_expression_relationship_type(t):
     '''
-    relationship-type : SECURITY_OBJECTIVES_OPEN security-objectives SECURITY_OBJECTIVES_CLOSE
+    relationship-type : SECURITY_OBJECTIVES_OPEN security-objectives_SR SECURITY_OBJECTIVES_CLOSE
     '''
     print("4")
     return
 
 
-def p_expression_security_objectives(t):
+def p_expression_security_objectives_SR(t):
     '''
-    security-objectives : security-objectives security-objectives
-                        | SECURITY_OBJECTIVE_OPEN security-objective security-objective SECURITY_OBJECTIVE_CLOSE
+    security-objectives_SR : security-objectives_SR security-objectives_SR
+						   | SECURITY_OBJECTIVE_OPEN security-objective_SR security-objective_SR SECURITY_OBJECTIVE_CLOSE
     '''
     print("5")
     return
 
-def p_expression_security_objective(t):
+def p_expression_security_objective_SR(t):
     '''
-    security-objective : SELF_OBJECTIVE_OPEN SELF_OBJECTIVE_CLOSE
-                       | PEER_OBJECTIVE_OPEN PEER_OBJECTIVE_CLOSE
+    security-objective_SR : SELF_OBJECTIVE_OPEN SELF_OBJECTIVE_CLOSE
+						  | PEER_OBJECTIVE_OPEN PEER_OBJECTIVE_CLOSE
     '''
     print("6")
     return

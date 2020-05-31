@@ -35,6 +35,51 @@ def t_error(t):
     t.lexer.skip(1)
     return
 
+
+def p_structure_security_policies(t):
+	'''
+	structure_security_policies : SECURITY_POLICIES_OPEN security_policies SECURITY_POLICIES_CLOSE
+	'''
+	print(1)
+	return
+
+def p_security_policies(t):
+	'''
+	security_policies : security_policies security_policies
+					  | security_policy
+	'''
+	print(2)
+	return
+
+def p_security_policy(t):
+	'''
+	security_policy : SECURITY_POLICY_OPEN POLICY_ID END_OPEN POLICY_NAME_OPEN GENERAL_COMMENT POLICY_NAME_CLOSE POLICY_DESCRIPTION_OPEN GENERAL_COMMENT POLICY_DESCRIPTION_CLOSE security_objectives_SP additional_info_SP SECURITY_POLICY_CLOSE
+	'''
+	print(3)
+	return
+
+
+def p_security_objectives_SP(t):
+	'''
+	security_objectives_SP : SP_OBJECTIVES_OPEN SP_OBJECTIVE_OPEN GENERAL_COMMENT SP_OBJECTIVE_CLOSE SP_OBJECTIVES_CLOSE
+	'''
+	print(4)
+	return
+
+def p_additional_info_SP(t):
+	'''
+	additional_info_SP : SP_ADDITIONAL_INFORMATION_OPEN SP_COMMENT_OPEN SP_COMMENT_CLOSE SP_ADDITIONAL_INFORMATION_CLOSE
+	'''
+	print(5)
+	return
+
+
+def p_error(p):
+	print("Syntax error")
+	return
+
+
+
 file = open('pruebaIsacc2.xml','r')
 count = 0
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
@@ -51,3 +96,10 @@ for line in file:
         break
 file.close()
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
+
+print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
+with open('pruebaIsacc2.xml','r') as myfile:
+    data=myfile.read()
+parser = yacc.yacc()
+parser.parse(data)
+print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")

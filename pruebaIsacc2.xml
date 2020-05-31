@@ -1,0 +1,28 @@
+<node:security-policies>
+	
+
+<security-policies:security-policy policy-id="Hit-protection">
+<security-policy:name>Cup hit protection</security-policy:name>
+<security-policy:description> The cup must be protected from hitting against/--a other cups (or any other object) inside the box, or against the box itself, while being transported to its final destination </security-policy:description>
+<security-policy:security-objectives>
+<security-objectives:security-objective> DO[1][1] </security-objectives:security-objective>
+</security-policy:security-objectives>
+<security-policy:additional-information>
+<additional-information:comment></additional-information:comment>
+</security-policy:additional-information>
+</security-policies:security-policy>
+
+<security-policies:security-policy policy-id="Lost-prevenction">
+<security-policy:name>Cup lost prevenction</security-policy:name>
+<security-policy:description> The cup must be protected so that it cannot be taken out of the box, while being transported to its final destination</security-policy:description>
+<security-policies:security-objectives>
+<security-objectives:security-objective> DO[1][2] </security-objectives:security-objective>
+</security-policies:security-objectives>
+<security-policy:additional-information>
+<additional-information:comment></additional-information:comment>
+</security-policy:additional-information>
+</security-policies:security-policy>
+
+
+
+</node:security-policies>
