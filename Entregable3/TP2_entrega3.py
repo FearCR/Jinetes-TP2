@@ -25,7 +25,7 @@ tokens=[
 #DOCUMENT START AND END
 t_XML_VERSION=r'<\?xml\sversion=".+"\sencoding=".+"\?>'
 t_COMMENT_OPEN=r'<!--'
-t_COMMENT_CLOSE=r'--*>'
+t_COMMENT_CLOSE=r'-*>'
 t_OFFICE_DOCUMENT_OPEN=r'<office:document-model\soffice:version=".+">'
 t_OFFICE_DOCUMENT_CLOSE=r'</office:document-model>'
 t_OFFICE_MODEL_OPEN=r'<office:model>'
@@ -71,7 +71,7 @@ t_THREAT_VULNERABILITIES_CLOSE=r'</threat:vulnerabilities>'
 t_VULNERABILITIES_VULNERABILITY_OPEN=r'<vulnerabilities:vulnerability-id>'
 t_VULNERABILITIES_VULNERABILITY_CLOSE=r'</vulnerabilities:vulnerability-id>'
 
-t_STRING=r'[a-zA-Z0-9_\s,./:,ó]+\s?-?\s?[a-zA-Z0-9_\s,./:,ó]*'
+t_STRING=r'[^<>]+'
 
 # Ignored characters
 t_ignore = " \n\t"
