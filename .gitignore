@@ -104,11 +104,8 @@ celerybeat-schedule
 .dmypy.json
 dmypy.json
 
-#others
-.out
-
 # Pyre type checker
 .pyre/
-
+.out
 # End of https://www.gitignore.io/api/python
 
