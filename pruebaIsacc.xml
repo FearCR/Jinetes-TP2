@@ -1,16 +1,64 @@
-        <node:security-relationships>
-            <security-relationships:linked-node node-id="Fragile-label">
-              <linked-node:relationship-type type="Representantion" interaction-id="Fr01">
-                <linked-node:security-objectives>
-                  <security-objectives:security-objective>
-                    <security-objective:self-objective objective-id="DO[1][1]"></security-objective:self-objective>
-                    <security-objective:peer-objective peer-objective-id="IO[4][1]"></security-objective:peer-objective>
-                  </security-objectives:security-objective>
-                  <security-objectives:security-objective>
-                    <security-objective:self-objective objective-id="DO[1][2]"></security-objective:self-objective>
-                    <security-objective:peer-objective peer-objective-id="IO[4][2]"></security-objective:peer-objective>
-                  </security-objectives:security-objective>
-                </linked-node:security-objectives>
-              </linked-node:relationship-type>
-            </security-relationships:linked-node>
+        <node:security-relationships>	
+			
+			
+			<security-relationships:linked-node node-id="Cup2">
+			<linked-node:relationship-type type="Interaction" interaction-id="Cu01">
+			<linked-node:security-objectives>
+			<security-objectives:security-objective>
+			<security-objective:self-objective objective-id="DO[1][1]"></security-objective:self-objective>
+			<security-objective:peer-objective objective-id="DO[2][1]"></security-objective:peer-objective>
+			</security-objectives:security-objective>
+			</linked-node:security-objectives>
+			</linked-node:relationship-type>
+			</security-relationships:linked-node>
+
+
+			<security-relationships:linked-node node-id="Fragile-label">
+			<linked-node:relationship-type type="Representantion" interaction-id="Fr01">
+			<linked-node:security-objectives>
+			<security-objectives:security-objective>
+			<security-objective:self-objective objective-id="DO[1][1]"></security-objective:self-objective>
+			<security-objective:peer-objective peer-objective-id="IO[4][1]"></security-objective:peer-objective>
+			</security-objectives:security-objective>
+			<security-objectives:security-objective>
+			<security-objective:self-objective objective-id="DO[1][2]"></security-objective:self-objective>
+			<security-objective:peer-objective peer-objective-id="IO[4][2]"></security-objective:peer-objective>
+			</security-objectives:security-objective>
+			</linked-node:security-objectives>
+			</linked-node:relationship-type>
+			</security-relationships:linked-node> 
+			
+
+			<security-relationships:linked-node node-id="Container">
+			<linked-node:relationship-type type="Structural" interaction-id="Co01">
+			<linked-node:security-objectives>
+			<security-objectives:security-objective>
+			<security-objective:self-objective objective-id="DO[1][1]"></security-objective:self-objective>
+			<security-objective:peer-objective objective-id="IO[6][1]"></security-objective:peer-objective>
+			</security-objectives:security-objective>
+			<security-objectives:security-objective>
+			<security-objective:self-objective objective-id="DO[1][2]"></security-objective:self-objective>
+			<security-objective:peer-objective objective-id="IO[6][2]"></security-objective:peer-objective>
+			</security-objectives:security-objective>
+			</linked-node:security-objectives>
+			</linked-node:relationship-type>
+			<linked-node:relationship-type type="Interaction" interaction-id="Co02">
+			<linked-node:security-objectives>
+			<security-objectives:security-objective>
+			<security-objective:self-objective objective-id="DO[1][1]"></security-objective:self-objective>
+			<security-objective:peer-objective objective-id="IO[6][1]"></security-objective:peer-objective>
+			</security-objectives:security-objective>
+			<security-objectives:security-objective>
+			<security-objective:self-objective objective-id="DO[1][2]"></security-objective:self-objective>
+			<security-objective:peer-objective objective-id="IO[6][2]"></security-objective:peer-objective>
+			</security-objectives:security-objective>
+			</linked-node:security-objectives>
+			</linked-node:relationship-type>
+			</security-relationships:linked-node>
+
+             
+                       
           </node:security-relationships>
+
+
+            

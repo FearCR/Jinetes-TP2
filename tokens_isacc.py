@@ -24,8 +24,8 @@ t_SELF_OBJECTIVE_CLOSE = r'</security-objective:self-objective>'
 t_PEER_OBJECTIVE_OPEN = r'(<security-objective:peer-objective\speer-objective-id="[DI]O\[\d\]\[\d\]"> | <security-objective:peer-objective\sobjective-id="[DI]O\[\d\]\[\d\]">)'
 t_PEER_OBJECTIVE_CLOSE = r'</security-objective:peer-objective>'
 
+t_NODE_ID = r'"[a-zA-Z-1-9]+"'
 t_INTERACTION_ID = r'"\w+\d+"'
-t_NODE_ID = r'"[a-zA-Z-]+"'
 t_END_OPEN = r'>'
 t_ignore = " \n\t"
 
@@ -40,7 +40,7 @@ def p_structure_security_relationships(t):
 def p_security_relationships(t):
     '''
     security-relationships : security-relationships security-relationships
-                           | LINKED_NODE_OPEN NODE_ID END_OPEN  linked-node LINKED_NODE_CLOSE
+                           | LINKED_NODE_OPEN NODE_ID END_OPEN linked-node LINKED_NODE_CLOSE
     '''
     print("2")
     return
