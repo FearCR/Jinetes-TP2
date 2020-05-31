@@ -1,0 +1,38 @@
+<node:security-objectives>
+    <security-objectives:security-objective objective-id="DO[3][1]">
+        <security-objective:name> Cups integrity </security-objective:name>
+        <security-objective:description> We want to prevent the cups from being broken while transported to its destination. </security-objective:description>
+        <security-objective:objective-type>Direct</security-objectives:objective-type>
+        <security-objective:security-service> Integrity </security-objective:security-service>
+        <security-objective:temporality> Preventive </security-objective:temporality>
+        <security-objective:additional-information>
+            <additional-information:comment></additional-information:comment>
+        </security-objective:additional-information>
+        <security-objective:objective-source> Manufacturer </security-objectives:objective-source>
+    </security-objectives:security-objective>
+
+     <security-objectives:security-objective objective-id="IO[4][2]">
+         <security-objective:name> Container availability </security-objective:name>
+         <security-objective:description> We want to prevent the fragile label from being removed while transported to its destination. </security-objective:description>
+         <security-objective:objective-type>Indirect</security-objectives:objective-type>
+         <security-objective:security-service> Availability </security-objective:security-service>
+         <security-objective:temporality> Preventive </security-objective:temporality>
+         <security-objective:additional-information>
+             <additional-information:comment></additional-information:comment>
+         </security-objective:additional-information>
+     </security-objectives:security-objective>
+
+     <security-objectives:security-objective objective-id="IO[4][1]">
+         <security-objective:name> Content label integrity </security-objective:name>
+         <security-objective:description> We want to prevent the fragile label from being damaged while transported to its destination. </security-objective:description>
+         <security-objective:objective-type>Indirect</security-objectives:objective-type>
+         <security-objective:security-service> Integrity </security-objective:security-service>
+         <security-objective:temporality> Preventive </security-objective:temporality>
+         <security-objective:additional-information>
+             <additional-information:comment></additional-information:comment>
+         </security-objective:additional-information>
+       </security-objectives:security-objective>
+
+
+
+</node:security-objectives>

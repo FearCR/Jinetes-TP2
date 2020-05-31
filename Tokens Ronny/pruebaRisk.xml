@@ -1,0 +1,16 @@
+ <node:risks>
+    <risks:risk risk-id="Cup-Package-hit">
+        <risk:name>Cup-Package damage</risk:name>
+        <risk:objective-id>IO[7][1]</risk:objective-id>
+        <risk:vulnerability-id>Cup-Package-hit</risk:vulnerability-id>
+        <risk:threat-id>Container-hit</risk:threat-id>
+        <risk:description>Cup-Package may be damaged because somebody/something may hit it during transport</risk:description>
+        <risk:likelihood>High</risk:likelihood>
+        <risk:impact>Severe</risk:impact>
+        <risk:temporality>Prevention</risk:temporality>
+        <risk:additional-information>
+                  <additional-information:comment></additional-information:comment>
+        </risk:additional-information>
+    </risks:risk>
+
+ </node:risks>
