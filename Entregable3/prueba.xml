@@ -4,11 +4,11 @@ Autores: Bryan Ulate, Ricardo Villalón
 Unidad:  CITIC
 Universidad de Costa Rica
 -->
-<!--asdasd-->
 <office:document-model office:version="1.2">
   <office:model>
     <model:nodes>
       <model:node node-id="Cup1">
+
         <node:basic-information>
           <basic-information:component-name>Cup</basic-information:component-name>
           <basic-information:component-overview>Cup to be packed for transportation</basic-information:component-overview>

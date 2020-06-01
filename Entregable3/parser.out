@@ -57,7 +57,6 @@ Rule 51    doc_comment -> str doc_comment
 Rule 52    doc_comment -> COMMENT_CLOSE
 Rule 53    str -> STRING str
 Rule 54    str -> STRING
-Rule 55    str -> <empty>
 
 Terminals, with rules where they appear
 
@@ -148,20 +147,12 @@ state 0
     (52) doc_comment -> . COMMENT_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
-  ! shift/reduce conflict for COMMENT_OPEN resolved as shift
-  ! shift/reduce conflict for COMMENT_CLOSE resolved as shift
-  ! shift/reduce conflict for STRING resolved as shift
     XML_VERSION     shift and go to state 2
     OFFICE_DOCUMENT_OPEN shift and go to state 4
     COMMENT_OPEN    shift and go to state 5
     COMMENT_CLOSE   shift and go to state 7
     STRING          shift and go to state 8
-
-  ! COMMENT_OPEN    [ reduce using rule 55 (str -> .) ]
-  ! COMMENT_CLOSE   [ reduce using rule 55 (str -> .) ]
-  ! STRING          [ reduce using rule 55 (str -> .) ]
 
     doc_model                      shift and go to state 1
     doc_comment                    shift and go to state 3
@@ -184,20 +175,12 @@ state 2
     (52) doc_comment -> . COMMENT_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
-  ! shift/reduce conflict for COMMENT_OPEN resolved as shift
-  ! shift/reduce conflict for COMMENT_CLOSE resolved as shift
-  ! shift/reduce conflict for STRING resolved as shift
     XML_VERSION     shift and go to state 2
     OFFICE_DOCUMENT_OPEN shift and go to state 4
     COMMENT_OPEN    shift and go to state 5
     COMMENT_CLOSE   shift and go to state 7
     STRING          shift and go to state 8
-
-  ! COMMENT_OPEN    [ reduce using rule 55 (str -> .) ]
-  ! COMMENT_CLOSE   [ reduce using rule 55 (str -> .) ]
-  ! STRING          [ reduce using rule 55 (str -> .) ]
 
     doc_model                      shift and go to state 9
     doc_comment                    shift and go to state 3
@@ -214,20 +197,12 @@ state 3
     (52) doc_comment -> . COMMENT_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
-  ! shift/reduce conflict for COMMENT_OPEN resolved as shift
-  ! shift/reduce conflict for COMMENT_CLOSE resolved as shift
-  ! shift/reduce conflict for STRING resolved as shift
     XML_VERSION     shift and go to state 2
     OFFICE_DOCUMENT_OPEN shift and go to state 4
     COMMENT_OPEN    shift and go to state 5
     COMMENT_CLOSE   shift and go to state 7
     STRING          shift and go to state 8
-
-  ! COMMENT_OPEN    [ reduce using rule 55 (str -> .) ]
-  ! COMMENT_CLOSE   [ reduce using rule 55 (str -> .) ]
-  ! STRING          [ reduce using rule 55 (str -> .) ]
 
     doc_comment                    shift and go to state 3
     doc_model                      shift and go to state 10
@@ -250,18 +225,10 @@ state 5
     (52) doc_comment -> . COMMENT_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
-  ! shift/reduce conflict for COMMENT_OPEN resolved as shift
-  ! shift/reduce conflict for COMMENT_CLOSE resolved as shift
-  ! shift/reduce conflict for STRING resolved as shift
     COMMENT_OPEN    shift and go to state 5
     COMMENT_CLOSE   shift and go to state 7
     STRING          shift and go to state 8
-
-  ! COMMENT_OPEN    [ reduce using rule 55 (str -> .) ]
-  ! COMMENT_CLOSE   [ reduce using rule 55 (str -> .) ]
-  ! STRING          [ reduce using rule 55 (str -> .) ]
 
     doc_comment                    shift and go to state 13
     str                            shift and go to state 6
@@ -274,18 +241,10 @@ state 6
     (52) doc_comment -> . COMMENT_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
-  ! shift/reduce conflict for COMMENT_OPEN resolved as shift
-  ! shift/reduce conflict for COMMENT_CLOSE resolved as shift
-  ! shift/reduce conflict for STRING resolved as shift
     COMMENT_OPEN    shift and go to state 5
     COMMENT_CLOSE   shift and go to state 7
     STRING          shift and go to state 8
-
-  ! COMMENT_OPEN    [ reduce using rule 55 (str -> .) ]
-  ! COMMENT_CLOSE   [ reduce using rule 55 (str -> .) ]
-  ! STRING          [ reduce using rule 55 (str -> .) ]
 
     str                            shift and go to state 6
     doc_comment                    shift and go to state 14
@@ -307,21 +266,8 @@ state 8
     (54) str -> STRING .
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
   ! shift/reduce conflict for STRING resolved as shift
-  ! reduce/reduce conflict for COMMENT_OPEN resolved using rule 54 (str -> STRING .)
-  ! reduce/reduce conflict for COMMENT_CLOSE resolved using rule 54 (str -> STRING .)
-  ! shift/reduce conflict for STRING resolved as shift
-  ! reduce/reduce conflict for COMPONENT_NAME_CLOSE resolved using rule 54 (str -> STRING .)
-  ! reduce/reduce conflict for COMPONENT_OVERVIEW_CLOSE resolved using rule 54 (str -> STRING .)
-  ! reduce/reduce conflict for PROPERTIES_COLOR_CLOSE resolved using rule 54 (str -> STRING .)
-  ! reduce/reduce conflict for PROPERTIES_MATERIAL_CLOSE resolved using rule 54 (str -> STRING .)
-  ! reduce/reduce conflict for PROPERTIES_HEIGHT_CLOSE resolved using rule 54 (str -> STRING .)
-  ! reduce/reduce conflict for PROPERTIES_WEIGHT_CLOSE resolved using rule 54 (str -> STRING .)
-  ! reduce/reduce conflict for THREAT_NAME_CLOSE resolved using rule 54 (str -> STRING .)
-  ! reduce/reduce conflict for THREAT_DESCRIPTION_CLOSE resolved using rule 54 (str -> STRING .)
-  ! reduce/reduce conflict for VULNERABILITIES_VULNERABILITY_CLOSE resolved using rule 54 (str -> STRING .)
     COMMENT_OPEN    reduce using rule 54 (str -> STRING .)
     COMMENT_CLOSE   reduce using rule 54 (str -> STRING .)
     COMPONENT_NAME_CLOSE reduce using rule 54 (str -> STRING .)
@@ -336,18 +282,6 @@ state 8
     STRING          shift and go to state 8
 
   ! STRING          [ reduce using rule 54 (str -> STRING .) ]
-  ! COMMENT_OPEN    [ reduce using rule 55 (str -> .) ]
-  ! COMMENT_CLOSE   [ reduce using rule 55 (str -> .) ]
-  ! STRING          [ reduce using rule 55 (str -> .) ]
-  ! COMPONENT_NAME_CLOSE [ reduce using rule 55 (str -> .) ]
-  ! COMPONENT_OVERVIEW_CLOSE [ reduce using rule 55 (str -> .) ]
-  ! PROPERTIES_COLOR_CLOSE [ reduce using rule 55 (str -> .) ]
-  ! PROPERTIES_MATERIAL_CLOSE [ reduce using rule 55 (str -> .) ]
-  ! PROPERTIES_HEIGHT_CLOSE [ reduce using rule 55 (str -> .) ]
-  ! PROPERTIES_WEIGHT_CLOSE [ reduce using rule 55 (str -> .) ]
-  ! THREAT_NAME_CLOSE [ reduce using rule 55 (str -> .) ]
-  ! THREAT_DESCRIPTION_CLOSE [ reduce using rule 55 (str -> .) ]
-  ! VULNERABILITIES_VULNERABILITY_CLOSE [ reduce using rule 55 (str -> .) ]
 
     str                            shift and go to state 15
 
@@ -1491,10 +1425,8 @@ state 35
     (19) component_name -> COMPONENT_NAME_OPEN . str COMPONENT_NAME_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
     STRING          shift and go to state 8
-    COMPONENT_NAME_CLOSE reduce using rule 55 (str -> .)
 
     str                            shift and go to state 77
 
@@ -1503,10 +1435,8 @@ state 36
     (29) component_overview -> COMPONENT_OVERVIEW_OPEN . str COMPONENT_OVERVIEW_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
     STRING          shift and go to state 8
-    COMPONENT_OVERVIEW_CLOSE reduce using rule 55 (str -> .)
 
     str                            shift and go to state 78
 
@@ -1865,10 +1795,8 @@ state 53
     (32) properties_color -> PROPERTIES_COLOR_OPEN . str PROPERTIES_COLOR_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
     STRING          shift and go to state 8
-    PROPERTIES_COLOR_CLOSE reduce using rule 55 (str -> .)
 
     str                            shift and go to state 92
 
@@ -1877,10 +1805,8 @@ state 54
     (33) properties_material -> PROPERTIES_MATERIAL_OPEN . str PROPERTIES_MATERIAL_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
     STRING          shift and go to state 8
-    PROPERTIES_MATERIAL_CLOSE reduce using rule 55 (str -> .)
 
     str                            shift and go to state 93
 
@@ -1889,10 +1815,8 @@ state 55
     (34) properties_height -> PROPERTIES_HEIGHT_OPEN . str PROPERTIES_HEIGHT_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
     STRING          shift and go to state 8
-    PROPERTIES_HEIGHT_CLOSE reduce using rule 55 (str -> .)
 
     str                            shift and go to state 94
 
@@ -1901,10 +1825,8 @@ state 56
     (35) properties_weight -> PROPERTIES_WEIGHT_OPEN . str PROPERTIES_WEIGHT_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
     STRING          shift and go to state 8
-    PROPERTIES_WEIGHT_CLOSE reduce using rule 55 (str -> .)
 
     str                            shift and go to state 95
 
@@ -1913,10 +1835,8 @@ state 57
     (44) threat_name -> THREAT_NAME_OPEN . str THREAT_NAME_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
     STRING          shift and go to state 8
-    THREAT_NAME_CLOSE reduce using rule 55 (str -> .)
 
     str                            shift and go to state 96
 
@@ -1925,10 +1845,8 @@ state 58
     (45) threat_description -> THREAT_DESCRIPTION_OPEN . str THREAT_DESCRIPTION_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
     STRING          shift and go to state 8
-    THREAT_DESCRIPTION_CLOSE reduce using rule 55 (str -> .)
 
     str                            shift and go to state 97
 
@@ -1980,10 +1898,8 @@ state 62
     (49) threat_vulnerability -> VULNERABILITIES_VULNERABILITY_OPEN . str VULNERABILITIES_VULNERABILITY_CLOSE
     (53) str -> . STRING str
     (54) str -> . STRING
-    (55) str -> .
 
     STRING          shift and go to state 8
-    VULNERABILITIES_VULNERABILITY_CLOSE reduce using rule 55 (str -> .)
 
     str                            shift and go to state 100
 
@@ -2895,22 +2811,4 @@ state 110
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
-WARNING: shift/reduce conflict for COMMENT_OPEN in state 0 resolved as shift
-WARNING: shift/reduce conflict for COMMENT_CLOSE in state 0 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 0 resolved as shift
-WARNING: shift/reduce conflict for COMMENT_OPEN in state 2 resolved as shift
-WARNING: shift/reduce conflict for COMMENT_CLOSE in state 2 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 2 resolved as shift
-WARNING: shift/reduce conflict for COMMENT_OPEN in state 3 resolved as shift
-WARNING: shift/reduce conflict for COMMENT_CLOSE in state 3 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 3 resolved as shift
-WARNING: shift/reduce conflict for COMMENT_OPEN in state 5 resolved as shift
-WARNING: shift/reduce conflict for COMMENT_CLOSE in state 5 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 5 resolved as shift
-WARNING: shift/reduce conflict for COMMENT_OPEN in state 6 resolved as shift
-WARNING: shift/reduce conflict for COMMENT_CLOSE in state 6 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 6 resolved as shift
 WARNING: shift/reduce conflict for STRING in state 8 resolved as shift
-WARNING: shift/reduce conflict for STRING in state 8 resolved as shift
-WARNING: reduce/reduce conflict in state 8 resolved using rule (str -> STRING)
-WARNING: rejected rule (str -> <empty>) in state 8

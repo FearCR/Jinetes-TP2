@@ -157,6 +157,7 @@ def p_component_overview(p):
     '''
     component_overview : COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
     '''
+    p[0]=p[2]
     return
 #contiene string dentro
 def p_other_details(p):
@@ -169,30 +170,35 @@ def p_component_category(p):
     '''
     component_category : COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
     '''
+
     return
 #contiene string dentro
 def p_properties_color(p):
     '''
     properties_color : PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
     '''
+    p[0]=p[2]
     return
 #contiene string dentro
 def p_properties_material(p):
     '''
     properties_material : PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
     '''
+    p[0]=p[2]
     return
 #contiene str dentro
 def p_properties_height(p):
     '''
     properties_height : PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
     '''
+    p[0]=p[2]
     return
 #contiene string dentro
 def p_properties_weight(p):
     '''
     properties_weight : PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
     '''
+    p[0]=p[2]
     return
 #-------------------------------Basic information-------------------------------
 
@@ -250,10 +256,11 @@ def p_string(p):
     '''
     str : STRING str
               | STRING
-              |
     '''
-    print("se capturo correctamente el string",p[1])
+    p[0]=p[1]
+    print("se capturo correctamente el string",p[0])
     return
+    
 def p_error(p):
     print("Syntax error at '%s'" % p.value)
 #-------------------------------Otros-------------------------------
