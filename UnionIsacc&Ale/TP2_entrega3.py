@@ -31,8 +31,19 @@ tokens=[
 	'SECURITY_POLICIES_OPEN', 'SECURITY_POLICIES_CLOSE', 'SECURITY_POLICY_OPEN', 'POLICY_ID',
 	'SECURITY_POLICY_CLOSE', 'POLICY_NAME_OPEN', 'POLICY_NAME_CLOSE', 'POLICY_DESCRIPTION_OPEN', 'POLICY_DESCRIPTION_CLOSE',
 	'SP_OBJECTIVES_OPEN', 'SP_OBJECTIVES_CLOSE', 'SP_OBJECTIVE_OPEN', 'SP_OBJECTIVE_CLOSE',
-	'SP_ADDITIONAL_INFORMATION_OPEN', 'SP_ADDITIONAL_INFORMATION_CLOSE', 'SP_COMMENT_OPEN', 'SP_COMMENT_CLOSE', 'GENERAL_COMMENT'
-
+	'SP_ADDITIONAL_INFORMATION_OPEN', 'SP_ADDITIONAL_INFORMATION_CLOSE', 'ADDITIONAL_INFO_OPEN', 'ADDITIONAL_INFO_CLOSE', 'GENERAL_COMMENT',
+    #VULNERABILITY
+    'VULNERABILITIES_OPEN','VULNERABILITIES_CLOSE',
+    'VULNERABILITY_OPEN','VULNERABILITY_CLOSE','VULN_NAME_OPEN','VULN_NAME_CLOSE',
+    'VULN_REFERENCE_OPEN','VULN_REFERENCE_CLOSE',
+    'REF_SECURITY_OPEN','REF_SECURITY_CLOSE','VULN_OVERVIEW_OPEN','VULN_OVERVIEW_CLOSE',
+    'VULN_DESCRIPTION_OPEN','VULN_DESCRIPTION_CLOSE','VULN_IMPACT_OPEN','VULN_IMPACT_CLOSE',
+    'VULN_SEVERITY_OPEN','VULN_SEVERITY_CLOSE', 'VULN_ADDITIONAL_INFO_OPEN','VULN_ADDITIONAL_INFO_CLOSE',
+    #SECURITY CONTROL
+    'SECURITY_CONTROLS_OPEN','SECURITY_CONTROLS_CLOSE', 'SECURITY_CONTROL_OPEN','SECURITY_CONTROL_CLOSE',
+    'SECCONT_NAME_OPEN','SECCONT_NAME_CLOSE','SECCONT_DESCRIPTION_OPEN','SECCONT_DESCRIPTION_CLOSE',
+    'SECCONT_SECURITY_POLICIES_OPEN','SECCONT_SECURITY_POLICIES_CLOSE','SECPOLICY_ID_OPEN','SECPOLICY_ID_CLOSE',
+    'SECCONT_ADDITIONAL_INFO_OPEN','SECCONT_ADDITIONAL_INFO_CLOSE'
 ]
 #DOCUMENT START AND END
 t_XML_VERSION=r'<\?xml\sversion=".+"\sencoding=".+"\?>'
@@ -87,7 +98,7 @@ t_VULNERABILITIES_VULNERABILITY_CLOSE=r'</vulnerabilities:vulnerability-id>'
 #SECURITY RELATIONSHIPS
 t_SECURITY_RELATIONSHIP_OPEN = r'<node:security-relationships>'
 t_SECURITY_RELATIONSHIP_CLOSE = r'</node:security-relationships>'
-t_LINKED_NODE_OPEN = r'<security-relationships:linked-node\snode-id=' 
+t_LINKED_NODE_OPEN = r'<security-relationships:linked-node\snode-id='
 t_LINKED_NODE_CLOSE = r'</security-relationships:linked-node>'
 t_RELATIONSHIP_TYPE_OPEN = r'<linked-node:relationship-type\stype="[a-zA-Z]+"\sinteraction-id='
 t_RELATIONSHIP_TYPE_CLOSE = r'</linked-node:relationship-type>'
@@ -116,12 +127,50 @@ t_SP_OBJECTIVES_OPEN = r'(<security-policy:security-objectives>|<security-polici
 t_SP_OBJECTIVES_CLOSE = r'(</security-policy:security-objectives>|</security-policies:security-objectives>)'
 t_SP_ADDITIONAL_INFORMATION_OPEN = r'<security-policy:additional-information>'
 t_SP_ADDITIONAL_INFORMATION_CLOSE = r'</security-policy:additional-information>'
-t_SP_COMMENT_OPEN = r'<additional-information:comment>'
-t_SP_COMMENT_CLOSE = r'</additional-information:comment>'
+t_ADDITIONAL_INFO_OPEN = r'<additional-information:comment>'
+t_ADDITIONAL_INFO_CLOSE = r'</additional-information:comment>'
+
+#VULNERABILITY
+t_VULNERABILITIES_OPEN       = r'<node:vulnerabilities>'
+t_VULNERABILITIES_CLOSE      = r'</node:vulnerabilities>'
+t_VULNERABILITY_OPEN         = r'<vulnerabilities:vulnerability\svunerability-id=\"[a-zA-Z0-9_\s,./-]+\">'
+t_VULNERABILITY_CLOSE        = r'</vulnerabilities:vulnerability>'
+t_VULN_NAME_OPEN             = r'<vulnerability:name>'
+t_VULN_NAME_CLOSE            = r'</vulnerability:name>'
+t_VULN_REFERENCE_OPEN        = r'<vulnerability:reference-security-services>'
+t_VULN_REFERENCE_CLOSE       = r'</vulnerability:reference-security-services>'
+t_REF_SECURITY_OPEN          = r'<reference-security-services:reference-security-service>'
+t_REF_SECURITY_CLOSE         = r'</reference-security-services:reference-security-service>'
+t_VULN_OVERVIEW_OPEN         = r'<vulnerability:overview>'
+t_VULN_OVERVIEW_CLOSE        = r'</vulnerability:overview>'
+t_VULN_DESCRIPTION_OPEN      = r'<vulnerability:description>'
+t_VULN_DESCRIPTION_CLOSE     = r'</vulnerability:description>'
+t_VULN_IMPACT_OPEN           = r'<vulnerability:impact>'
+t_VULN_IMPACT_CLOSE          = r'</vulnerability:impact>'
+t_VULN_SEVERITY_OPEN         = r'<vulnerability:severity>'
+t_VULN_SEVERITY_CLOSE        = r'</vulnerability:severity>'
+t_VULN_ADDITIONAL_INFO_OPEN  = r'<vulnerability:additional-information>'
+t_VULN_ADDITIONAL_INFO_CLOSE = r'</vulnerability:additional-information>'
+#SECURITY CONTROLS
+t_SECURITY_CONTROLS_OPEN         = r'<node:security-controls>'
+t_SECURITY_CONTROLS_CLOSE        = r'</node:security-controls>'
+t_SECURITY_CONTROL_OPEN          = r'<security-controls:security-control\scontrol-id=\"[a-zA-Z0-9_\s,./-]+\">'
+t_SECURITY_CONTROL_CLOSE         = r'</security-controls:security-control>'
+t_SECCONT_NAME_OPEN                 = r'<security-control:name>'
+t_SECCONT_NAME_CLOSE                = r'</security-control:name>'
+t_SECCONT_DESCRIPTION_OPEN          = r'<security-control:description>'
+t_SECCONT_DESCRIPTION_CLOSE         = r'</security-control:description>'
+t_SECCONT_SECURITY_POLICIES_OPEN    = r'<security-control:security-policies>'
+t_SECCONT_SECURITY_POLICIES_CLOSE   = r'</security-control:security-policies>'
+t_SECPOLICY_ID_OPEN                 = r'<security-policies:security-policy-id>'
+t_SECPOLICY_ID_CLOSE                = r'</security-policies:security-policy-id>'
+t_SECCONT_ADDITIONAL_INFO_OPEN      = r'<security-control:additional-information>'
+t_SECCONT_ADDITIONAL_INFO_CLOSE     = r'</security-control:additional-information>'
 
 
 
-#SECURITY RELATIONSHIPS Y SECURITY POLICIES. 
+
+#SECURITY RELATIONSHIPS Y SECURITY POLICIES.
 #funciona para NODE_ID - INTERACTION_ID - POLICY_ID
 t_ID = r'"[a-zA-Z-0-9]+"'
 
@@ -166,6 +215,8 @@ def p_model_node(p):
                | threats model_node
 			   | structure_security_policies model_node
 			   | structure_security_relationships model_node
+               | vulnerabilities model_node
+               | security_controls model_node
                | MODEL_NODE_CLOSE
     '''
     print("cierra node",p[1])
@@ -333,7 +384,7 @@ def p_security_objectives_SP(t):
 
 def p_additional_info_SP(t):
 	'''
-	additional_info_SP : SP_ADDITIONAL_INFORMATION_OPEN SP_COMMENT_OPEN SP_COMMENT_CLOSE SP_ADDITIONAL_INFORMATION_CLOSE
+	additional_info_SP : SP_ADDITIONAL_INFORMATION_OPEN ADDITIONAL_INFO_OPEN ADDITIONAL_INFO_CLOSE SP_ADDITIONAL_INFORMATION_CLOSE
 	'''
 	print(5)
 	return
@@ -393,7 +444,112 @@ def p_expression_security_objective_SR(t):
 #----------------------------Security Relationships-------------------------------------
 
 
+#------------------------------------------Vulnerabilities------------------------------
+def p_vulnerabilities(p):
+    '''
+    vulnerabilities : VULNERABILITIES_OPEN vulnerabilities
+                    | vulnerability vulnerabilities
+                    | VULNERABILITIES_CLOSE
+    '''
+    return
+def p_vulnerability(p):
+    '''
+    vulnerability : VULNERABILITY_OPEN vulnerability
+                  | vulnerability_name vulnerability
+                  | vulnerability_refSecurity vulnerability
+                  | vulnerability_overview vulnerability
+                  | vulnerability_description vulnerability
+                  | vulnerability_impact vulnerability
+                  | vulnerability_severity vulnerability
+                  | vulnerability_additionalInfo vulnerability
+                  | VULNERABILITY_CLOSE
+    '''
+    return
+def p_vulnerability_refSecurity(p):
+    '''
+    vulnerability_refSecurity : VULN_REFERENCE_OPEN vulnerability_refSecurity
+                              | refSecurity
+                              | VULN_REFERENCE_CLOSE
+    '''
+    print("Captura Security reference")
+    return
+def p_vulnerability_additionalInfo(p):
+    '''
+    vulnerability_additionalInfo : VULN_ADDITIONAL_INFO_OPEN ADDITIONAL_INFO_OPEN  ADDITIONAL_INFO_CLOSE VULN_ADDITIONAL_INFO_CLOSE
+    '''
+    print("Captura additionalInfoVUlnerability")
+    return
+def p_vulnerability_name(p):
+    '''
+    vulnerability_name : VULN_NAME_OPEN str VULN_NAME_CLOSE
+    '''
+    return
+def p_refSecurity(p):
+    '''
+    refSecurity : REF_SECURITY_OPEN str REF_SECURITY_CLOSE
+    '''
+    return
+def p_vulnerability_overview(p):
+    '''
+    vulnerability_overview : VULN_OVERVIEW_OPEN str VULN_OVERVIEW_CLOSE
+    '''
+    return
+def p_vulnerability_description(p):
+    '''
+    vulnerability_description : VULN_DESCRIPTION_OPEN str VULN_DESCRIPTION_CLOSE
+    '''
+    return
+def p_vulnerability_impact(p):
+    '''
+    vulnerability_impact : VULN_IMPACT_OPEN str VULN_IMPACT_CLOSE
+    '''
+    return
+def p_vulnerability_severity(p):
+    '''
+    vulnerability_severity : VULN_SEVERITY_OPEN str VULN_SEVERITY_CLOSE
+    '''
+    return
+#------------------------------------------Vulnerabilities------------------------------
 
+#------------------------------------------Security Controls------------------------------
+def p_security_controls(p):
+    '''
+    security_controls : SECURITY_CONTROLS_OPEN security_controls
+                      | security_control security_controls
+                      | SECURITY_CONTROLS_CLOSE
+    '''
+def p_security_control(p):
+    '''
+    security_control : SECURITY_CONTROL_OPEN security_control
+                     | security_control_name security_control
+                     | security_control_description security_control
+                     | sec_policies security_control
+                     | securityControl_additionalInfo security_control
+                     | SECURITY_CONTROL_CLOSE
+    '''
+def p_sec_policies(p):
+    '''
+    sec_policies : SECCONT_SECURITY_POLICIES_OPEN sec_policies
+                 | security_policyID
+                 | SECCONT_SECURITY_POLICIES_CLOSE
+    '''
+def p_securityControl_additionalInfo(p):
+    '''
+    securityControl_additionalInfo : SECCONT_ADDITIONAL_INFO_OPEN ADDITIONAL_INFO_OPEN ADDITIONAL_INFO_CLOSE SECCONT_ADDITIONAL_INFO_CLOSE
+    '''
+def p_security_control_name(p):
+    '''
+    security_control_name : SECCONT_NAME_OPEN str SECCONT_NAME_CLOSE
+    '''
+def p_security_control_description(p):
+    '''
+    security_control_description : SECCONT_DESCRIPTION_OPEN str SECCONT_DESCRIPTION_CLOSE
+    '''
+def p_security_policyID(p):
+    '''
+    security_policyID : SECPOLICY_ID_OPEN str SECPOLICY_ID_CLOSE
+    '''
+#------------------------------------------Security Controls------------------------------
 
 
 
@@ -407,8 +563,7 @@ def p_doc_comment(p):
 def p_string(p):
     '''
     str : STRING str
-              | STRING
-              |
+        | STRING
     '''
     print("se capturo correctamente el string",p[1])
     return
