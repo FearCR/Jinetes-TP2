@@ -22,16 +22,16 @@ tokens=[
     'STRING',
     #SECURITY  RELATIONSHIPS
 	'SECURITY_RELATIONSHIP_OPEN', 'SECURITY_RELATIONSHIP_CLOSE', 'LINKED_NODE_OPEN', 'LINKED_NODE_CLOSE',
-	'NODE_ID', 'RELATIONSHIP_TYPE_OPEN','INTERACTION_ID','RELATIONSHIP_TYPE_CLOSE',
+	'RELATIONSHIP_TYPE_OPEN', 'RELATIONSHIP_TYPE_CLOSE',
 	'SECURITY_OBJECTIVES_OPEN', 'SECURITY_OBJECTIVES_CLOSE', 'SECURITY_OBJECTIVE_OPEN', 'SECURITY_OBJECTIVE_CLOSE',
 	'SELF_OBJECTIVE_OPEN', 'SELF_OBJECTIVE_CLOSE', 'PEER_OBJECTIVE_OPEN', 'PEER_OBJECTIVE_CLOSE',
 	#SECURITY RELATIONSHIPS && SECURITY POLICIES
 	'ID',
 	#SECURITY POLICIES
-	'SECURITY_POLICIES_OPEN', 'SECURITY_POLICIES_CLOSE', 'SECURITY_POLICY_OPEN', 'POLICY_ID',
+	'SECURITY_POLICIES_OPEN', 'SECURITY_POLICIES_CLOSE', 'SECURITY_POLICY_OPEN',
 	'SECURITY_POLICY_CLOSE', 'POLICY_NAME_OPEN', 'POLICY_NAME_CLOSE', 'POLICY_DESCRIPTION_OPEN', 'POLICY_DESCRIPTION_CLOSE',
-	'SP_OBJECTIVES_OPEN', 'SP_OBJECTIVES_CLOSE', 'SP_OBJECTIVE_OPEN', 'SP_OBJECTIVE_CLOSE',
-	'SP_ADDITIONAL_INFORMATION_OPEN', 'SP_ADDITIONAL_INFORMATION_CLOSE', 'ADDITIONAL_INFO_OPEN', 'ADDITIONAL_INFO_CLOSE', 'GENERAL_COMMENT',
+	'SP_OBJECTIVES_OPEN', 'SP_OBJECTIVES_CLOSE',
+	'SP_ADDITIONAL_INFORMATION_OPEN', 'SP_ADDITIONAL_INFORMATION_CLOSE', 'ADDITIONAL_INFO_OPEN', 'ADDITIONAL_INFO_CLOSE',
     #VULNERABILITY
     'VULNERABILITIES_OPEN','VULNERABILITIES_CLOSE',
     'VULNERABILITY_OPEN','VULNERABILITY_CLOSE','VULN_NAME_OPEN','VULN_NAME_CLOSE',
@@ -359,10 +359,12 @@ def p_structure_security_policies(t):
 	print(1)
 	return
 
+#S -> A S
+#S ->
 def p_security_policies(t):
 	'''
-	security_policies : security_policies security_policies
-					  | security_policy
+	security_policies : security_policy security_policies
+					  |
 	'''
 	print(2)
 	return
@@ -393,6 +395,7 @@ def p_additional_info_SP(t):
 
 #------------------------------Security Relationships------------------------------
 
+#toma los tokens de abrir y cerrar, junto con todo lo interno. 
 def p_structure_security_relationships(t):
 	'''
 	structure_security_relationships : SECURITY_RELATIONSHIP_OPEN security-relationships SECURITY_RELATIONSHIP_CLOSE
@@ -400,18 +403,23 @@ def p_structure_security_relationships(t):
 	print("1")
 	return
 
+#toma todo lo interno de security relationships, sin los tokens de abrir y cerrar. 
+#S -> A S		la logica de la funcion, A se declaro ahi mismo, podria ser otra funcion. 
+#dado que puede ir uno o mas relaciones de seguridad, no se incluye con los tokens de abrir y cerrar, eso lo hace la funcion de arriba. 
 def p_security_relationships(t):
     '''
-    security-relationships : security-relationships security-relationships
-                           | LINKED_NODE_OPEN ID GENERAL_CLOSE linked-node LINKED_NODE_CLOSE
+    security-relationships : LINKED_NODE_OPEN ID GENERAL_CLOSE linked-node LINKED_NODE_CLOSE security-relationships
+                           |
     '''
     print("2")
     return
 
+#toma todo lo interno de linked_node, sin los tokens de abrir y cerrar, eso corresponde a lo interno de security_relationships. 
+#sigue la misma logica de security_relationships. 
 def p_expression_linked_node(t):
     '''
-    linked-node : linked-node linked-node
-                | RELATIONSHIP_TYPE_OPEN ID GENERAL_CLOSE relationship-type RELATIONSHIP_TYPE_CLOSE
+    linked-node : RELATIONSHIP_TYPE_OPEN ID GENERAL_CLOSE relationship-type RELATIONSHIP_TYPE_CLOSE linked-node
+                |
     '''
     print("3")
     return
@@ -424,15 +432,16 @@ def p_expression_relationship_type(t):
     print("4")
     return
 
-
+#sigue la misma logica de security_relationships
 def p_expression_security_objectives_SR(t):
     '''
-    security-objectives_SR : security-objectives_SR security-objectives_SR
-						   | SECURITY_OBJECTIVE_OPEN security-objective_SR security-objective_SR SECURITY_OBJECTIVE_CLOSE
+    security-objectives_SR : SECURITY_OBJECTIVE_OPEN security-objective_SR security-objective_SR SECURITY_OBJECTIVE_CLOSE security-objectives_SR
+						   |
     '''
     print("5")
     return
 
+#un objetivo puede ser cualquiera de los dos, tecnicamente deberia ser uno de cada, pero igual funciona. 
 def p_expression_security_objective_SR(t):
     '''
     security-objective_SR : SELF_OBJECTIVE_OPEN SELF_OBJECTIVE_CLOSE
