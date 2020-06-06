@@ -318,22 +318,44 @@ def p_threats(p):
     return
 def p_threat(p):
     '''
-    threat : THREAT_OPEN threat
+    threat  : THREAT_OPEN threat
             | threat_name threat
             | threat_description threat
             | threat_vulnerabilities threat
             | THREAT_CLOSE
     '''
+    print("@@@@@@@@")
+    print(p[1])
+    print("@@@@@@@@")
+    if p[1][0]=="name":
+        p[2].setName(p[1][1])
+        p[0]=p[2]
+    elif p[1][0]=="desc":
+        p[2].setDescription(p[1][1])
+        p[0]=p[2]
+    elif p[1][0]=="vuln":
+        newThreat= container.Threat()
+        newThreat.setVulnerability(p[1][1])
+        p[0]=newThreat
+    elif "=" in p[1]:
+        array = p[1].split("\"")
+        p[2].setId(array[1])
+        p[2].printThreat()
+        p[0]=p[2]
     return
+
+
 def p_threat_name(p):
     '''
     threat_name : THREAT_NAME_OPEN str THREAT_NAME_CLOSE
     '''
-    return
+    p[0]=("name",p[2])
+    return p
 def p_threat_description(p):
     '''
     threat_description : THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
     '''
+    p[0]=("desc",p[2])
     return
 def p_threat_vulnerabilities(p):
     '''
@@ -341,12 +363,17 @@ def p_threat_vulnerabilities(p):
                            | threat_vulnerability threat_vulnerabilities
                            | THREAT_VULNERABILITIES_CLOSE
     '''
+    if p[1][0] == "vuln":
+        p[0]=p[1]
+    elif p[1] == "<threat:vulnerabilities>":
+        p[0]=p[2]
     return
 def p_threat_vulnerability(p):
     '''
     threat_vulnerability : VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
     '''
-    return
+    p[0]= ("vuln",p[2])
+    return p
 #-------------------------------Threats-------------------------------
 
 
@@ -513,6 +540,7 @@ def p_vulnerability_impact(p):
     '''
     vulnerability_impact : VULN_IMPACT_OPEN str VULN_IMPACT_CLOSE
     '''
+
     return
 def p_vulnerability_severity(p):
     '''
@@ -576,7 +604,8 @@ def p_string(p):
         | STRING
     '''
     print("se capturo correctamente el string",p[1])
-    return
+    p[0]=p[1]
+    return p
 def p_error(p):
     print("Syntax error at '%s'" % p.value)
 #-------------------------------Otros-------------------------------
@@ -595,8 +624,8 @@ nodeTest.setThreat(testThreats)
 nodeTest.printAll()
 
 
-
-
+lexer=lex.lex()
+"""
 
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
 file = open('prueba.xml','r')
@@ -614,7 +643,7 @@ for line in file:
         break
 file.close()
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
-
+"""
 print("\n\n\n")
 
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
