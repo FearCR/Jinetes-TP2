@@ -220,7 +220,21 @@ def p_model_node(p):
                | security_controls model_node
                | MODEL_NODE_CLOSE
     '''
-    print("cierra node",p[1])
+    #Si se llega a cierre, se crea un nuevo nodo
+    if p[1] == "</model:node>":
+        nuevoNodo = container.Node()
+        p[0]=nuevoNodo
+    #Si se encunetra igual, se hace split para obtener el Id de nodo
+    elif "=" in p[1]:
+        array = p[1].split("\"")
+        p[2].setId(array[1])
+        p[0]=p[2]
+        p[0].printAll()
+        print("\n\n\n")
+    #Si no, se verifica si se tiene una lista de Threats y se actualiza la instancia de Nodo
+    elif p[1][0]=="listaThreats":
+        p[2].setThreats(p[1][1])
+        p[0]=p[2]
     return
 #-------------------------------inicio del documento-------------------------------
 
@@ -315,15 +329,20 @@ def p_threats(p):
             | threat threats
             | THREATS_CLOSE
     '''
+    #Si se llega al final de Threats, se crea una nueva Lista de Threats
     if p[1] == "</node:threats>":
         newThreats=container.Threats()
         p[0]=newThreats
+    #Si se encuentra un Threat, se agrega a la lista
     elif p[1][0]=="threat":
          p[2].addThreat(p[1][1])
          p[0]=p[2]
+    #Si se llega al final, se pasa la Lista al nivel superior.
     elif p[1] == "<node:threats>":
-        p[2].printThreats()
-        p[0]=p[2]
+        p[0]=("listaThreats",p[2])
+        print("AGREGANDO NUEVA LISTA THREATS")
+        p[0][1].printThreats()
+
 
 
     return
@@ -335,21 +354,26 @@ def p_threat(p):
             | threat_vulnerabilities threat
             | THREAT_CLOSE
     '''
-
-    if p[1][0]=="name":
-        p[2].setName(p[1][1])
-        p[0]=p[2]
-    elif p[1][0]=="desc":
-        p[2].setDescription(p[1][1])
-        p[0]=p[2]
-    elif p[1][0]=="vuln":
+    #Se empieza en vulnerability y termina en THREAT OPEN
+    if p[1][0]=="vuln":
+    #Aqui llega a fondo y se inicia el nuevo Threat
         newThreat= container.Threat()
         newThreat.setVulnerability(p[1][1])
         p[0]=newThreat
+    #Para los siguientes metodos se actualiza el objeto y se manda arriba
+    elif p[1][0]=="desc":
+        p[2].setDescription(p[1][1])
+        p[0]=p[2]
+    elif p[1][0]=="name":
+        p[2].setName(p[1][1])
+        p[0]=p[2]
+    #Cuando ve un = se le hace split para obtener el ID
     elif "=" in p[1]:
         array = p[1].split("\"")
         p[2].setId(array[1])
         p[0]=("threat",p[2])
+        print("AGREGANDO NUEVO THREAT")
+        p[0][1].printThreat()
     return
 
 
@@ -357,12 +381,14 @@ def p_threat_name(p):
     '''
     threat_name : THREAT_NAME_OPEN str THREAT_NAME_CLOSE
     '''
+    #Se hace una tupla para identificar que variable es y se pasa el dato arriba
     p[0]=("name",p[2])
     return p
 def p_threat_description(p):
     '''
     threat_description : THREAT_DESCRIPTION_OPEN str THREAT_DESCRIPTION_CLOSE
     '''
+    #Se hace una tupla para identificar que variable es y se pasa el dato arriba
     p[0]=("desc",p[2])
     return
 def p_threat_vulnerabilities(p):
@@ -371,6 +397,7 @@ def p_threat_vulnerabilities(p):
                            | threat_vulnerability threat_vulnerabilities
                            | THREAT_VULNERABILITIES_CLOSE
     '''
+    #Si se pasa la tupla segun corresponda a niveles superiores
     if p[1][0] == "vuln":
         p[0]=p[1]
     elif p[1] == "<threat:vulnerabilities>":
@@ -380,6 +407,7 @@ def p_threat_vulnerability(p):
     '''
     threat_vulnerability : VULNERABILITIES_VULNERABILITY_OPEN str VULNERABILITIES_VULNERABILITY_CLOSE
     '''
+    #Se hace una tupla para identificar que variable es y se pasa el dato arriba
     p[0]= ("vuln",p[2])
     return p
 #-------------------------------Threats-------------------------------
@@ -611,14 +639,13 @@ def p_string(p):
     str : STRING str
         | STRING
     '''
-    print("se capturo correctamente el string",p[1])
     p[0]=p[1]
     return p
 def p_error(p):
     print("Syntax error at '%s'" % p.value)
 #-------------------------------Otros-------------------------------
-
-#Contenedor
+"""
+#Prueba Contenedor
 test = container.Threat()
 testB = container.Threat()
 test.setAll("A1","NameA1","HereGoesDescription","Vulnerability")
@@ -627,10 +654,11 @@ testThreats = container.Threats()
 testThreats.addThreat(test)
 testThreats.addThreat(testB)
 testThreats.printThreats()
-nodeTest = container.Node("Nodo A")
-nodeTest.setThreat(testThreats)
+nodeTest = container.Node()
+nodeTest.setId("NODO A")
+nodeTest.setThreats(testThreats)
 nodeTest.printAll()
-
+"""
 
 lexer=lex.lex()
 """
@@ -651,13 +679,12 @@ for line in file:
         break
 file.close()
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
-"""
-print("\n\n\n")
 
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
+"""
 with open('prueba.xml','r') as myfile:
     data=myfile.read()
 
 parser=yacc.yacc()
 parser.parse(data)
-print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
+#print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")

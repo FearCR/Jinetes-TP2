@@ -1,46 +1,48 @@
 
 class Node:
-#Initializer method
-    def __init__(self,id):
-        self.id=id
+#Inicializador, hay que agregar una variable para cada parte
+    def __init__(self):
+        self.id=""
         self.threats= Threats()
-#Set method for node members
-    def setThreat(self, threats):
+#Metodos set de nodos, aqui hay que agregar un set para cada parte
+    def setId(self, id):
+        self.id = id
+    def setThreats(self, threats):
         self.threats = threats
-#Print all, aqui iria prints de todo cuando esten listos
+#Print all, hay que agregar un print para cada parte para probarla
     def printAll(self):
-        print("ID= "+self.id)
-        print("Threats:")
+        print("IMPRESION DE NODO")
+        print("ID NODO= "+self.id)
+        print("LISTA DE THREATS:")
         self.threats.printThreats()
-
+#Clase de Lista de threats
 class Threats:
-#Initializer method
+#Inicializador
     def __init__(self):
         self.threatList=[]
-#Method to add new Threat to list
+#Agrega una nueva Threat a la lista
     def addThreat(self,threat):
         self.threatList.append(threat)
-#Print method
+#Impresion
     def printThreats(self):
-        print("LISTA DE THREATS")
         for threat in self.threatList:
             threat.printThreat()
 
-#Class Threat stores the data from each individual threat
+#Clase Threat
 class Threat:
-#Initializer method
+#Inicializador, una variable por cada valor para captar
     def __init__(self):
         self.id=""
         self.name=""
         self.description=""
         self.vulnerability=""
-#Test method to set all variables at once
+#Metodo para probar set de todos los valores no hace falta
     def setAll(self,newID,newName,newDescription,newVulnerability):
         self.id=newID
         self.name=newName
         self.description=newDescription
         self.vulnerability=newVulnerability
-#Set methods for threat
+#Metodos set para Threat, uno por valor por captar
     def setId(self,newID):
         self.id=newID
 
@@ -52,9 +54,10 @@ class Threat:
 
     def setVulnerability(self,newVulnerability):
         self.vulnerability=newVulnerability
-#Print method to view stored data
+#Print
     def printThreat(self):
         print(self.id,self.name, self.description,self.vulnerability)
+
 
 """#Metodos para testear clases
 test = Threat()
