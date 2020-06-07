@@ -22,6 +22,7 @@ class Threats:
         self.threatList.append(threat)
 #Print method
     def printThreats(self):
+        print("LISTA DE THREATS")
         for threat in self.threatList:
             threat.printThreat()
 

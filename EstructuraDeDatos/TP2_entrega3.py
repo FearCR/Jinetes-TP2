@@ -315,6 +315,17 @@ def p_threats(p):
             | threat threats
             | THREATS_CLOSE
     '''
+    if p[1] == "</node:threats>":
+        newThreats=container.Threats()
+        p[0]=newThreats
+    elif p[1][0]=="threat":
+         p[2].addThreat(p[1][1])
+         p[0]=p[2]
+    elif p[1] == "<node:threats>":
+        p[2].printThreats()
+        p[0]=p[2]
+
+
     return
 def p_threat(p):
     '''
@@ -324,9 +335,7 @@ def p_threat(p):
             | threat_vulnerabilities threat
             | THREAT_CLOSE
     '''
-    print("@@@@@@@@")
-    print(p[1])
-    print("@@@@@@@@")
+
     if p[1][0]=="name":
         p[2].setName(p[1][1])
         p[0]=p[2]
@@ -340,8 +349,7 @@ def p_threat(p):
     elif "=" in p[1]:
         array = p[1].split("\"")
         p[2].setId(array[1])
-        p[2].printThreat()
-        p[0]=p[2]
+        p[0]=("threat",p[2])
     return
 
 

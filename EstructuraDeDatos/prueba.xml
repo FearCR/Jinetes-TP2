@@ -19,7 +19,18 @@ Universidad de Costa Rica
               <vulnerabilities:vulnerability-id>Cup-fragility</vulnerabilities:vulnerability-id>
               </threat:vulnerabilities>
           </threats:threat>
+
+          <node:threats>
+            <threats:threat threat-id="CUPB">
+              <threat:name>B Cup B</threat:name>
+              <threat:description>B Container B</threat:description>
+              <threat:vulnerabilities>
+                <vulnerabilities:vulnerability-id>B Cup-fragility</vulnerabilities:vulnerability-id>
+                </threat:vulnerabilities>
+            </threats:threat>
         </node:threats>
+
+
 </model:node>
     </model:nodes>
 
