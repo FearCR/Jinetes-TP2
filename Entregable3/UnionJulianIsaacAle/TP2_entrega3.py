@@ -1,6 +1,8 @@
 import ply.lex as lex
 import ply.yacc as yacc
 import sys
+import re
+import container
 
 tokens=[
 #DOCUMENT START AND END
@@ -395,62 +397,87 @@ def p_additional_info_SP(t):
 
 #------------------------------Security Relationships------------------------------
 
-#toma los tokens de abrir y cerrar, junto con todo lo interno. 
+ 
 def p_structure_security_relationships(t):
 	'''
-	structure_security_relationships : SECURITY_RELATIONSHIP_OPEN security-relationships SECURITY_RELATIONSHIP_CLOSE
+	structure_security_relationships : security-relationships
 	'''
-	print("1")
+	t[1].print_security_relationships()
 	return
 
-#toma todo lo interno de security relationships, sin los tokens de abrir y cerrar. 
-#S -> A S		la logica de la funcion, A se declaro ahi mismo, podria ser otra funcion. 
-#dado que puede ir uno o mas relaciones de seguridad, no se incluye con los tokens de abrir y cerrar, eso lo hace la funcion de arriba. 
+
 def p_security_relationships(t):
     '''
-    security-relationships : LINKED_NODE_OPEN ID GENERAL_CLOSE linked-node LINKED_NODE_CLOSE security-relationships
-                           |
-    '''
-    print("2")
+    security-relationships : SECURITY_RELATIONSHIP_OPEN security-relationships
+                           | linked-node security-relationships
+                           | SECURITY_RELATIONSHIP_CLOSE
+    '''  
+    if t[1] == "</node:security-relationships>":
+		list_security_relationships = container.security_relationships()
+		t[0] = list_security_relationships
+    else:
+		if t[1][0] == "nodo":
+			t[2].add_security_relationship(t[1][1])
+			t[0] = t[2]
+		else:
+			t[0] = t[2]
     return
 
-#toma todo lo interno de linked_node, sin los tokens de abrir y cerrar, eso corresponde a lo interno de security_relationships. 
-#sigue la misma logica de security_relationships. 
+
 def p_expression_linked_node(t):
     '''
-    linked-node : RELATIONSHIP_TYPE_OPEN ID GENERAL_CLOSE relationship-type RELATIONSHIP_TYPE_CLOSE linked-node
-                |
+    linked-node : linked_node_open linked-node 
+                | relationship-type linked-node
+				| LINKED_NODE_CLOSE
     '''
-    print("3")
+    if t[1] == "</security-relationships:linked-node>":
+		node_security_relationship = container.security_relationship()
+		t[0] = node_security_relationship
+    else:
+		if t[1][0] == "interaction_id":
+			t[2].add_interaction_id(t[1][1])
+			t[0] = t[2]
+		else:
+			if t[1][0] == "node_id":
+				t[2].set_id(t[1][1])
+				t[0] = ("nodo",t[2])
     return
 
+
+def p_linked_node_open(t):
+	'''
+	linked_node_open : LINKED_NODE_OPEN ID GENERAL_CLOSE
+	'''
+	t[0] = ("node_id", t[2])
+	return
 
 def p_expression_relationship_type(t):
     '''
-    relationship-type : SECURITY_OBJECTIVES_OPEN security-objectives_SR SECURITY_OBJECTIVES_CLOSE
+    relationship-type : RELATIONSHIP_TYPE_OPEN ID GENERAL_CLOSE relationship-type
+					  | security-objectives_SR relationship-type
+					  | security-objectives_SR RELATIONSHIP_TYPE_CLOSE
     '''
-    print("4")
+    match = re.search('<linked-node:relationship-type\stype="[a-zA-Z]+"\sinteraction-id=', str(t[1]))
+    if match:
+		t[0] = ("interaction_id",t[2])
     return
 
-#sigue la misma logica de security_relationships
+
 def p_expression_security_objectives_SR(t):
     '''
-    security-objectives_SR : SECURITY_OBJECTIVE_OPEN security-objective_SR security-objective_SR SECURITY_OBJECTIVE_CLOSE security-objectives_SR
-						   |
+    security-objectives_SR : SECURITY_OBJECTIVES_OPEN security-objectives_SR
+						   | security-objective_SR security-objectives_SR
+						   | security-objective_SR SECURITY_OBJECTIVES_CLOSE
     '''
-    print("5")
     return
 
-#un objetivo puede ser cualquiera de los dos, tecnicamente deberia ser uno de cada, pero igual funciona. 
 def p_expression_security_objective_SR(t):
     '''
-    security-objective_SR : SELF_OBJECTIVE_OPEN SELF_OBJECTIVE_CLOSE
-						  | PEER_OBJECTIVE_OPEN PEER_OBJECTIVE_CLOSE
+    security-objective_SR : SECURITY_OBJECTIVE_OPEN SELF_OBJECTIVE_OPEN SELF_OBJECTIVE_CLOSE PEER_OBJECTIVE_OPEN PEER_OBJECTIVE_CLOSE SECURITY_OBJECTIVE_CLOSE
     '''
-    print("6")
     return
-
 #----------------------------Security Relationships-------------------------------------
+
 
 
 #------------------------------------------Vulnerabilities------------------------------
