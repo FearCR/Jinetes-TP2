@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    Autores: Bryan Ulate, Ricardo Villalón
-    Unidad:  CITIC
-    Universidad de Costa Rica
--->
 <office:document-model office:version="1.2">
   <office:model>
     <model:nodes>
@@ -12,7 +7,7 @@
           <basic-information:component-name>Cup</basic-information:component-name>
           <basic-information:component-overview>Cup to be packed for transportation</basic-information:component-overview>
           <basic-information:component-categories>
-            <component-categories:component-category category-id=""></component-categories:component-category>            <!-- Llenar -->
+            <component-categories:component-category category-id=""></component-categories:component-category>
           </basic-information:component-categories>
           <basic-information:component-intrinsical-properties>
             <component-intrinsical-properties:color> Transparent </component-intrinsical-properties:color>
@@ -20,7 +15,6 @@
             <component-intrinsical-properties:height> 15cm </component-intrinsical-properties:height>
             <component-intrinsical-properties:weight> 30g  </component-intrinsical-properties:weight>
           </basic-information:component-intrinsical-properties>
-          <basic-information:other-details></basic-information:other-details>
         </node:basic-information>
 
         <node:security-objectives>
@@ -30,9 +24,6 @@
             <security-objective:objective-type>Direct</security-objectives:objective-type>
             <security-objective:security-service> Integrity </security-objective:security-service>
             <security-objective:temporality> Preventive </security-objective:temporality>
-            <security-objective:additional-information>
-              <additional-information:comment></additional-information:comment>
-            </security-objective:additional-information>
           </security-objectives:security-objective>
 
           <security-objectives:security-objective objective-id="DO[1][2]">
@@ -41,9 +32,6 @@
             <security-objective:objective-type>Direct</security-objectives:objective-type>
             <security-objective:security-service> Availability </security-objective:security-service>
             <security-objective:temporality> Preventive </security-objective:temporality>
-            <security-objective:additional-information>
-              <additional-information:comment></additional-information:comment>
-            </security-objective:additional-information>
           </security-objectives:security-objective>
         </node:security-objectives>
 
@@ -112,9 +100,6 @@
               <vulnerability:description> If the cup is hit, it could break</vulnerability:description>
               <vulnerability:impact> The cup could break </vulnerability:impact>
               <vulnerability:severity> High </vulnerability:severity>
-              <vulnerability:additional-information>
-                <additional-information:comment></additional-information:comment>
-              </vulnerability:additional-information>
             </vulnerabilities:vulnerability>
 
             <vulnerabilities:vulnerability vunerability-id="Cup-loss">
@@ -126,9 +111,6 @@
               <vulnerability:description> The cup could be taken by someone, or it could be lost in transit</vulnerability:description>
               <vulnerability:impact> The cup could be lost/stolen </vulnerability:impact>
               <vulnerability:severity> High </vulnerability:severity>
-              <vulnerability:additional-information>
-                <additional-information:comment></additional-information:comment>
-              </vulnerability:additional-information>
             </vulnerabilities:vulnerability>
           </node:vulnerabilities>
 
@@ -160,9 +142,6 @@
               <risk:likelihood>High</risk:likelihood>
               <risk:impact>Severe</risk:impact>
               <risk:temporality>Prevention</risk:temporality>
-              <risk:additional-information>
-                <additional-information:comment></additional-information:comment>
-              </risk:additional-information>
             </risks:risk>
 
             <risks:risk risk-id="Cup-loss">
@@ -174,9 +153,6 @@
               <risk:likelihood>High</risk:likelihood>
               <risk:impact>Severe</risk:impact>
               <risk:temporality>Prevention</risk:temporality>
-              <risk:additional-information>
-                <additional-information:comment></additional-information:comment>
-              </risk:additional-information>
             </risks:risk>
           </node:risks >
 
@@ -187,9 +163,6 @@
               <security-policiy:security-objectives>
                 <security-objectives:security-objective> DO[1][1] </security-objectives:security-objective>
               </security-policy:security-objectives>
-              <security-policy:additional-information>
-                <additional-information:comment></additional-information:comment>
-              </security-policy:additional-information>
             </security-policies:security-policy>
 
             <security-policies:security-policy policy-id="Lost-prevenction">
@@ -198,9 +171,6 @@
               <security-policies:security-objectives>
                 <security-objectives:security-objective> DO[1][2] </security-objectives:security-objective>
               </security-policies:security-objectives>
-              <security-policy:additional-information>
-                <additional-information:comment></additional-information:comment>
-              </security-policy:additional-information>
             </security-policies:security-policy>
           </node:security-policies>
 
@@ -211,9 +181,6 @@
               <security-control:security-policies>
                 <security-policies:security-policy-id> DO[1][1] </security-policies:security-policy-id>
               </security-control:security-policies>
-              <security-control:additional-information>
-                <additional-information:comment></additional-information:comment>
-              </security-control:additional-information>
             </security-controls:security-control>
 
             <security-controls:security-control control-id="Lost-protection">
@@ -222,18 +189,16 @@
               <security-control:security-policies>
                 <security-policy-id> DO[1][2] </security-policy-id>
               </security-control:security-policies>
-              <security-control:additional-information>
-                <additional-information:comment></additional-information:comment>
-              </security-control:additional-information>
             </security-controls:security-control>
           </node:security-controls>
         </model:node>
+
         <model:node node-id="Cup2">
           <node:basic-information>
             <basic-information:component-name>Cup</basic-information:component-name>
             <basic-information:component-overview>Cup to be packed for transportation</basic-information:component-overview>
             <basic-information:component-categories>
-              <component-categories:component-category category-id=""></component-categories:component-category>              <!-- Llenar -->
+              <component-categories:component-category category-id=""></component-categories:component-category>
             </basic-information:component-categories>
             <basic-information:component-intrinsical-properties>
               <component-intrinsical-properties:color> Transparent </component-intrinsical-properties:color>
@@ -241,7 +206,6 @@
               <component-intrinsical-properties:height> 15cm </component-intrinsical-properties:height>
               <component-intrinsical-properties:weight> 30g  </component-intrinsical-properties:weight>
             </basic-information:component-intrinsical-properties>
-            <basic-information:other-details></basic-information:other-details>
           </node:basic-information>
 
           <node:security-objectives>
@@ -251,9 +215,6 @@
               <security-objective:objective-type>Direct</security-objectives:objective-type>
               <security-objective:security-service> Integrity </security-objective:security-service>
               <security-objective:temporality> Preventive </security-objective:temporality>
-              <security-objective:additional-information>
-                <additional-information:comment></additional-information:comment>
-              </security-objective:additional-information>
             </security-objectives:security-objective>
 
             <security-objectives:security-objective objective-id="DO[2][2]">
@@ -262,9 +223,6 @@
               <security-objective:objective-type>Direct</security-objectives:objective-type>
               <security-objective:security-service> Availability </security-objective:security-service>
               <security-objective:temporality> Preventive </security-objective:temporality>
-              <security-objective:additional-information>
-                <additional-information:comment></additional-information:comment>
-              </security-objective:additional-information>
             </security-objectives:security-objective>
           </node:security-objectives>
 
@@ -333,9 +291,6 @@
                 <vulnerability:description> If the cup is hit, it could break</vulnerability:description>
                 <vulnerability:impact> The cup could break </vulnerability:impact>
                 <vulnerability:severity> High </vulnerability:severity>
-                <vulnerability:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </vulnerability:additional-information>
               </vulnerabilities:vulnerability>
 
               <vulnerabilities:vulnerability vunerability-id="Cup-loss">
@@ -347,9 +302,7 @@
                 <vulnerability:description> The cup could be taken by someone, or it could be lost in transit</vulnerability:description>
                 <vulnerability:impact> The cup could be lost/stolen </vulnerability:impact>
                 <vulnerability:severity> High </vulnerability:severity>
-                <vulnerability:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </vulnerability:additional-information>
+
               </vulnerabilities:vulnerability>
             </node:vulnerabilities>
 
@@ -381,9 +334,6 @@
                 <risk:likelihood>High</risk:likelihood>
                 <risk:impact>Severe</risk:impact>
                 <risk:temporality>Prevention</risk:temporality>
-                <risk:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </risk:additional-information>
               </risks:risk>
 
               <risks:risk risk-id="Cup-loss">
@@ -395,9 +345,6 @@
                 <risk:likelihood>High</risk:likelihood>
                 <risk:impact>Severe</risk:impact>
                 <risk:temporality>Prevention</risk:temporality>
-                <risk:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </risk:additional-information>
               </risks:risk>
             </node:risks >
 
@@ -408,9 +355,6 @@
                 <security-policiy:security-objectives>
                   <security-objectives:security-objective> DO[1][1] </security-objectives:security-objective>
                 </security-policy:security-objectives>
-                <security-policy:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-policy:additional-information>
               </security-policies:security-policy>
 
               <security-policies:security-policy policy-id="Lost-prevenction">
@@ -419,9 +363,6 @@
                 <security-policies:security-objectives>
                   <security-objectives:security-objective> DO[2][2] </security-objectives:security-objective>
                 </security-policies:security-objectives>
-                <security-policy:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-policy:additional-information>
               </security-policies:security-policy>
             </node:security-policies>
 
@@ -432,9 +373,6 @@
                 <security-control:security-policies>
                   <security-policies:security-policy-id> DO[2][1] </security-policies:security-policy-id>
                 </security-control:security-policies>
-                <security-control:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-control:additional-information>
               </security-controls:security-control>
 
               <security-controls:security-control control-id="Lost-protection">
@@ -443,15 +381,11 @@
                 <security-control:security-policies>
                   <security-policy-id> DO[2][2] </security-policy-id>
                 </security-control:security-policies>
-                <security-control:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-control:additional-information>
               </security-controls:security-control>
             </node:security-controls>
           </model:node>
 
 
-          <!-- ++++++++++++++++++++++ NODO  COPAS +++++++++++++++++++++ -->
           <model:node node-id="Cups">
             <node:basic-information>
               <basic-information:component-name>Cups</basic-information:component-name>
@@ -463,7 +397,7 @@
               <basic-information:component-intrinsical-properties>
                 <component-intrinsical-properties:count> 2 </component-intrinsical-properties:property>
               </basic-information:component-intrinsical-properties>
-              <basic-information:other-details></basic-information:other-details>
+
             </node:basic-information>
 
             <node:security-objectives>
@@ -473,9 +407,6 @@
                 <security-objective:objective-type>Direct</security-objectives:objective-type>
                 <security-objective:security-service> Integrity </security-objective:security-service>
                 <security-objective:temporality> Preventive </security-objective:temporality>
-                <security-objective:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-objective:additional-information>
                 <security-objective:objective-source> Manufacturer </security-objectives:objective-source>
               </security-objectives:security-objective>
 
@@ -485,9 +416,6 @@
                 <security-objective:objective-type>Direct</security-objectives:objective-type>
                 <security-objective:security-service> Availability </security-objective:security-service>
                 <security-objective:temporality> Preventive </security-objective:temporality>
-                <security-objective:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-objective:additional-information>
                 <security-objective:objective-source> Manufacturer </security-objectives:objective-source>
               </security-objectives:security-objective>
             </node:security-objectives>
@@ -518,9 +446,6 @@
                 <vulnerability:overview>Any cup(s) may break</vulnerability:overview>
                 <vulnerability:impact> Any cup could break </vulnerability:impact>
                 <vulnerability:severity> High </vulnerability:severity>
-                <vulnerability:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </vulnerability:additional-information>
                 <vulnerability:credit></vulnerability:credit>
               </vulnerabilities:vulnerability>
 
@@ -532,9 +457,6 @@
                 <vulnerability:overview>Any cup(s) may be lost/stolen</vulnerability:overview>
                 <vulnerability:impact> Any cup could be lost/stolen </vulnerability:impact>
                 <vulnerability:severity> High </vulnerability:severity>
-                <vulnerability:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </vulnerability:additional-information>
                 <vulnerability:credit></vulnerability:credit>
               </vulnerabilities:vulnerability>
             </node:vulnerabilities>
@@ -565,9 +487,6 @@
                 <risk:likelihood>High</risk:likelihood>
                 <risk:impact>Severe</risk:impact>
                 <risk:temporality>Preventive</risk:temporality>
-                <risk:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </risk:additional-information>
               </risks:risks>
               <risks:risk risk-id="Cups-loss">
                 <risk:name></risk:name>
@@ -577,9 +496,6 @@
                 <risk:likelihood>High</risk:likelihood>
                 <risk:impact>Severe</risk:impact>
                 <risk:temporality>Preventive</risk:temporality>
-                <risk:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </risk:additional-information>
               </risks:risk>
             </node:risks >
 
@@ -589,10 +505,7 @@
                 <security-policy:description> Every cup must be protected from hitting against other cups (or any other object) inside the box, or against the box itself, while being transported to its final destination </security-policy:description>
                 <security-policies:security-objectives>
                   <security-objectives:security-objective-id> DO[3][1]</security-objectives:security-objective-id>
-                </security-policies:security-objectives>       
-                <security-policy:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-policy:additional-information>
+                </security-policies:security-objectives>
               </security-policies:security-policy>
 
               <security-policies:security-policy policy-id="Lost-prevenction">
@@ -600,10 +513,8 @@
                 <security-policy:description> The cups must be protected so that they cannot be taken out of the box, while being transported to its final destination</security-policy:description>
                 <security-policies:security-objectives>
                   <security-objectives:security-objective-id> DO[3][2]</security-objectives:security-objective-id>
-                </security-policies:security-objectives>                  
-                <security-policy:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-policy:additional-information>
+                </security-policies:security-objectives>
+
               </security-policies:security-policy>
             </node:security-policies>
 
@@ -614,9 +525,7 @@
                 <security-control:security-policies>
                   <security-policies:security-policy-id>Hit-protection</security-policies:security-policy-id>
                 </security-control:security-policies>
-                <security-control:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-control:additional-information>
+
               </security-controls:security-control>
 
               <security-controls:security-control control-id="Lost-protection">
@@ -624,10 +533,7 @@
                 <security-control:description>Install a lock in the box, proportional to the level of robustness of the container</security-control:description>
                 <security-control:security-policies>
                   <security-policies:security-policy-id>Lost-prevenction</security-policies:security-policy-id>
-                </security-control:security-policies>                
-                <security-control:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-control:additional-information>
+                </security-control:security-policies>
               </security-controls:security-control>
             </node:security-controls>
           </model:node>
@@ -641,10 +547,10 @@
               </basic-information:component-categories>
               <basic-information:component-intrinsical-properties>
                 <component-intrinsical-properties:material> Paper </component-intrinsical-properties:property>
-                <component-intrinsical-properties:property> Succeptible to water </component-intrinsical-properties:property> <!-- Revisar estas propiedades -->
+                <component-intrinsical-properties:property> Succeptible to water </component-intrinsical-properties:property>
                 <component-intrinsical-properties:property> Can be written on </component-intrinsical-properties:property>
               </basic-information:component-intrinsical-properties>
-              <basic-information:other-details></basic-information:other-details>
+
             </node:basic-information>
 
             <node:security-objectives>
@@ -654,9 +560,6 @@
                 <security-objective:objective-type>Indirect</security-objectives:objective-type>
                 <security-objective:security-service> Integrity </security-objective:security-service>
                 <security-objective:temporality> Preventive </security-objective:temporality>
-                <security-objective:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-objective:additional-information>
               </security-objectives:security-objective>
 
               <security-objectives:security-objective objective-id="IO[4][2]">
@@ -665,15 +568,12 @@
                 <security-objective:objective-type>Indirect</security-objectives:objective-type>
                 <security-objective:security-service> Availability </security-objective:security-service>
                 <security-objective:temporality> Preventive </security-objective:temporality>
-                <security-objective:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-objective:additional-information>
               </security-objectives:security-objective>
             </node:security-objectives>
 
             <node:security-relationships>
               <security-relationships:linked-node node-id="Cups">
-                <linked-node:relationship-type type="Representation" interaction-id="Cu01"> 
+                <linked-node:relationship-type type="Representation" interaction-id="Cu01">
                   <linked-node:security-objectives>
                     <security-objectives:security-objective>
                       <security-objective:self-objective objective-id="DO[4][1]"></security-objective:self-objective>
@@ -684,35 +584,29 @@
                       <security-objective:peer-objective peer-objective-id="IO[3][2]"></security-objective:peer-objective>
                     </security-objectives:security-objective>
                   </linked-node:security-objectives>
-               </linked-node:relationship-type>
+                </linked-node:relationship-type>
               </security-relationships:linked-node>
             </node:security-relationships>
 
             <node:vulnerabilities>
               <vulnerabilities:vulnerability vunerability-id="fragile-label-damage">
                 <vulnerability:name>Content label damage</vulnerability:name>
-                  <vulnerability:reference-security-services>
-                    <reference-security-services:reference-security-service> Integrity </reference-objectives:reference-security-service>
-                  </vulnerability:reference-security-services>                  
+                <vulnerability:reference-security-services>
+                  <reference-security-services:reference-security-service> Integrity </reference-objectives:reference-security-service>
+                </vulnerability:reference-security-services>
                 <vulnerability:overview>The fragile label may be damaged</vulnerability:overview>
                 <vulnerability:impact> The fragility of the contents would no longer be indicated </vulnerability:impact>
                 <vulnerability:severity>Low</vulnerability:severity>
-                <vulnerability:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </vulnerability:additional-information>
               </vulnerabilities:vulnerability>
 
               <vulnerabilities:vulnerability vunerability-id="fragile-label-removal">
                 <vulnerability:name> Fragile label removed </vulnerability:name>
-                  <vulnerability:reference-security-services>
-                    <reference-security-services:reference-security-service> Availability </reference-objectives:reference-security-service>
-                  </vulnerability:reference-security-services>                   
+                <vulnerability:reference-security-services>
+                  <reference-security-services:reference-security-service> Availability </reference-objectives:reference-security-service>
+                </vulnerability:reference-security-services>
                 <vulnerability:overview> The fragile label could be removed </vulnerability:overview>
                 <vulnerability:impact> If the fragile label is removed it can no longer protect the contents of the box from breaking</vulnerability:impact>
                 <vulnerability:severity>High</vulnerability:severity>
-                <vulnerability:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </vulnerability:additional-information>
               </vulnerabilities:vulnerability>
             </node:vulnerabilities>
 
@@ -744,9 +638,6 @@
                 <risk:likelihood>High</risk:likelihood>
                 <risk:impact>Moderate</risk:impact>
                 <risk:temporality>Prevention</risk:temporality>
-                <risk:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </risk:additional-information>
               </risks:risk>
 
               <risks:risk risk-id="fragile-label-removal">
@@ -758,9 +649,6 @@
                 <risk:likelihood>High</risk:likelihood>
                 <risk:impact>Moderate</risk:impact>
                 <risk:temporality>Prevention</risk:temporality>
-                <risk:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </risk:additional-information>
               </risks:risk>
             </node:risks>
 
@@ -771,9 +659,6 @@
                 <security-policy:security-objectives>
                   <security-objectives:security-objective-id>IO[4][2]</security-objectives:security-objective-id>
                 </security-policy:security-objectives>
-                <security-policy:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-policy:additional-information>
               </security-policies:security-policy>
             </node:security-policies>
 
@@ -784,13 +669,10 @@
                 <security-control:security-policies>
                   <security-policies:security-policy-id>fragile-label-removal</security-policies:security-policy-id>
                 </security-control:security-policies>
-                <security-control:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-control:additional-information>
               </security-controls:security-control>
             </node:security-controls>
           </model:node>
-          <!-- ++++++++++++++++ NODO CONTENT LABEL ++++++++++++++++++++++++++ -->
+
           <model:node node-id="Content-label">
             <node:basic-information>
               <basic-information:component-name>Content label</basic-information:component-name>
@@ -803,7 +685,6 @@
                 <component-intrinsical-properties:property> Succeptible to water </component-intrinsical-properties:property>
                 <component-intrinsical-properties:property> Can be written on </component-intrinsical-properties:property>
               </basic-information:component-intrinsical-properties>
-              <basic-information:other-details></basic-information:other-details>
             </node:basic-information>
 
             <node:security-objectives>
@@ -813,9 +694,6 @@
                 <security-objective:objective-type>Indirect</security-objectives:objective-type>
                 <security-objective:security-service> Integrity </security-objective:security-service>
                 <security-objective:temporality> Preventive </security-objective:temporality>
-                <security-objective:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-objective:additional-information>
               </security-objectives:security-objective>
 
               <security-objectives:security-objective objective-id="IO[5][2]">
@@ -824,15 +702,12 @@
                 <security-objective:objective-type>Indirect</security-objectives:objective-type>
                 <security-objective:security-service> Availability </security-objective:security-service>
                 <security-objective:temporality> Preventive </security-objective:temporality>
-                <security-objective:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-objective:additional-information>
               </security-objectives:security-objective>
             </node:security-objectives>
 
             <node:security-relationships>
               <security-relationships:linked-node node-id="Cups">
-                <linked-node:relationship-type type="Representation" interaction-id="Cu02"> 
+                <linked-node:relationship-type type="Representation" interaction-id="Cu02">
                   <linked-node:security-objectives>
                     <security-objectives:security-objective>
                       <security-objective:self-objective objective-id="DO[5][1]"></security-objective:self-objective>
@@ -856,22 +731,16 @@
                 <vulnerability:overview>The content label  may be modified or damaged</vulnerability:overview>
                 <vulnerability:impact> The content of the box would no longer be guaranteed </vulnerability:impact>
                 <vulnerability:severity>Low</vulnerability:severity>
-                <vulnerability:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </vulnerability:additional-information>
               </vulnerabilities:vulnerability>
 
               <vulnerabilities:vulnerability vunerability-id="content-label-removal" source-database="None">
                 <vulnerability:name> Content label removed </vulnerability:name>
                 <vulnerability:reference-security-services>
                   <reference-security-services:reference-security-service> Availability </reference-objectives:reference-security-service>
-                </vulnerability:reference-security-services>                
+                </vulnerability:reference-security-services>
                 <vulnerability:overview> The content label could be removed </vulnerability:overview>
                 <vulnerability:impact> If the content label is removed it can no longer protect the contents of the box </vulnerability:impact>
                 <vulnerability:severity>lLow</vulnerability:severity>
-                <vulnerability:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </vulnerability:additional-information>
               </vulnerabilities:vulnerability>
             </node:vulnerabilities>
 
@@ -903,9 +772,6 @@
                 <risk:likelihood>High</risk:likelihood>
                 <risk:impact>Moderate</risk:impact>
                 <risk:temporality>Prevention</risk:temporality>
-                <risk:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </risk:additional-information>
               </risks:risk>
               <risks:risk risk-id="content-label-removal">
                 <risk:name>Content label removal</risk:name>
@@ -916,9 +782,6 @@
                 <risk:likelihood>High</risk:likelihood>
                 <risk:impact>Moderate</risk:impact>
                 <risk:temporality>Prevention</risk:temporality>
-                <risk:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </risk:additional-information>
               </risks:risk>
             </node:risks >
 
@@ -928,10 +791,7 @@
                 <security-policy:description> The Content label should be protected from breaking or being removed from the box, accidentally or intentionally, or they should be replaced by labels that cannot be easily removed</security-policy:description>
                 <security-policy:security-objectives>
                   <security-objectives:security-objective-id> IO[5][1]</security-objectives:security-objective-id>
-                </security-policy:security-objectives>                
-                <security-policy:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-policy:additional-information>
+                </security-policy:security-objectives>
               </security-policies:security-policy>
             </node:security-policies>
 
@@ -941,15 +801,12 @@
                 <security-control:description>Install a protection to the labels, such as a transparent adhesive tape that is suitable for installation in the box, or replace the labels with different material that cannot be easily removed, for example, ink labels.</security-control:description>
                 <security-control:security-policies>
                   <security-policies:security-policy-id>content-label-removal</security-policies:security-policy-id>
-                </security-control:security-policies>                
-                <security-control:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-control:additional-information>
+                </security-control:security-policies>
               </security-controls:security-control>
             </node:security-controls>
           </model:node>
 
-          <!-- ++++++++++++++++++++++ NODO  CONTAINER +++++++++++++++++++++ -->
+
           <model:node node-id="Container">
             <node:basic-information>
               <basic-information:component-name>Container</basic-information:component-name>
@@ -959,12 +816,12 @@
                 <component-categories:component-category category-id=""></component-categories:component-category>
               </basic-information:component-categories>
               <basic-information:component-intrinsical-properties>
-                <component-intrinsical-properties:fragility> Rigid </component-intrinsical-properties:property>                
+                <component-intrinsical-properties:fragility> Rigid </component-intrinsical-properties:property>
                 <component-intrinsical-properties:material> Cardboard </component-intrinsical-properties:property>
                 <component-intrinsical-properties:property> Slightly shock absorbing </component-intrinsical-properties:property>
                 <component-intrinsical-properties:property> Succeptible to water </component-intrinsical-properties:property>
               </basic-information:component-intrinsical-properties>
-              <basic-information:other-details></basic-information:other-details>
+
             </node:basic-information>
 
             <node:security-objectives>
@@ -974,9 +831,6 @@
                 <security-objective:objective-type>Indirect</security-objectives:objective-type>
                 <security-objective:security-service> Integrity </security-objective:security-service>
                 <security-objective:temporality> Preventive </security-objective:temporality>
-                <security-objective:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-objective:additional-information>
               </security-objectives:security-objective>
 
               <security-objectives:security-objective objective-id="IO[6][2]">
@@ -985,9 +839,6 @@
                 <security-objective:objective-type>Indirect</security-objectives:objective-type>
                 <security-objective:security-service> Availability </security-objective:security-service>
                 <security-objective:temporality> Preventive </security-objective:temporality>
-                <security-objective:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-objective:additional-information>
               </security-objectives:security-objective>
             </node:security-objectives>
 
@@ -999,26 +850,20 @@
                 <vulnerability:name>Container damage</vulnerability:name>
                 <vulnerability:reference-security-services>
                   <reference-security-services:reference-security-service> Integrity </reference-objectives:reference-security-service>
-                </vulnerability:reference-security-services>                
+                </vulnerability:reference-security-services>
                 <vulnerability:overview>Container may be damaged</vulnerability:overview>
                 <vulnerability:impact>Damage to the box could damage the cups</vulnerability:impact>
                 <vulnerability:severity>Moderate</vulnerability:severity>
-                <vulnerability:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </vulnerability:additional-information>
               </vulnerabilities:vulnerability>
 
               <vulnerabilities:vulnerability vunerability-id="Container-loss" source-database="None">
                 <vulnerability:name>Container loss</vulnerability:name>
                 <vulnerability:reference-security-services>
                   <reference-security-services:reference-security-service> Availability </reference-objectives:reference-security-service>
-                </vulnerability:reference-security-services>                 
+                </vulnerability:reference-security-services>
                 <vulnerability:overview>Container may be lost/stolen</vulnerability:overview>
                 <vulnerability:impact> If the container is lost, the cups would be too </vulnerability:impact>
                 <vulnerability:severity>Moderate</vulnerability:severity>
-                <vulnerability:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </vulnerability:additional-information>
               </vulnerabilities:vulnerability>
             </node:vulnerabilities>
 
@@ -1050,9 +895,6 @@
                 <risk:likelihood>High</risk:likelihood>
                 <risk:impact>Severe</risk:impact>
                 <risk:temporality>Prevention</risk:temporality>
-                <risk:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </risk:additional-information>
               </risks:risk>
               <risks:risk risk-id="Container-loss">
                 <risk:name>Container loss</risk:name>
@@ -1063,9 +905,6 @@
                 <risk:likelihood>High</risk:likelihood>
                 <risk:impact>Severe</risk:impact>
                 <risk:temporality>Prevention</risk:temporality>
-                <risk:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </risk:additional-information>
               </risks:risk>
             </node:risks >
 
@@ -1076,10 +915,7 @@
                 <security-policy:security-objectives>
                   <security-objectives:security-objective-id> IO[6][1] </security-objectives:security-objective-id>
                   <security-objectives:security-objective-id> IO[6][2] </security-objectives:security-objective-id>
-                </security-policy:security-objectives>                
-                <security-policy:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-policy:additional-information>
+                </security-policy:security-objectives>
               </security-policies:security-policy>
             </node:security-policies>
 
@@ -1089,15 +925,12 @@
                 <security-control:description>Sign insurance or a transport contract that includes the integrity and availability of the components to be transported</security-control:description>
                 <security-control:security-policies>
                   <security-policies:security-policy-id> Container-insurance </security-policies:security-policy-id>
-                </security-control:security-policies>                
-                <security-control:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-control:additional-information>
+                </security-control:security-policies>
               </security-controls:security-control>
             </node:security-controls>
           </model:node>
 
-          <!-- ++++++++++++++++++++++ NODO  CONTAINER +++++++++++++++++++++ -->
+
           <model:node node-id="Cup-package">
             <node:basic-information>
               <basic-information:component-name>Cup package</basic-information:component-name>
@@ -1109,7 +942,7 @@
               <basic-information:component-intrinsical-properties>
                 <component-intrinsical-properties:fragility> Fragile </component-intrinsical-properties:property>
               </basic-information:component-intrinsical-properties>
-              <basic-information:other-details></basic-information:other-details>
+
             </node:basic-information>
 
             <node:security-objectives>
@@ -1119,9 +952,6 @@
                 <security-objective:objective-type>Indirect</security-objectives:objective-type>
                 <security-objective:security-service> Integrity </security-objective:security-service>
                 <security-objective:temporality> Preventive </security-objective:temporality>
-                <security-objective:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-objective:additional-information>
               </security-objectives:security-objective>
 
               <security-objectives:security-objective objective-id="DO[7][2]">
@@ -1130,9 +960,6 @@
                 <security-objective:objective-type>Indirect</security-objectives:objective-type>
                 <security-objective:security-service> Availability </security-objective:security-service>
                 <security-objective:temporality> Preventive </security-objective:temporality>
-                <security-objective:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-objective:additional-information>
               </security-objectives:security-objective>
             </node:security-objectives>
 
@@ -1148,22 +975,16 @@
                 <vulnerability:overview>Cup-Package may be damaged</vulnerability:overview>
                 <vulnerability:impact>Damage to the Cup-Package could damage the cups</vulnerability:impact>
                 <vulnerability:severity>Moderate</vulnerability:severity>
-                <vulnerability:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </vulnerability:additional-information>
               </vulnerabilities:vulnerability>
 
               <vulnerabilities:vulnerability vunerability-id="Cup-Package-loss">
                 <vulnerability:name>Cup-Package loss</vulnerability:name>
                 <vulnerability:reference-security-services>
                   <reference-security-services:reference-security-service> Availability </reference-objectives:reference-security-service>
-                </vulnerability:reference-security-services>                
+                </vulnerability:reference-security-services>
                 <vulnerability:overview>Cup-Package may be lost/stolen</vulnerability:overview>
                 <vulnerability:impact> If the Cup-Package is lost, the cups would be too </vulnerability:impact>
                 <vulnerability:severity>Moderate</vulnerability:severity>
-                <vulnerability:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </vulnerability:additional-information>
               </vulnerabilities:vulnerability>
             </node:vulnerabilities>
 
@@ -1195,9 +1016,6 @@
                 <risk:likelihood>High</risk:likelihood>
                 <risk:impact>Severe</risk:impact>
                 <risk:temporality>Prevention</risk:temporality>
-                <risk:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </risk:additional-information>
               </risks:risk>
 
               <risks:risk risk-id="Cup-Package-loss">
@@ -1209,9 +1027,6 @@
                 <risk:likelihood>High</risk:likelihood>
                 <risk:impact>Severe</risk:impact>
                 <risk:temporality>Prevention</risk:temporality>
-                <risk:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </risk:additional-information>
               </risks:risk>
             </node:risks >
 
@@ -1222,10 +1037,7 @@
                 <security-policy:security-objectives>
                   <security-objectives:security-objective-id> DO[7][1] </security-objectives:security-objective-id>
                   <security-objectives:security-objective-id> DO[7][2] </security-objectives:security-objective-id>
-                </security-policy:security-objectives>                
-                <security-policy:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-policy:additional-information>
+                </security-policy:security-objectives>
               </security-policies:security-policy>
             </node:security-policies>
 
@@ -1235,10 +1047,7 @@
                 <security-control:description>Sign insurance or a transport contract that includes the integrity of the components to be transported</security-control:description>
                 <security-control:security-policies>
                   <security-policies:security-policy-id>Cup-Package-Insurance</security-policies:security-policy-id>
-                </security-control:security-policies>                
-                <security-control:additional-information>
-                  <additional-information:comment></additional-information:comment>
-                </security-control:additional-information>
+                </security-control:security-policies>
               </security-controls:security-control>
 
             </node:security-controls>
