@@ -16,16 +16,29 @@ tokens=[
     'PROPERTIES_COLOR_OPEN','PROPERTIES_COLOR_CLOSE','PROPERTIES_MATERIAL_OPEN','PROPERTIES_MATERIAL_CLOSE',
     'PROPERTIES_HEIGHT_OPEN','PROPERTIES_HEIGHT_CLOSE','PROPERTIES_WEIGHT_OPEN','PROPERTIES_WEIGHT_CLOSE',
     'PROPERTIES_OTHER_OPEN','PROPERTIES_OTHER_CLOSE',
+    # SECURITY OBJECTIVES
+    'NODE_SECUOBJ_OPEN', 'NODE_SECUOBJ_CLOSE', 'SECUOBJ_OBJ_OPEN', 'SECUOBJ_OBJ_CLOSE',
+    'SECUOBJ_NAME_OPEN', 'SECUOBJ_NAME_CLOSE', 'SECUOBJ_DESCRIP_OPEN', 'SECUOBJ_DESCRIP_CLOSE',
+    'SECUOBJ_OBJTYPE_OPEN', 'SECUOBJ_OBJTYPE_CLOSE', 'SECUOBJ_SECUSERV_OPEN', 'SECUOBJ_SECUSERV_CLOSE',
+    'SECUOBJ_TEMP_OPEN', 'SECUOBJ_TEMP_CLOSE', 'SECUOBJ_ADDINFO_OPEN',
+    'SECUOBJ_ADDINFO_CLOSE', 'SECUOBJ_OBJSOUR_OPEN', 'SECUOBJ_OBJSOUR_CLOSE', 'SECUOBJ_OBJSP_OPEN',
     #THREATS
     'THREATS_OPEN','THREATS_CLOSE','THREAT_OPEN','THREAT_CLOSE','THREAT_NAME_OPEN','THREAT_NAME_CLOSE',
     'THREAT_DESCRIPTION_OPEN','THREAT_DESCRIPTION_CLOSE','THREAT_VULNERABILITIES_OPEN','THREAT_VULNERABILITIES_CLOSE',
     'VULNERABILITIES_VULNERABILITY_OPEN','VULNERABILITIES_VULNERABILITY_CLOSE',
+    #RISK
+    'NODE_RISKS_OPEN', 'NODE_RISKS_CLOSE', 'RISKS_RISK_OPEN', 'RISKS_RISK_CLOSE', 'RISK_NAME_OPEN',
+    'RISK_NAME_CLOSE', 'RISK_OBJ_OPEN', 'RISK_OBJ_CLOSE', 'RISK_VUL_OPEN', 'RISK_VUL_CLOSE',
+    'RISK_THREAT_OPEN', 'RISK_THREAT_CLOSE', 'RISK_DESCRIPTION_OPEN', 'RISK_DESCRIPTION_CLOSE',
+    'RISK_LIKHD_OPEN', 'RISK_LIKHD_CLOSE', 'RISK_IMPACT_OPEN', 'RISK_IMPACT_CLOSE',
+    'RISK_TEMP_OPEN', 'RISK_TEMP_CLOSE', 'RISK_ADDINFO_OPEN', 'RISK_ADDINFO_CLOSE',
+    'ADDINFOCOMM_OPEN','ADDINFOCOMM_CLOSE',
     #STRING
     'STRING',
     #SECURITY  RELATIONSHIPS
 	'SECURITY_RELATIONSHIP_OPEN', 'SECURITY_RELATIONSHIP_CLOSE', 'LINKED_NODE_OPEN', 'LINKED_NODE_CLOSE',
 	'RELATIONSHIP_TYPE_OPEN', 'RELATIONSHIP_TYPE_CLOSE',
-	'SECURITY_OBJECTIVES_OPEN', 'SECURITY_OBJECTIVES_CLOSE', 'SECURITY_OBJECTIVE_OPEN', 'SECURITY_OBJECTIVE_CLOSE',
+	'SECURITY_OBJECTIVES_OPEN', 'SECURITY_OBJECTIVES_CLOSE', 'SECURITY_OBJECTIVE_OPEN',
 	'SELF_OBJECTIVE_OPEN', 'SELF_OBJECTIVE_CLOSE', 'PEER_OBJECTIVE_OPEN', 'PEER_OBJECTIVE_CLOSE',
 	#SECURITY RELATIONSHIPS && SECURITY POLICIES
 	'ID',
@@ -108,13 +121,34 @@ t_SECURITY_OBJECTIVES_OPEN = r'<linked-node:security-objectives>'
 t_SECURITY_OBJECTIVES_CLOSE = r'</linked-node:security-objectives>'
 #SECURITY RELATIONSHIPS Y SECURITY POLICIES
 t_SECURITY_OBJECTIVE_OPEN = r'<security-objectives:security-objective>'
-t_SECURITY_OBJECTIVE_CLOSE = r'</security-objectives:security-objective>'
+#t_SECURITY_OBJECTIVE_CLOSE = r'</security-objectives:security-objective>'
 #SECURITY RELATIONSHIPS
 t_SELF_OBJECTIVE_OPEN = r'<security-objective:self-objective\sobjective-id="DO\[\d\]\[\d\]">'
 t_SELF_OBJECTIVE_CLOSE = r'</security-objective:self-objective>'
 t_PEER_OBJECTIVE_OPEN = r'(<security-objective:peer-objective\speer-objective-id="[DI]O\[\d\]\[\d\]"> | <security-objective:peer-objective\sobjective-id="[DI]O\[\d\]\[\d\]">)'
 t_PEER_OBJECTIVE_CLOSE = r'</security-objective:peer-objective>'
-
+#SECURITY OBJECTIVES
+t_SECUOBJ_OBJSP_OPEN=r'<security-objectives:security-objective>'
+t_NODE_SECUOBJ_OPEN=r'<node:security-objectives>'
+t_NODE_SECUOBJ_CLOSE=r'</node:security-objectives>'
+t_SECUOBJ_OBJ_OPEN=r'<security-objectives:security-objective\sobjective-id=".*">'
+t_SECUOBJ_OBJ_CLOSE=r'</security-objectives:security-objective>'
+t_SECUOBJ_NAME_OPEN = r'<security-objective:name>'
+t_SECUOBJ_NAME_CLOSE = r'</security-objective:name>'
+t_SECUOBJ_DESCRIP_OPEN=r'<security-objective:description>'
+t_SECUOBJ_DESCRIP_CLOSE=r'</security-objective:description>'
+t_SECUOBJ_OBJTYPE_OPEN=r'<security-objective:objective-type>'
+t_SECUOBJ_OBJTYPE_CLOSE=r'</security-objective:objective-type>'
+t_SECUOBJ_SECUSERV_OPEN=r'<security-objective:security-service>'
+t_SECUOBJ_SECUSERV_CLOSE=r'</security-objective:security-service>'
+t_SECUOBJ_TEMP_OPEN=r'<security-objective:temporality>'
+t_SECUOBJ_TEMP_CLOSE=r'</security-objective:temporality>'
+t_SECUOBJ_ADDINFO_OPEN=r'<security-objective:additional-information>'
+t_SECUOBJ_ADDINFO_CLOSE=r'</security-objective:additional-information>'
+t_SECUOBJ_OBJSOUR_OPEN=r'<security-objective:objective-source>'
+t_SECUOBJ_OBJSOUR_CLOSE=r'</security-objective:objective-source>'
+t_ADDINFOCOMM_OPEN=r'<additional-information:comment>'
+t_ADDINFOCOMM_CLOSE=r'</additional-information:comment>'
 
 #SECURITY POLICIES
 t_SECURITY_POLICIES_OPEN = r'<node:security-policies>'
@@ -169,6 +203,28 @@ t_SECPOLICY_ID_CLOSE                = r'</security-policies:security-policy-id>'
 t_SECCONT_ADDITIONAL_INFO_OPEN      = r'<security-control:additional-information>'
 t_SECCONT_ADDITIONAL_INFO_CLOSE     = r'</security-control:additional-information>'
 
+#RISK
+t_NODE_RISKS_OPEN=r'<node:risks>'
+t_NODE_RISKS_CLOSE=r'</node:risks>'
+t_RISKS_RISK_OPEN=r'<risks:risk\srisk-id=".*">'
+t_RISKS_RISK_CLOSE=r'</risks:risk>'
+t_RISK_NAME_OPEN=r'<risk:name>'
+t_RISK_NAME_CLOSE=r'</risk:name>'
+t_RISK_OBJ_OPEN=r'<risk:objective-id>'
+t_RISK_OBJ_CLOSE=r'</risk:objective-id>'
+t_RISK_VUL_OPEN=r'<risk:vulnerability-id>'
+t_RISK_VUL_CLOSE=r'</risk:vulnerability-id>'
+t_RISK_THREAT_OPEN=r'<risk:threat-id>'
+t_RISK_THREAT_CLOSE=r'</risk:threat-id>'
+t_RISK_DESCRIPTION_OPEN=r'<risk:description>'
+t_RISK_DESCRIPTION_CLOSE=r'</risk:description>'
+t_RISK_LIKHD_OPEN=r'<risk:likelihood>'
+t_RISK_LIKHD_CLOSE=r'</risk:likelihood>'
+t_RISK_IMPACT_OPEN=r'<risk:impact>'
+t_RISK_IMPACT_CLOSE=r'</risk:impact>'
+t_RISK_TEMP_OPEN=r'<risk:temporality>'
+t_RISK_TEMP_CLOSE=r'</risk:temporality>'
+
 
 
 
@@ -214,11 +270,13 @@ def p_model_node(p):
     '''
     model_node : MODEL_NODE_OPEN model_node
                | basic_info model_node
+               | node_security_objective model_node
                | threats model_node
 			   | structure_security_policies model_node
 			   | structure_security_relationships model_node
                | vulnerabilities model_node
                | security_controls model_node
+               | node_risks model_node
                | MODEL_NODE_CLOSE
     '''
     print("cierra node",p[1])
@@ -307,7 +365,54 @@ def p_properties_weight(p):
     '''
     return
 #-------------------------------Basic information-------------------------------
+#-------------------------------SECURITY OBJECTIVES-------------------------------
+def p_node_security_objective(t):
+    '''node_security_objective : NODE_SECUOBJ_OPEN
+                                   | security_objective_obj node_security_objective
+                                   | NODE_SECUOBJ_CLOSE '''
 
+def p_security_objective_obj(t):
+    #'security_objective_obj : SECUOBJ_OBJ_OPEN security_objective_name security_objective_description SECUOBJ_OBJ_CLOSE'
+
+    '''security_objective_obj : SECUOBJ_OBJ_OPEN security_objective_obj
+                              | security_objective_name security_objective_obj
+                              | security_objective_description security_objective_obj
+                              | security_objective_objective_type security_objective_obj
+                              | security_objective_security_service security_objective_obj
+                              | security_objective_temporality security_objective_obj
+                              | security_objective_source security_objective_obj
+                              | SECUOBJ_OBJ_CLOSE'''
+
+def p_security_objective_name(t):
+    'security_objective_name : SECUOBJ_NAME_OPEN str SECUOBJ_NAME_CLOSE'
+
+
+
+def p_security_objective_description(t):
+    'security_objective_description : SECUOBJ_DESCRIP_OPEN str SECUOBJ_DESCRIP_CLOSE'
+
+
+
+
+def p_security_objective_objective_type(t):
+    'security_objective_objective_type : SECUOBJ_OBJTYPE_OPEN str SECUOBJ_OBJTYPE_CLOSE'
+
+
+
+def p_security_objective_security_service(t):
+    'security_objective_security_service : SECUOBJ_SECUSERV_OPEN str SECUOBJ_SECUSERV_CLOSE'
+
+
+
+def p_security_objective_temporality(t):
+    'security_objective_temporality : SECUOBJ_TEMP_OPEN str SECUOBJ_TEMP_CLOSE'
+
+
+def p_security_objective_source(t):
+    'security_objective_source : SECUOBJ_OBJSOUR_OPEN str SECUOBJ_OBJSOUR_CLOSE'
+
+
+#-------------------------------SECURITY OBJECTIVES-------------------------------
 
 #-------------------------------Threats-------------------------------
 def p_threats(p):
@@ -373,7 +478,7 @@ def p_security_policies(t):
 
 def p_security_policy(t):
 	'''
-	security_policy : SECURITY_POLICY_OPEN ID GENERAL_CLOSE POLICY_NAME_OPEN STRING POLICY_NAME_CLOSE POLICY_DESCRIPTION_OPEN STRING POLICY_DESCRIPTION_CLOSE security_objectives_SP additional_info_SP SECURITY_POLICY_CLOSE
+	security_policy : SECURITY_POLICY_OPEN ID GENERAL_CLOSE POLICY_NAME_OPEN STRING POLICY_NAME_CLOSE POLICY_DESCRIPTION_OPEN STRING POLICY_DESCRIPTION_CLOSE security_objectives_SP SECURITY_POLICY_CLOSE
 	'''
 	print(3)
 	return
@@ -381,7 +486,7 @@ def p_security_policy(t):
 
 def p_security_objectives_SP(t):
 	'''
-	security_objectives_SP : SP_OBJECTIVES_OPEN SECURITY_OBJECTIVE_OPEN STRING SECURITY_OBJECTIVE_CLOSE SP_OBJECTIVES_CLOSE
+	security_objectives_SP : SP_OBJECTIVES_OPEN SECURITY_OBJECTIVE_OPEN STRING SECUOBJ_OBJ_CLOSE SP_OBJECTIVES_CLOSE
 	'''
 	print(4)
 	return
@@ -397,7 +502,7 @@ def p_additional_info_SP(t):
 
 #------------------------------Security Relationships------------------------------
 
- 
+
 def p_structure_security_relationships(t):
 	'''
 	structure_security_relationships : security-relationships
@@ -411,7 +516,7 @@ def p_security_relationships(t):
     security-relationships : SECURITY_RELATIONSHIP_OPEN security-relationships
                            | linked-node security-relationships
                            | SECURITY_RELATIONSHIP_CLOSE
-    '''  
+    '''
     if t[1] == "</node:security-relationships>":
 		list_security_relationships = container.security_relationships()
 		t[0] = list_security_relationships
@@ -426,7 +531,7 @@ def p_security_relationships(t):
 
 def p_expression_linked_node(t):
     '''
-    linked-node : linked_node_open linked-node 
+    linked-node : linked_node_open linked-node
                 | relationship-type linked-node
 				| LINKED_NODE_CLOSE
     '''
@@ -473,7 +578,7 @@ def p_expression_security_objectives_SR(t):
 
 def p_expression_security_objective_SR(t):
     '''
-    security-objective_SR : SECURITY_OBJECTIVE_OPEN SELF_OBJECTIVE_OPEN SELF_OBJECTIVE_CLOSE PEER_OBJECTIVE_OPEN PEER_OBJECTIVE_CLOSE SECURITY_OBJECTIVE_CLOSE
+    security-objective_SR : SECURITY_OBJECTIVE_OPEN SELF_OBJECTIVE_OPEN SELF_OBJECTIVE_CLOSE PEER_OBJECTIVE_OPEN PEER_OBJECTIVE_CLOSE SECUOBJ_OBJ_CLOSE
     '''
     return
 #----------------------------Security Relationships-------------------------------------
@@ -586,6 +691,85 @@ def p_security_policyID(p):
     security_policyID : SECPOLICY_ID_OPEN str SECPOLICY_ID_CLOSE
     '''
 #------------------------------------------Security Controls------------------------------
+# -------------------------------RISK-------------------------------
+def p_node_risks(t):
+    '''
+    node_risks : NODE_RISKS_OPEN node_risks
+               | risks_risk node_risks
+               | NODE_RISKS_CLOSE
+                  '''
+
+
+def p_risks_risk(t):
+    '''
+    risks_risk : RISKS_RISK_OPEN risks_risk
+                | risk_name risks_risk
+                | risk_objective risks_risk
+                | risk_vulnerability risks_risk
+                | risk_threat risks_risk
+                | risk_description risks_risk
+                | risk_likelihood risks_risk
+                | risk_impact risks_risk
+                | risk_temporality risks_risk
+                | RISKS_RISK_CLOSE
+                  '''
+
+
+def p_risk_name(t):
+    '''
+    risk_name : RISK_NAME_OPEN risk_name
+              | str risk_name
+              | RISK_NAME_CLOSE
+    '''
+
+
+
+def p_risk_objective(t):
+    '''
+    risk_objective : RISK_OBJ_OPEN str RISK_OBJ_CLOSE
+    '''
+
+
+def p_risk_vulnerability(t):
+    '''
+    risk_vulnerability : RISK_VUL_OPEN str RISK_VUL_CLOSE
+    '''
+
+
+
+def p_risk_threat(t):
+    '''
+    risk_threat : RISK_THREAT_OPEN str RISK_THREAT_CLOSE
+    '''
+
+
+
+def p_risk_description(t):
+    '''
+    risk_description : RISK_DESCRIPTION_OPEN str RISK_DESCRIPTION_CLOSE
+    '''
+
+
+def p_risk_likelihood(t):
+    '''
+    risk_likelihood : RISK_LIKHD_OPEN str RISK_LIKHD_CLOSE
+    '''
+
+
+
+def p_risk_impact(t):
+    '''
+    risk_impact : RISK_IMPACT_OPEN str RISK_IMPACT_CLOSE
+    '''
+
+
+def p_risk_temporality(t):
+    '''
+    risk_temporality : RISK_TEMP_OPEN str RISK_TEMP_CLOSE
+    '''
+
+
+# -------------------------------RISK-------------------------------
 
 
 
@@ -630,7 +814,6 @@ for line in file:
 file.close()
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
 
-print("\n\n\n")
 
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
 with open('prueba.xml','r') as myfile:

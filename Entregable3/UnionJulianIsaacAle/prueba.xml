@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-Autores: Bryan Ulate, Ricardo Villalón
-Unidad:  CITIC
-Universidad de Costa Rica
--->
-<!--asdasd-->
 <office:document-model office:version="1.2">
   <office:model>
-
     <model:nodes>
-
       <model:node node-id="Cup1">
         <node:basic-information>
           <basic-information:component-name>Cup</basic-information:component-name>
@@ -41,192 +33,49 @@ Universidad de Costa Rica
             </threat:vulnerabilities>
           </threats:threat>
         </node:threats>
-      </model:node>
-      <model:node node-id="Cup2">
-        <node:basic-information>
-          <basic-information:component-name>Cup</basic-information:component-name>
-          <basic-information:component-overview>Cup to be packed for transportation</basic-information:component-overview>
-          <basic-information:component-categories>
-            <component-categories:component-category category-id=""></component-categories:component-category>
-            <component-categories:component-category category-id=""></component-categories:component-category>
-          </basic-information:component-categories>
-          <basic-information:component-intrinsical-properties>
-            <component-intrinsical-properties:color> Transparent </component-intrinsical-properties:color>
-            <component-intrinsical-properties:material> Glass </component-intrinsical-properties:material>
-            <component-intrinsical-properties:height> 15cm </component-intrinsical-properties:height>
-            <component-intrinsical-properties:weight> 30g  </component-intrinsical-properties:weight>
-          </basic-information:component-intrinsical-properties>
-          <basic-information:other-details></basic-information:other-details>
-        </node:basic-information>
-
-
-
-
-
-        <node:threats>
-          <threats:threat threat-id="Cup-hit">
-            <threat:name>Cup being hit</threat:name>
-            <threat:description>Container or Cup 2 may hit Cup 1 during transport</threat:description>
-            <threat:vulnerabilities>
-              <vulnerabilities:vulnerability-id>Cup-fragility</vulnerabilities:vulnerability-id>
-            </threat:vulnerabilities>
-          </threats:threat>
-          <threats:threat threat-id="Cup-loss">
-            <threat:name>Cup being lost/stolen</threat:name>
-            <threat:description>The cup may be taken/stolen</threat:description>
-            <threat:vulnerabilities>
-              <vulnerabilities:vulnerability-id>Cup-loss</vulnerabilities:vulnerability-id>
-            </threat:vulnerabilities>
-          </threats:threat>
-        </node:threats>
-
-
-
         <node:security-relationships>
 
-
-						<security-relationships:linked-node node-id="Cup2">
-						<linked-node:relationship-type type="Interaction" interaction-id="Cu01">
-						<linked-node:security-objectives>
-						<security-objectives:security-objective>
-						<security-objective:self-objective objective-id="DO[1][1]"></security-objective:self-objective>
-						<security-objective:peer-objective objective-id="DO[2][1]"></security-objective:peer-objective>
-						</security-objectives:security-objective>
-						</linked-node:security-objectives>
-						</linked-node:relationship-type>
-						</security-relationships:linked-node>
-
-
-						<security-relationships:linked-node node-id="Fragile-label">
-						<linked-node:relationship-type type="Representantion" interaction-id="Fr01">
-						<linked-node:security-objectives>
-						<security-objectives:security-objective>
-						<security-objective:self-objective objective-id="DO[1][1]"></security-objective:self-objective>
-						<security-objective:peer-objective peer-objective-id="IO[4][1]"></security-objective:peer-objective>
-						</security-objectives:security-objective>
-						<security-objectives:security-objective>
-						<security-objective:self-objective objective-id="DO[1][2]"></security-objective:self-objective>
-						<security-objective:peer-objective peer-objective-id="IO[4][2]"></security-objective:peer-objective>
-						</security-objectives:security-objective>
-						</linked-node:security-objectives>
-						</linked-node:relationship-type>
-						</security-relationships:linked-node>
-
-
-						<security-relationships:linked-node node-id="Container">
-						<linked-node:relationship-type type="Structural" interaction-id="Co01">
-						<linked-node:security-objectives>
-						<security-objectives:security-objective>
-						<security-objective:self-objective objective-id="DO[1][1]"></security-objective:self-objective>
-						<security-objective:peer-objective objective-id="IO[6][1]"></security-objective:peer-objective>
-						</security-objectives:security-objective>
-						<security-objectives:security-objective>
-						<security-objective:self-objective objective-id="DO[1][2]"></security-objective:self-objective>
-						<security-objective:peer-objective objective-id="IO[6][2]"></security-objective:peer-objective>
-						</security-objectives:security-objective>
-						</linked-node:security-objectives>
-						</linked-node:relationship-type>
-						<linked-node:relationship-type type="Interaction" interaction-id="Co02">
-						<linked-node:security-objectives>
-						<security-objectives:security-objective>
-						<security-objective:self-objective objective-id="DO[1][1]"></security-objective:self-objective>
-						<security-objective:peer-objective objective-id="IO[6][1]"></security-objective:peer-objective>
-						</security-objectives:security-objective>
-						<security-objectives:security-objective>
-						<security-objective:self-objective objective-id="DO[1][2]"></security-objective:self-objective>
-						<security-objective:peer-objective objective-id="IO[6][2]"></security-objective:peer-objective>
-						</security-objectives:security-objective>
-						</linked-node:security-objectives>
-						</linked-node:relationship-type>
-						</security-relationships:linked-node>
-
-
-
-          </node:security-relationships>
-
-
-
-			<node:security-policies>
-
-
-						<security-policies:security-policy policy-id="Hit-protection">
-						<security-policy:name>Cup hit protection</security-policy:name>
-						<security-policy:description> The cup must be protected from hitting against/--a other cups (or any other object) inside the box, or against the box itself, while being transported to its final destination </security-policy:description>
-						<security-policy:security-objectives>
-						<security-objectives:security-objective> DO[1][1] </security-objectives:security-objective>
-						</security-policy:security-objectives>
-						<security-policy:additional-information>
-						<additional-information:comment></additional-information:comment>
-						</security-policy:additional-information>
-						</security-policies:security-policy>
-
-						<security-policies:security-policy policy-id="Lost-prevenction">
-						<security-policy:name>Cup lost prevenction</security-policy:name>
-						<security-policy:description> The cup must be protected so that it cannot be taken out of the box, while being transported to its final destination</security-policy:description>
-						<security-policies:security-objectives>
-						<security-objectives:security-objective> DO[1][2] </security-objectives:security-objective>
-						</security-policies:security-objectives>
-						<security-policy:additional-information>
-						<additional-information:comment></additional-information:comment>
-						</security-policy:additional-information>
-						</security-policies:security-policy>
-
-
-			</node:security-policies>
-
-      <node:vulnerabilities>
-      <vulnerabilities:vulnerability vunerability-id="Cup-loss">
-                    <vulnerability:name> Loss </vulnerability:name>
-                    <vulnerability:reference-security-services>
-                      <reference-security-services:reference-security-service> Availability </reference-security-services:reference-security-service>
-                    </vulnerability:reference-security-services>
-                    <vulnerability:overview>The cup may be lost/stolen</vulnerability:overview>
-                    <vulnerability:description> The cup could be taken by someone, or it could be lost in transit</vulnerability:description>
-                    <vulnerability:impact> The cup could be lost/stolen </vulnerability:impact>
-                    <vulnerability:severity> High </vulnerability:severity>
-                    <vulnerability:additional-information>
-                      <additional-information:comment></additional-information:comment>
-                    </vulnerability:additional-information>
-      </vulnerabilities:vulnerability>
-      <vulnerabilities:vulnerability vunerability-id="Vuln B">
-                    <vulnerability:name> Vuln name B </vulnerability:name>
-                    <vulnerability:reference-security-services>
-                      <reference-security-services:reference-security-service> Vuln Refservice B </reference-security-services:reference-security-service>
-                    </vulnerability:reference-security-services>
-                    <vulnerability:overview>Vuln overview B</vulnerability:overview>
-                    <vulnerability:description> Vuln Description B</vulnerability:description>
-                    <vulnerability:impact> Vuln Impact B</vulnerability:impact>
-                    <vulnerability:severity> Vuln Severity B </vulnerability:severity>
-                    <vulnerability:additional-information>
-                      <additional-information:comment></additional-information:comment>
-                    </vulnerability:additional-information>
-      </vulnerabilities:vulnerability>
-      </node:vulnerabilities>
-      <node:security-controls>
-                  <security-controls:security-control control-id="Hit-protection">
-                    <security-control:name>Cup hit protection</security-control:name>
-                    <security-control:description>Install a soft padded protection around every cup, such that they do not hit to each other, and they do not move or hit the box</security-control:description>
-                    <security-control:security-policies>
-                      <security-policies:security-policy-id>DO[1][1]</security-policies:security-policy-id>
-                    </security-control:security-policies>
-                    <security-control:additional-information>
-                      <additional-information:comment></additional-information:comment>
-                    </security-control:additional-information>
-                  </security-controls:security-control>
-
-                  <security-controls:security-control control-id="SecCont B">
-                    <security-control:name>SecCont Name B</security-control:name>
-                    <security-control:description>SecCont Description B</security-control:description>
-                    <security-control:security-policies>
-                      <security-policies:security-policy-id>DO[1][1]</security-policies:security-policy-id>
-                    </security-control:security-policies>
-                    <security-control:additional-information>
-                      <additional-information:comment></additional-information:comment>
-                    </security-control:additional-information>
-                  </security-controls:security-control>
-      </node:security-controls>
-
-
+          <security-relationships:linked-node node-id="Cup2">
+            <linked-node:relationship-type type="Interaction" interaction-id="Cu01">
+              <linked-node:security-objectives>
+                <security-objectives:security-objective>
+                  <security-objective:self-objective objective-id="DO[1][1]"></security-objective:self-objective>
+                  <security-objective:peer-objective objective-id="DO[2][1]"></security-objective:peer-objective>
+                </security-objectives:security-objective>
+              </linked-node:security-objectives>
+            </linked-node:relationship-type>
+          </security-relationships:linked-node>
+        </node:security-relationships>
+        <node:security-policies>
+          <security-policies:security-policy policy-id="Hit-protection">
+            <security-policy:name>Cup hit protection</security-policy:name>
+            <security-policy:description> The cup must be protected from hitting against/--a other cups (or any other object) inside the box, or against the box itself, while being transported to its final destination </security-policy:description>
+            <security-policy:security-objectives>
+              <security-objectives:security-objective> DO[1][1] </security-objectives:security-objective>
+            </security-policy:security-objectives>
+          </security-policies:security-policy>
+        </node:security-policies>
+        <node:risks>
+          <risks:risk risk-id="Cup-hit">
+            <risk:name></risk:name>
+            <risk:objective-id>DO[1][1]</risk:objective-id>
+            <risk:vulnerability-id>Cup-fragility</risk:vulnerability-id>
+            <risk:threat-id>Cup-hit</risk:threat-id>
+            <risk:description>Cup 1 may break because Container or Cup 2 may hit it during transport</risk:description>
+            <risk:likelihood>High</risk:likelihood>
+            <risk:impact>Severe</risk:impact>
+            <risk:temporality>Prevention</risk:temporality>
+          </risks:risk>
+        </node:risks>
+        <node:security-objectives>
+          <security-objectives:security-objective objective-id="DO[2][1]">
+            <security-objective:name> Cup integrity </security-objective:name>
+            <security-objective:description> We want to prevent the cup from being broken while transported to its destination. </security-objective:description>
+            <security-objective:objective-type>Direct</security-objective:objective-type>
+            <security-objective:security-service> Integrity </security-objective:security-service>
+            <security-objective:temporality> Preventive </security-objective:temporality>
+          </security-objectives:security-objective>
+        </node:security-objectives>
       </model:node>
 
     </model:nodes>
