@@ -17,36 +17,19 @@ Universidad de Costa Rica
             <threat:description>Container or Cup 2 may hit Cup 1 during transport</threat:description>
             <threat:vulnerabilities>
               <vulnerabilities:vulnerability-id>Cup-fragility</vulnerabilities:vulnerability-id>
-              </threat:vulnerabilities>
+            </threat:vulnerabilities>
           </threats:threat>
 
-            <threats:threat threat-id="CUPB">
-              <threat:name>B Cup B</threat:name>
-              <threat:description>B Container B</threat:description>
-              <threat:vulnerabilities>
-                <vulnerabilities:vulnerability-id>B Cup-fragility</vulnerabilities:vulnerability-id>
-                </threat:vulnerabilities>
-                </threats:threat>
+          <threats:threat threat-id="CUPB">
+            <threat:name>B Cup B</threat:name>
+            <threat:description>B Container B</threat:description>
+            <threat:vulnerabilities>
+              <vulnerabilities:vulnerability-id>B Cup-fragility</vulnerabilities:vulnerability-id>
+            </threat:vulnerabilities>
+          </threats:threat>
+
         </node:threats>
-
-
-</model:node>
-
-<model:node node-id="Cup2">
-  <node:threats>
-    <threats:threat threat-id="Cup2-hit">
-      <threat:name>Cup2 being hit</threat:name>
-      <threat:description>Container or Cup 2 may hit Cup 1 during transport</threat:description>
-      <threat:vulnerabilities>
-        <vulnerabilities:vulnerability-id>Cup-fragility</vulnerabilities:vulnerability-id>
-        </threat:vulnerabilities>
-    </threats:threat>
-
-  </node:threats>
-
-
-</model:node>
+      </model:node>
     </model:nodes>
-
   </office:model>
 </office:document-model>

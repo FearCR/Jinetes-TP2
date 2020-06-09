@@ -643,23 +643,30 @@ def p_string(p):
     return p
 def p_error(p):
     print("Syntax error at '%s'" % p.value)
-#-------------------------------Otros-------------------------------
+#-------------------------------Otros------------------------------
 """
 #Prueba Contenedor
-test = container.Threat()
-testB = container.Threat()
-test.setAll("A1","NameA1","HereGoesDescription","Vulnerability")
-testB.setAll("B2","NameB2","B2HereGoesDescription","B2Vulnerability")
+test = container.Vulnerability()
+testB = container.Vulnerability()
+testTA = container.Threat()
+testTB = container.Threat()
+testTA.setAll("A1","NameA1","HereGoesDescription","Vulnerability")
+testTB.setAll("B2","NameB2","B2HereGoesDescription","B2Vulnerability")
 testThreats = container.Threats()
-testThreats.addThreat(test)
-testThreats.addThreat(testB)
-testThreats.printThreats()
+testThreats.addThreat(testTA)
+testThreats.addThreat(testTB)
+test.setAll("newID","newDB","newName","newReferenceSecurity","newOverview","newDescription","newImpact","newSeverity")
+testB.setAll("2newID","2newDB","2newName","2newReferenceSecurity","2newOverview","2newDescription","2newImpact","2newSeverity")
+testVulns = container.Vulnerabilities()
+testVulns.addVulnerability(test)
+testVulns.addVulnerability(testB)
+testVulns.printVulnerabilities()
 nodeTest = container.Node()
 nodeTest.setId("NODO A")
 nodeTest.setThreats(testThreats)
+nodeTest.setVulnerabilities(testVulns)
 nodeTest.printAll()
 """
-
 lexer=lex.lex()
 """
 

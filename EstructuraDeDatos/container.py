@@ -4,17 +4,23 @@ class Node:
     def __init__(self):
         self.id=""
         self.threats= Threats()
+        self.vulnerabilities= Vulnerabilities()
 #Metodos set de nodos, aqui hay que agregar un set para cada parte
     def setId(self, id):
         self.id = id
     def setThreats(self, threats):
         self.threats = threats
+    def setVulnerabilities(self, vulnerabilities):
+        self.vulnerabilities = vulnerabilities
 #Print all, hay que agregar un print para cada parte para probarla
     def printAll(self):
         print("IMPRESION DE NODO")
         print("ID NODO= "+self.id)
         print("LISTA DE THREATS:")
         self.threats.printThreats()
+        print("LISTA DE VULNERABILITIES:")
+        self.vulnerabilities.printVulnerabilities()
+
 #Clase de Lista de threats
 class Threats:
 #Inicializador
@@ -57,18 +63,64 @@ class Threat:
 #Print
     def printThreat(self):
         print(self.id,self.name, self.description,self.vulnerability)
+#Clase de Lista de threats
+class Vulnerabilities:
+#Inicializador
+    def __init__(self):
+        self.vulnerabilityList=[]
+#Agrega una nueva Threat a la lista
+    def addVulnerability(self,vulnerability):
+        self.vulnerabilityList.append(vulnerability)
+#Impresion
+    def printVulnerabilities(self):
+        for vulnerability in self.vulnerabilityList:
+            vulnerability.printVulnerability()
+#Clase Vulnerability
+class Vulnerability:
+#Inicializador, una variable por cada valor para captar
+    def __init__(self):
+        self.id=""
+        self.sourceDB=""
+        self.name=""
+        self.referenceSecurity=""
+        self.overview=""
+        self.description=""
+        self.impact=""
+        self.severity=""
+#Metodo para probar set de todos los valores no hace falta
+    def setAll(self,newID,newDB,newName,newReferenceSecurity,newOverview,newDescription,newImpact,newSeverity):
+        self.id=newID
+        self.sourceDB=newDB
+        self.name=newName
+        self.referenceSecurity=newReferenceSecurity
+        self.overview=newOverview
+        self.description=newDescription
+        self.impact=newImpact
+        self.severity=newSeverity
+#Metodos set para Threat, uno por valor por captar
+    def setId(self,newID):
+        self.id=newID
 
+    def setSourceDB(self,newDB):
+        self.sourceDB=newDB
 
-"""#Metodos para testear clases
-test = Threat()
-testB = Threat()
-test.setAll("A1","NameA1","HereGoesDescription","Vulnerability")
-testB.setAll("B2","NameB2","B2HereGoesDescription","B2Vulnerability")
-testThreats = Threats()
-testThreats.addThreat(test)
-testThreats.addThreat(testB)
-testThreats.printThreats()
-nodeTest = Node("Nodo A")
-nodeTest.setThreat(testThreats)
-nodeTest.printAll()
-"""
+    def setName(self,newName):
+        self.name=newName
+
+    def setReferenceSecurity(self,newReferenceSecurity):
+        self.referenceSecurity=newReferenceSecurity
+
+    def setOverview(self,newOverview):
+        self.overview=newOverview
+
+    def setDescription(self,newDescription):
+        self.description=newDescription
+
+    def setImpact(self,newImpact):
+        self.impact=newImpact
+
+    def setSeverity(self,newSeverity):
+        self.severity=newSeverity
+#Print
+    def printVulnerability(self):
+        print(self.id,self.sourceDB,self.name,self.referenceSecurity,self.overview,self.description,self.impact,self.severity)
