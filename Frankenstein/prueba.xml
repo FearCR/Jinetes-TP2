@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<office:document-model office:version="1.2">
+  <office:model>
+    <model:nodes>
+      <model:node node-id="Cup1">
+        <node:basic-information>
+          <basic-information:component-name>Cup</basic-information:component-name>
+          <basic-information:component-overview>Cup to be packed for transportation</basic-information:component-overview>
+          <basic-information:component-categories>
+            <component-categories:component-category category-id=""></component-categories:component-category>
+          </basic-information:component-categories>
+          <basic-information:component-intrinsical-properties>
+            <component-intrinsical-properties:color> Transparent </component-intrinsical-properties:color>
+            <component-intrinsical-properties:material> Glass </component-intrinsical-properties:material>
+            <component-intrinsical-properties:height> 15cm </component-intrinsical-properties:height>
+            <component-intrinsical-properties:weight> 30g  </component-intrinsical-properties:weight>
+          </basic-information:component-intrinsical-properties>
+          <basic-information:other-details></basic-information:other-details>
+        </node:basic-information>
+        <node:threats>
+          <threats:threat threat-id="Cup-hit">
+            <threat:name>Cup being hit</threat:name>
+            <threat:description>Container or Cup 2 may hit Cup 1 during transport</threat:description>
+            <threat:vulnerabilities>
+              <vulnerabilities:vulnerability-id>Cup-fragility</vulnerabilities:vulnerability-id>
+            </threat:vulnerabilities>
+          </threats:threat>
+
+          <threats:threat threat-id="Cup-loss">
+            <threat:name>Cup being lost/stolen</threat:name>
+            <threat:description>The cup may be taken/stolen</threat:description>
+            <threat:vulnerabilities>
+              <vulnerabilities:vulnerability-id>Cup-loss</vulnerabilities:vulnerability-id>
+            </threat:vulnerabilities>
+          </threats:threat>
+        </node:threats>
+        <node:security-relationships>
+
+          <security-relationships:linked-node node-id="Cup2">
+            <linked-node:relationship-type type="Interaction" interaction-id="Cu01">
+              <linked-node:security-objectives>
+                <security-objectives:security-objective>
+                  <security-objective:self-objective objective-id="DO[1][1]"></security-objective:self-objective>
+                  <security-objective:peer-objective objective-id="DO[2][1]"></security-objective:peer-objective>
+                </security-objectives:security-objective>
+              </linked-node:security-objectives>
+            </linked-node:relationship-type>
+          </security-relationships:linked-node>
+        </node:security-relationships>
+        <node:security-policies>
+          <security-policies:security-policy policy-id="Hit-protection">
+            <security-policy:name>Cup hit protection</security-policy:name>
+            <security-policy:description> The cup must be protected from hitting against/--a other cups (or any other object) inside the box, or against the box itself, while being transported to its final destination </security-policy:description>
+            <security-policy:security-objectives>
+              <security-objectives:security-objective> DO[1][1] </security-objectives:security-objective>
+            </security-policy:security-objectives>
+          </security-policies:security-policy>
+        </node:security-policies>
+        <node:risks>
+          <risks:risk risk-id="Cup-hit">
+            <risk:name></risk:name>
+            <risk:objective-id>DO[1][1]</risk:objective-id>
+            <risk:vulnerability-id>Cup-fragility</risk:vulnerability-id>
+            <risk:threat-id>Cup-hit</risk:threat-id>
+            <risk:description>Cup 1 may break because Container or Cup 2 may hit it during transport</risk:description>
+            <risk:likelihood>High</risk:likelihood>
+            <risk:impact>Severe</risk:impact>
+            <risk:temporality>Prevention</risk:temporality>
+          </risks:risk>
+
+          <risks:risk risk-id="Cup-loss">
+              <risk:name></risk:name>
+              <risk:objective-id>DO[1][2]</risk:objective-id>
+              <risk:vulnerability-id>Cup-loss</risk:vulnerability-id>
+              <risk:threat-id>Cup-loss</risk:threat-id>
+              <risk:description>Any cup(s) may be lost/stolen because somebody may take them out of the box</risk:description>
+              <risk:likelihood>High</risk:likelihood>
+              <risk:impact>Severe</risk:impact>
+              <risk:temporality>Prevention</risk:temporality>
+          </risks:risk>
+        </node:risks>
+        <node:security-objectives>
+          <security-objectives:security-objective objective-id="DO[1][1]">
+            <security-objective:name> Cup integrity </security-objective:name>
+            <security-objective:description> We want to prevent the cup from being broken while transported to its destination. </security-objective:description>
+            <security-objective:objective-type>Direct</security-objective:objective-type>
+            <security-objective:security-service> Integrity </security-objective:security-service>
+            <security-objective:temporality> Preventive </security-objective:temporality>
+          </security-objectives:security-objective>
+
+          <security-objectives:security-objective objective-id="DO[1][2]">
+            <security-objective:name> Cup availability </security-objective:name>
+            <security-objective:description> We want to prevent the cup from being lost while transported to its destination. </security-objective:description>
+            <security-objective:objective-type>Direct</security-objective:objective-type>
+            <security-objective:security-service> Availability </security-objective:security-service>
+            <security-objective:temporality> Preventive </security-objective:temporality>
+          </security-objectives:security-objective>
+        </node:security-objectives>
+      </model:node>
+
+    </model:nodes>
+
+  </office:model>
+</office:document-model>
