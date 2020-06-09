@@ -648,6 +648,12 @@ def p_error(p):
 #Prueba Contenedor
 test = container.Vulnerability()
 testB = container.Vulnerability()
+test.setAll("newID","newDB","newName","newReferenceSecurity","newOverview","newDescription","newImpact","newSeverity")
+testB.setAll("2newID","2newDB","2newName","2newReferenceSecurity","2newOverview","2newDescription","2newImpact","2newSeverity")
+testVulns = container.Vulnerabilities()
+testVulns.addVulnerability(test)
+testVulns.addVulnerability(testB)
+
 testTA = container.Threat()
 testTB = container.Threat()
 testTA.setAll("A1","NameA1","HereGoesDescription","Vulnerability")
@@ -655,21 +661,25 @@ testTB.setAll("B2","NameB2","B2HereGoesDescription","B2Vulnerability")
 testThreats = container.Threats()
 testThreats.addThreat(testTA)
 testThreats.addThreat(testTB)
-test.setAll("newID","newDB","newName","newReferenceSecurity","newOverview","newDescription","newImpact","newSeverity")
-testB.setAll("2newID","2newDB","2newName","2newReferenceSecurity","2newOverview","2newDescription","2newImpact","2newSeverity")
-testVulns = container.Vulnerabilities()
-testVulns.addVulnerability(test)
-testVulns.addVulnerability(testB)
-testVulns.printVulnerabilities()
+
+testSC = container.Security_Control()
+testSCB = container.Security_Control()
+testSC.setAll("newID","newName","newDescription","newSecurityPolicyID")
+testSCB.setAll("2newID","2newName","2newDescription","2newSecurityPolicyID")
+testSCS = container.Security_Controls()
+testSCS.addSecurity_Control(testSC)
+testSCS.addSecurity_Control(testSCB)
+
 nodeTest = container.Node()
 nodeTest.setId("NODO A")
 nodeTest.setThreats(testThreats)
 nodeTest.setVulnerabilities(testVulns)
+nodeTest.setSecurity_Controls(testSCS)
 nodeTest.printAll()
 """
 lexer=lex.lex()
-"""
 
+"""
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
 file = open('prueba.xml','r')
 count = 0
@@ -688,10 +698,11 @@ file.close()
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
 
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
-"""
+
 with open('prueba.xml','r') as myfile:
     data=myfile.read()
 
 parser=yacc.yacc()
 parser.parse(data)
-#print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
+print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
+"""
