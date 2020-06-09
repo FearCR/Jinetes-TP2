@@ -46,6 +46,31 @@ Universidad de Costa Rica
             </security-controls:security-control>
           </node:security-controls>
 
+          <node:vulnerabilities>
+            <vulnerabilities:vulnerability vunerability-id="Cup-fragility" source-database="None">
+              <vulnerability:name> Fragility </vulnerability:name>
+              <vulnerability:reference-security-services>
+                <reference-security-services:reference-security-service> Integrity </reference-security-services:reference-security-service>
+              </vulnerability:reference-security-services>
+              <vulnerability:overview>The cup is fragile</vulnerability:overview>
+              <vulnerability:description> If the cup is hit, it could break</vulnerability:description>
+              <vulnerability:impact> The cup could break </vulnerability:impact>
+              <vulnerability:severity> High </vulnerability:severity>
+            </vulnerabilities:vulnerability>
+
+            <vulnerabilities:vulnerability vunerability-id="Cup-loss">
+              <vulnerability:name> Loss </vulnerability:name>
+              <vulnerability:reference-security-services>
+                <reference-security-services:reference-security-service> Availability </reference-security-services:reference-security-service>
+              </vulnerability:reference-security-services>
+              <vulnerability:overview>The cup may be lost/stolen</vulnerability:overview>
+              <vulnerability:description> The cup could be taken by someone, or it could be lost in transit</vulnerability:description>
+              <vulnerability:impact> The cup could be lost/stolen </vulnerability:impact>
+              <vulnerability:severity> High </vulnerability:severity>
+            </vulnerabilities:vulnerability>
+
+          </node:vulnerabilities>
+
 
       </model:node>
     </model:nodes>

@@ -134,7 +134,7 @@ t_ADDITIONAL_INFO_CLOSE = r'</additional-information:comment>'
 #VULNERABILITY
 t_VULNERABILITIES_OPEN       = r'<node:vulnerabilities>'
 t_VULNERABILITIES_CLOSE      = r'</node:vulnerabilities>'
-t_VULNERABILITY_OPEN         = r'<vulnerabilities:vulnerability\svunerability-id=\"[a-zA-Z0-9_\s,./-]+\">'
+t_VULNERABILITY_OPEN         = r'<vulnerabilities:vulnerability\svunerability-id=\"[a-zA-Z0-9_\s,./-]+\"(\ssource-database=\"[a-zA-Z0-9_\s,./-]+\")*>'
 t_VULNERABILITY_CLOSE        = r'</vulnerabilities:vulnerability>'
 t_VULN_NAME_OPEN             = r'<vulnerability:name>'
 t_VULN_NAME_CLOSE            = r'</vulnerability:name>'
@@ -237,6 +237,9 @@ def p_model_node(p):
     #Si no, se verifica si se tiene una lista de Threats y se actualiza la instancia de Nodo
     elif p[1][0]=="listaThreats":
         p[2].setThreats(p[1][1])
+        p[0]=p[2]
+    elif p[1][0]=="listaVuln":
+        p[2].setVulnerabilities(p[1][1])
         p[0]=p[2]
     return
 #-------------------------------inicio del documento-------------------------------
@@ -527,6 +530,19 @@ def p_vulnerabilities(p):
                     | vulnerability vulnerabilities
                     | VULNERABILITIES_CLOSE
     '''
+    #Si se llega al final de Threats, se crea una nueva Lista de Threats
+    if p[1] == "</node:vulnerabilities>":
+        newVulnerabilities=container.Vulnerabilities()
+        p[0]=newVulnerabilities
+    #Si se encuentra un Threat, se agrega a la lista
+    elif p[1][0]=="vulnerability":
+         p[2].addVulnerability(p[1][1])
+         p[0]=p[2]
+    #Si se llega al final, se pasa la Lista al nivel superior.
+    elif p[1] == "<node:vulnerabilities>":
+        p[0]=("listaVuln",p[2])
+        print("AGREGANDO NUEVA LISTA VULNERABILITIES")
+        p[0][1].printVulnerabilities()
     return
 def p_vulnerability(p):
     '''
@@ -540,51 +556,101 @@ def p_vulnerability(p):
                   | vulnerability_additionalInfo vulnerability
                   | VULNERABILITY_CLOSE
     '''
+    if p[1]=="</vulnerabilities:vulnerability>":
+        newVulnerability = container.Vulnerability()
+        p[0]= newVulnerability
+        print("CREA VUL")
+    elif p[1][0]=="vulSeveriy":
+        p[2].setSeverity(p[1][1])
+        p[0]=p[2]
+    elif p[1][0]=="vulImpact":
+        p[2].setImpact(p[1][1])
+        p[0]=p[2]
+    elif p[1][0]=="vulDesc":
+        p[2].setDescription(p[1][1])
+        p[0]=p[2]
+    elif p[1][0]=="vulOverview":
+        p[2].setOverview(p[1][1])
+        p[0]=p[2]
+    elif p[1][0]=="refSecurity":
+        p[2].setReferenceSecurity(p[1][1])
+        p[0]=p[2]
+    elif p[1][0]=="vulName":
+        p[2].setName(p[1][1])
+        p[0]=p[2]
+    elif "=" in p[1]:
+        array = p[1].split("\"")
+        print(array)
+        print(len(array))
+        p[2].setId(array[1])
+        if len(array)== 5:
+            p[2].setSourceDB(array[3])
+        else:
+            p[2].setSourceDB("Not Provided")
+        p[0]=("vulnerability",p[2])
+        print("AGREGANDO NUEVA VULNERABILITY")
+        p[0][1].printVulnerability()
+    else:
+        p[0]=p[2]
     return
 def p_vulnerability_refSecurity(p):
     '''
     vulnerability_refSecurity : VULN_REFERENCE_OPEN vulnerability_refSecurity
-                              | refSecurity
+                              | refSecurity vulnerability_refSecurity
                               | VULN_REFERENCE_CLOSE
     '''
-    print("Captura Security reference")
+    if p[1][0] == "refSecurity":
+        p[0]=p[1]
+    if p[1] == "<vulnerability:reference-security-services>":
+        p[0]=p[2]
     return
 def p_vulnerability_additionalInfo(p):
     '''
     vulnerability_additionalInfo : VULN_ADDITIONAL_INFO_OPEN ADDITIONAL_INFO_OPEN  ADDITIONAL_INFO_CLOSE VULN_ADDITIONAL_INFO_CLOSE
     '''
-    print("Captura additionalInfoVUlnerability")
     return
+
 def p_vulnerability_name(p):
     '''
     vulnerability_name : VULN_NAME_OPEN str VULN_NAME_CLOSE
     '''
+    p[0]=("vulName",p[2])
     return
+
 def p_refSecurity(p):
     '''
     refSecurity : REF_SECURITY_OPEN str REF_SECURITY_CLOSE
     '''
+    p[0]=("refSecurity",p[2])
     return
+
 def p_vulnerability_overview(p):
     '''
     vulnerability_overview : VULN_OVERVIEW_OPEN str VULN_OVERVIEW_CLOSE
     '''
+    p[0]=("vulOverview",p[2])
     return
+
 def p_vulnerability_description(p):
     '''
     vulnerability_description : VULN_DESCRIPTION_OPEN str VULN_DESCRIPTION_CLOSE
     '''
+    p[0]=("vulDesc",p[2])
     return
+
 def p_vulnerability_impact(p):
     '''
     vulnerability_impact : VULN_IMPACT_OPEN str VULN_IMPACT_CLOSE
     '''
-
+    p[0]=("vulImpact",p[2])
     return
+
 def p_vulnerability_severity(p):
     '''
     vulnerability_severity : VULN_SEVERITY_OPEN str VULN_SEVERITY_CLOSE
     '''
+    print("LLEGA FONDO SEVERITY")
+    p[0]=("vulSeveriy",p[2])
     return
 #------------------------------------------Vulnerabilities------------------------------
 
