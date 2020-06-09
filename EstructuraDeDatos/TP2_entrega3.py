@@ -231,6 +231,9 @@ def p_model_node(p):
         p[0]=p[2]
         p[0].printAll()
         print("\n\n\n")
+    elif p[1][0]=="listaSControls":
+        p[2].setSecurity_Controls(p[1][1])
+        p[0]=p[2]
     #Si no, se verifica si se tiene una lista de Threats y se actualiza la instancia de Nodo
     elif p[1][0]=="listaThreats":
         p[2].setThreats(p[1][1])
@@ -592,6 +595,20 @@ def p_security_controls(p):
                       | security_control security_controls
                       | SECURITY_CONTROLS_CLOSE
     '''
+    #Si se llega al final de Threats, se crea una nueva Lista de Threats
+    if p[1] == "</node:security-controls>":
+        newsControls=container.Security_Controls()
+        p[0]=newsControls
+    #Si se encuentra un Threat, se agrega a la lista
+    elif p[1][0]=="sControl":
+         p[2].addSecurity_Control(p[1][1])
+         p[0]=p[2]
+    #Si se llega al final, se pasa la Lista al nivel superior.
+    elif p[1] == "<node:security-controls>":
+        p[0]=("listaSControls",p[2])
+        print("AGREGANDO NUEVA LISTA SECURITY CONTROLS")
+        p[0][1].printSecurity_Controls()
+    return
 def p_security_control(p):
     '''
     security_control : SECURITY_CONTROL_OPEN security_control
@@ -601,28 +618,61 @@ def p_security_control(p):
                      | securityControl_additionalInfo security_control
                      | SECURITY_CONTROL_CLOSE
     '''
+    if p[1]=="</security-controls:security-control>":
+        newSControl = container.Security_Control()
+        p[0]= newSControl
+    elif p[1][0]=="polID":
+        p[2].setSecurityPolicyID(p[1][1])
+        p[0]=p[2]
+    elif p[1][0]=="polDesc":
+        p[2].setDescription(p[1][1])
+        p[0]=p[2]
+    elif p[1][0]=="polName":
+        p[2].setName(p[1][1])
+        p[0]=p[2]
+    elif "=" in p[1]:
+        array = p[1].split("\"")
+        p[2].setId(array[1])
+        p[0]=("sControl",p[2])
+        print("AGREGANDO NUEVO SECURITY CONTROL")
+        p[0][1].printSecurity_Control()
+    else:
+        p[0]=p[2]
+    return
 def p_sec_policies(p):
     '''
     sec_policies : SECCONT_SECURITY_POLICIES_OPEN sec_policies
-                 | security_policyID
+                 | security_policyID sec_policies
                  | SECCONT_SECURITY_POLICIES_CLOSE
     '''
+    if p[1][0] == "polID":
+        p[0]=p[1]
+    if p[1] == "<security-control:security-policies>":
+        p[0]=p[2]
+    return
 def p_securityControl_additionalInfo(p):
     '''
     securityControl_additionalInfo : SECCONT_ADDITIONAL_INFO_OPEN ADDITIONAL_INFO_OPEN ADDITIONAL_INFO_CLOSE SECCONT_ADDITIONAL_INFO_CLOSE
     '''
+    return
 def p_security_control_name(p):
     '''
     security_control_name : SECCONT_NAME_OPEN str SECCONT_NAME_CLOSE
     '''
+    p[0]=("polName",p[2])
+    return
 def p_security_control_description(p):
     '''
     security_control_description : SECCONT_DESCRIPTION_OPEN str SECCONT_DESCRIPTION_CLOSE
     '''
+    p[0]=("polDesc",p[2])
+    return
 def p_security_policyID(p):
     '''
     security_policyID : SECPOLICY_ID_OPEN str SECPOLICY_ID_CLOSE
     '''
+    p[0]=("polID",p[2])
+    return
 #------------------------------------------Security Controls------------------------------
 
 
@@ -696,7 +746,7 @@ for line in file:
         break
 file.close()
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
-
+"""
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
 
 with open('prueba.xml','r') as myfile:
@@ -705,4 +755,3 @@ with open('prueba.xml','r') as myfile:
 parser=yacc.yacc()
 parser.parse(data)
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
-"""
