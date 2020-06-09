@@ -11,6 +11,16 @@ Universidad de Costa Rica
     <model:nodes>
 
       <model:node node-id="Cup1">
+        <node:basic-information>
+          <basic-information:component-name>Cup</basic-information:component-name>
+          <basic-information:component-overview>Cup to be packed for transportation</basic-information:component-overview>
+          <basic-information:component-intrinsical-properties>
+            <component-intrinsical-properties:color> Transparent </component-intrinsical-properties:color>
+            <component-intrinsical-properties:material> Glass </component-intrinsical-properties:material>
+            <component-intrinsical-properties:height> 15cm </component-intrinsical-properties:height>
+            <component-intrinsical-properties:weight> 30g  </component-intrinsical-properties:weight>
+          </basic-information:component-intrinsical-properties>
+        </node:basic-information>
         <node:threats>
           <threats:threat threat-id="Cup-hit">
             <threat:name>Cup being hit</threat:name>

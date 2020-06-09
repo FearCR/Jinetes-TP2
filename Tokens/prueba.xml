@@ -1,6 +1,0 @@
-<vulnerability:name> Loss </vulnerability:name>
-			  <reference-security-services:reference-security-service> Availability </reference-security-services:reference-security-service>
-              <vulnerability:overview>The cup may be lost/stolen</vulnerability:overview>
-              <vulnerability:description> The cup could be taken by someone, or it could be lost in transit</vulnerability:description>
-              <vulnerability:impact> The cup could be lost/stolen </vulnerability:impact>
-              <vulnerability:severity> High </vulnerability:severity>

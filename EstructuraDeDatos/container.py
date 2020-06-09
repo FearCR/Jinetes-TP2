@@ -6,6 +6,7 @@ class Node:
         self.threats= Threats()
         self.vulnerabilities= Vulnerabilities()
         self.security_Controls= Security_Controls()
+        self.basic_Information= Basic_Information()
 #Metodos set de nodos, aqui hay que agregar un set para cada parte
     def setId(self, id):
         self.id = id
@@ -15,16 +16,21 @@ class Node:
         self.vulnerabilities = vulnerabilities
     def setSecurity_Controls(self, security_controls):
         self.security_Controls = security_controls
+    def setBasic_Information(self, basic_information):
+        self.basic_Information = basic_Information
 #Print all, hay que agregar un print para cada parte para probarla
     def printAll(self):
         print("IMPRESION DE NODO")
         print("ID NODO= "+self.id)
+        #print("LISTA DE BASIC INFORMATION:")
+        #self.basic_Information.printBasic_Information()
         print("LISTA DE THREATS:")
         self.threats.printThreats()
         print("LISTA DE VULNERABILITIES:")
         self.vulnerabilities.printVulnerabilities()
         print("LISTA DE SECURITY CONTROL:")
         self.security_Controls.printSecurity_Controls()
+
 #------------------Clase NODO-------------------------------------
 #--------------------Clase de Lista de THREATS---------------------
 class Threats:
@@ -178,3 +184,27 @@ class Security_Control:
     def printSecurity_Control(self):
         print(self.id,self.name,self.description,self.securityPolicyID)
 #-----------------------Clase SECURITY CONTROL-----------------------------
+#-----------------------Clase BASIC INFORMATION-----------------------------
+class Basic_Information:
+#Inicializador, una variable por cada valor para captar
+    def __init__(self):
+        self.name=""
+        self.overview=""
+        self.intrinsical_propertiesList=[]
+
+#Metodo para probar set de todos los valores no hace falta
+    def setAll(self,newID,newName,newDescription,newSecurityPolicyID):
+        self.name=newName
+        self.overview=newDescription
+
+#Metodos set para BASIC INFORMATION, uno por valor por captarD
+    def setName(self,newName):
+        self.name=newName
+
+    def setOverview(self,newOverview):
+        self.overview=newOverview
+
+#Print
+    def printBasic_Information(self):
+        print(self.name,self.overview)
+#-----------------------Clase BASIC INFORMATION-----------------------------

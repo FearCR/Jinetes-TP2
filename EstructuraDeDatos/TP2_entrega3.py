@@ -10,11 +10,9 @@ tokens=[
     'MODEL_NODE_CLOSE',
     #BASIC INFO
     'BASIC_INFORMATION_OPEN','BASIC_INFORMATION_CLOSE','COMPONENT_NAME_OPEN','COMPONENT_NAME_CLOSE',
-    'COMPONENT_OVERVIEW_OPEN','COMPONENT_OVERVIEW_CLOSE','COMPONENT_CATEGORIES_OPEN','COMPONENT_CATEGORIES_CLOSE',
-    'COMPONENT_CATEGORY_OPEN','COMPONENT_CATEGORY_CLOSE','INTRINSICAL_PROPERTIES_OPEN','INTRINSICAL_PROPERTIES_CLOSE',
+    'COMPONENT_OVERVIEW_OPEN','COMPONENT_OVERVIEW_CLOSE','INTRINSICAL_PROPERTIES_OPEN','INTRINSICAL_PROPERTIES_CLOSE',
     'PROPERTIES_COLOR_OPEN','PROPERTIES_COLOR_CLOSE','PROPERTIES_MATERIAL_OPEN','PROPERTIES_MATERIAL_CLOSE',
     'PROPERTIES_HEIGHT_OPEN','PROPERTIES_HEIGHT_CLOSE','PROPERTIES_WEIGHT_OPEN','PROPERTIES_WEIGHT_CLOSE',
-    'PROPERTIES_OTHER_OPEN','PROPERTIES_OTHER_CLOSE',
     #THREATS
     'THREATS_OPEN','THREATS_CLOSE','THREAT_OPEN','THREAT_CLOSE','THREAT_NAME_OPEN','THREAT_NAME_CLOSE',
     'THREAT_DESCRIPTION_OPEN','THREAT_DESCRIPTION_CLOSE','THREAT_VULNERABILITIES_OPEN','THREAT_VULNERABILITIES_CLOSE',
@@ -65,10 +63,6 @@ t_COMPONENT_NAME_OPEN=r'<basic-information:component-name>'
 t_COMPONENT_NAME_CLOSE=r'</basic-information:component-name>'
 t_COMPONENT_OVERVIEW_OPEN=r'<basic-information:component-overview>'
 t_COMPONENT_OVERVIEW_CLOSE=r'</basic-information:component-overview>'
-t_COMPONENT_CATEGORIES_OPEN=r'<basic-information:component-categories>'
-t_COMPONENT_CATEGORIES_CLOSE=r'</basic-information:component-categories>'
-t_COMPONENT_CATEGORY_OPEN=r'<component-categories:component-category\scategory-id="[a-zA-Z0-9_\s,./]*">'
-t_COMPONENT_CATEGORY_CLOSE=r'</component-categories:component-category>'
 t_INTRINSICAL_PROPERTIES_OPEN=r'<basic-information:component-intrinsical-properties>'
 t_INTRINSICAL_PROPERTIES_CLOSE=r'</basic-information:component-intrinsical-properties>'
 t_PROPERTIES_COLOR_OPEN=r'<component-intrinsical-properties:color>'
@@ -79,8 +73,7 @@ t_PROPERTIES_HEIGHT_OPEN=r'<component-intrinsical-properties:height>'
 t_PROPERTIES_HEIGHT_CLOSE=r'</component-intrinsical-properties:height>'
 t_PROPERTIES_WEIGHT_OPEN=r'<component-intrinsical-properties:weight>'
 t_PROPERTIES_WEIGHT_CLOSE=r'</component-intrinsical-properties:weight>'
-t_PROPERTIES_OTHER_OPEN=r'<basic-information:other-details>'
-t_PROPERTIES_OTHER_CLOSE=r'</basic-information:other-details>'
+
 #THREATS
 t_THREATS_OPEN=r'<node:threats>'
 t_THREATS_CLOSE=r'</node:threats>'
@@ -245,24 +238,31 @@ def p_model_node(p):
 #-------------------------------inicio del documento-------------------------------
 
 #-------------------------------Basic information-------------------------------
-#adentro tiene todo basic information, nombre overvier categorias propiedades y otros detalles
+#adentro tiene todo basic information, nombre overview categorias propiedades y otros detalles
 def p_basic_information(p):
     '''
     basic_info : BASIC_INFORMATION_OPEN basic_info
                | component_name basic_info
                | component_overview basic_info
-               | component_categories basic_info
                | intrinsical_properties basic_info
-               | other_details basic_info
                | BASIC_INFORMATION_CLOSE
     '''
+    print(p[1])
+    if p[1] == "</node:basic-information>":
+        newsBasic=container.Basic_Information()
+        p[0]=newsBasic
+        #Si se llega al final, se pasa la Lista al nivel superior.
+    elif p[1] == "<node:basic-information>":
+        p[0]=("listaBasic",p[2])
+        print("AGREGANDO NUEVO BASIC INFOTMATION")
     return
 # contiene string dentro
 def p_component_name(p):
     '''
     component_name : COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
     '''
-    return
+    p[0]=("name",p[2])
+    return p
 #adentro tiene intrinsical properties
 def p_intrinsical_properties(p):
     '''
@@ -273,57 +273,47 @@ def p_intrinsical_properties(p):
                            | properties_weight intrinsical_properties
                            | INTRINSICAL_PROPERTIES_CLOSE
     '''
+    if p[1] == "<basic-information:component-intrinsical-properties>":
+        p[0]=("hola","adios")
     return
-#adentro tiene component_category
-def p_component_categories(p):
-    '''
-    component_categories : COMPONENT_CATEGORIES_OPEN component_categories
-                         | component_category component_categories
-                         | COMPONENT_CATEGORIES_CLOSE
-    '''
-    return
+
 
 #contiene str dentro
 def p_component_overview(p):
     '''
     component_overview : COMPONENT_OVERVIEW_OPEN str COMPONENT_OVERVIEW_CLOSE
     '''
+    p[0]=("overview",p[2])
     return
-#contiene string dentro
-def p_other_details(p):
-    '''
-    other_details : PROPERTIES_OTHER_OPEN PROPERTIES_OTHER_CLOSE
-    '''
-    return
-#contiene string dentro
-def p_component_category(p):
-    '''
-    component_category : COMPONENT_CATEGORY_OPEN COMPONENT_CATEGORY_CLOSE
-    '''
-    return
+
+
 #contiene string dentro
 def p_properties_color(p):
     '''
     properties_color : PROPERTIES_COLOR_OPEN str PROPERTIES_COLOR_CLOSE
     '''
+    p[0]=("color",p[2])
     return
 #contiene string dentro
 def p_properties_material(p):
     '''
     properties_material : PROPERTIES_MATERIAL_OPEN str PROPERTIES_MATERIAL_CLOSE
     '''
+    p[0]=("material",p[2])
     return
 #contiene str dentro
 def p_properties_height(p):
     '''
     properties_height : PROPERTIES_HEIGHT_OPEN str PROPERTIES_HEIGHT_CLOSE
     '''
+    p[0]=("height",p[2])
     return
 #contiene string dentro
 def p_properties_weight(p):
     '''
     properties_weight : PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
     '''
+    p[0]=("weight",p[2])
     return
 #-------------------------------Basic information-------------------------------
 
