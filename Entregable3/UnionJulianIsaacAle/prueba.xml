@@ -46,6 +46,7 @@
             </linked-node:relationship-type>
           </security-relationships:linked-node>
         </node:security-relationships>
+        
         <node:security-policies>
           <security-policies:security-policy policy-id="Hit-protection">
             <security-policy:name>Cup hit protection</security-policy:name>
@@ -55,6 +56,7 @@
             </security-policy:security-objectives>
           </security-policies:security-policy>
         </node:security-policies>
+       
         <node:risks>
           <risks:risk risk-id="Cup-hit">
             <risk:name></risk:name>

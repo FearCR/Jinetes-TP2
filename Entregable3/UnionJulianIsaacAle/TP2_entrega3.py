@@ -461,26 +461,38 @@ def p_threat_vulnerability(p):
 #------------------------------Security Policies------------------------------------
 def p_structure_security_policies(t):
 	'''
-	structure_security_policies : SECURITY_POLICIES_OPEN security_policies SECURITY_POLICIES_CLOSE
+	structure_security_policies : security_policies
 	'''
-	print(1)
+	t[1].print_security_policies()
 	return
 
-#S -> A S
-#S ->
 def p_security_policies(t):
 	'''
-	security_policies : security_policy security_policies
-					  |
+	security_policies : SECURITY_POLICIES_OPEN security_policies
+					  | security_policy security_policies
+					  | SECURITY_POLICIES_CLOSE
 	'''
-	print(2)
+	if t[1] == "</node:security-policies>":
+		security_policies_list = container.security_policies()
+		t[0] = security_policies_list
+	else:
+		if t[1] != "<node:security-policies>":
+			t[2].add_security_policie(t[1])
+			t[0] = t[2]
+		else:
+			t[0] = t[2]
 	return
 
 def p_security_policy(t):
 	'''
 	security_policy : SECURITY_POLICY_OPEN ID GENERAL_CLOSE POLICY_NAME_OPEN STRING POLICY_NAME_CLOSE POLICY_DESCRIPTION_OPEN STRING POLICY_DESCRIPTION_CLOSE security_objectives_SP SECURITY_POLICY_CLOSE
 	'''
-	print(3)
+	security_policy = container.security_policy()
+	t[0] = security_policy
+	t[0].set_id(t[2])
+	t[0].set_name(t[5])
+	t[0].set_description(t[8])
+	t[0].set_objective(t[10])
 	return
 
 
@@ -488,14 +500,13 @@ def p_security_objectives_SP(t):
 	'''
 	security_objectives_SP : SP_OBJECTIVES_OPEN SECURITY_OBJECTIVE_OPEN STRING SECUOBJ_OBJ_CLOSE SP_OBJECTIVES_CLOSE
 	'''
-	print(4)
+	t[0] = t[3]
 	return
 
 def p_additional_info_SP(t):
 	'''
 	additional_info_SP : SP_ADDITIONAL_INFORMATION_OPEN ADDITIONAL_INFO_OPEN ADDITIONAL_INFO_CLOSE SP_ADDITIONAL_INFORMATION_CLOSE
 	'''
-	print(5)
 	return
 #-------------------------------Security Policies-----------------------------
 
