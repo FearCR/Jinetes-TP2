@@ -17,13 +17,13 @@ class Node:
     def setSecurity_Controls(self, security_controls):
         self.security_Controls = security_controls
     def setBasic_Information(self, basic_information):
-        self.basic_Information = basic_Information
+        self.basic_Information = basic_information
 #Print all, hay que agregar un print para cada parte para probarla
     def printAll(self):
         print("IMPRESION DE NODO")
         print("ID NODO= "+self.id)
-        #print("LISTA DE BASIC INFORMATION:")
-        #self.basic_Information.printBasic_Information()
+        print("LISTA DE BASIC INFORMATION:")
+        self.basic_Information.printBasic_Information()
         print("LISTA DE THREATS:")
         self.threats.printThreats()
         print("LISTA DE VULNERABILITIES:")
@@ -184,18 +184,15 @@ class Security_Control:
     def printSecurity_Control(self):
         print(self.id,self.name,self.description,self.securityPolicyID)
 #-----------------------Clase SECURITY CONTROL-----------------------------
+
 #-----------------------Clase BASIC INFORMATION-----------------------------
 class Basic_Information:
 #Inicializador, una variable por cada valor para captar
     def __init__(self):
         self.name=""
         self.overview=""
-        self.intrinsical_propertiesList=[]
+        self.properties=[]
 
-#Metodo para probar set de todos los valores no hace falta
-    def setAll(self,newID,newName,newDescription,newSecurityPolicyID):
-        self.name=newName
-        self.overview=newDescription
 
 #Metodos set para BASIC INFORMATION, uno por valor por captarD
     def setName(self,newName):
@@ -203,8 +200,12 @@ class Basic_Information:
 
     def setOverview(self,newOverview):
         self.overview=newOverview
+    def setProperties(self,list):
+        for x in range(len(list)):
+            self.properties.append(list[x])
+
 
 #Print
     def printBasic_Information(self):
-        print(self.name,self.overview)
+        print(self.name,self.overview, self.properties)
 #-----------------------Clase BASIC INFORMATION-----------------------------

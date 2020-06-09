@@ -234,6 +234,9 @@ def p_model_node(p):
     elif p[1][0]=="listaVuln":
         p[2].setVulnerabilities(p[1][1])
         p[0]=p[2]
+    elif p[1][0]=="listaBasic":
+        p[2].setBasic_Information(p[1][1])
+        p[0]=p[2]
     return
 #-------------------------------inicio del documento-------------------------------
 
@@ -251,6 +254,15 @@ def p_basic_information(p):
     if p[1] == "</node:basic-information>":
         newsBasic=container.Basic_Information()
         p[0]=newsBasic
+    elif p[1][0] == "name":
+        p[2].setName(p[1][1])
+        p[0]=p[2]
+    elif p[1][0] == "overview":
+        p[2].setOverview(p[1][1])
+        p[0]=p[2]
+    elif p[1][0] == "properties":
+        p[2].setProperties(p[1])
+        p[0]=p[2]
         #Si se llega al final, se pasa la Lista al nivel superior.
     elif p[1] == "<node:basic-information>":
         p[0]=("listaBasic",p[2])
@@ -262,7 +274,7 @@ def p_component_name(p):
     component_name : COMPONENT_NAME_OPEN str COMPONENT_NAME_CLOSE
     '''
     p[0]=("name",p[2])
-    return p
+    return
 #adentro tiene intrinsical properties
 def p_intrinsical_properties(p):
     '''
@@ -273,8 +285,24 @@ def p_intrinsical_properties(p):
                            | properties_weight intrinsical_properties
                            | INTRINSICAL_PROPERTIES_CLOSE
     '''
-    if p[1] == "<basic-information:component-intrinsical-properties>":
-        p[0]=("hola","adios")
+    if p[1] == "</basic-information:component-intrinsical-properties>":
+        p[0]=[]
+        p[0].append("properties")
+    elif p[1][0] == "color":
+        p[2].append(p[1])
+        p[0]=p[2]
+    elif p[1][0] == "material":
+        p[2].append(p[1])
+        p[0]=p[2]
+    elif p[1][0] == "height":
+        p[2].append(p[1])
+        p[0]=p[2]
+    elif p[1][0] == "weight":
+        p[2].append(p[1])
+        p[0]=p[2]
+    elif p[1] == "<basic-information:component-intrinsical-properties>":
+        p[0]=p[2]
+        print("Enviando propiedades")
     return
 
 
