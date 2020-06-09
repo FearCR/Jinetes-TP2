@@ -4,7 +4,6 @@ Autores: Bryan Ulate, Ricardo Villalón
 Unidad:  CITIC
 Universidad de Costa Rica
 -->
-<!--asdasd-->
 <office:document-model office:version="1.2">
   <office:model>
 
@@ -19,6 +18,10 @@ Universidad de Costa Rica
             <component-intrinsical-properties:material> Glass </component-intrinsical-properties:material>
             <component-intrinsical-properties:height> 15cm </component-intrinsical-properties:height>
             <component-intrinsical-properties:weight> 30g  </component-intrinsical-properties:weight>
+            <component-intrinsical-properties:count> 1 </component-intrinsical-properties:count>
+            <component-intrinsical-properties:property> Slightly shock absorbing </component-intrinsical-properties:property>
+            <component-intrinsical-properties:property> Succeptible to water </component-intrinsical-properties:property>
+              <component-intrinsical-properties:fragility> Rigid </component-intrinsical-properties:fragility>
           </basic-information:component-intrinsical-properties>
         </node:basic-information>
         <node:threats>

@@ -13,6 +13,8 @@ tokens=[
     'COMPONENT_OVERVIEW_OPEN','COMPONENT_OVERVIEW_CLOSE','INTRINSICAL_PROPERTIES_OPEN','INTRINSICAL_PROPERTIES_CLOSE',
     'PROPERTIES_COLOR_OPEN','PROPERTIES_COLOR_CLOSE','PROPERTIES_MATERIAL_OPEN','PROPERTIES_MATERIAL_CLOSE',
     'PROPERTIES_HEIGHT_OPEN','PROPERTIES_HEIGHT_CLOSE','PROPERTIES_WEIGHT_OPEN','PROPERTIES_WEIGHT_CLOSE',
+    'PROPERTIES_COUNT_OPEN','PROPERTIES_COUNT_CLOSE','PROPERTIES_FRAGILITY_OPEN','PROPERTIES_FRAGILITY_CLOSE',
+    'PROPERTIES_PROPERTY_OPEN','PROPERTIES_PROPERTY_CLOSE',
     #THREATS
     'THREATS_OPEN','THREATS_CLOSE','THREAT_OPEN','THREAT_CLOSE','THREAT_NAME_OPEN','THREAT_NAME_CLOSE',
     'THREAT_DESCRIPTION_OPEN','THREAT_DESCRIPTION_CLOSE','THREAT_VULNERABILITIES_OPEN','THREAT_VULNERABILITIES_CLOSE',
@@ -73,6 +75,12 @@ t_PROPERTIES_HEIGHT_OPEN=r'<component-intrinsical-properties:height>'
 t_PROPERTIES_HEIGHT_CLOSE=r'</component-intrinsical-properties:height>'
 t_PROPERTIES_WEIGHT_OPEN=r'<component-intrinsical-properties:weight>'
 t_PROPERTIES_WEIGHT_CLOSE=r'</component-intrinsical-properties:weight>'
+t_PROPERTIES_COUNT_OPEN=r'<component-intrinsical-properties:count>'
+t_PROPERTIES_COUNT_CLOSE=r'</component-intrinsical-properties:count>'
+t_PROPERTIES_FRAGILITY_OPEN=r'<component-intrinsical-properties:fragility>'
+t_PROPERTIES_FRAGILITY_CLOSE=r'</component-intrinsical-properties:fragility>'
+t_PROPERTIES_PROPERTY_OPEN=r'<component-intrinsical-properties:property>'
+t_PROPERTIES_PROPERTY_CLOSE=r'</component-intrinsical-properties:property>'
 
 #THREATS
 t_THREATS_OPEN=r'<node:threats>'
@@ -283,6 +291,9 @@ def p_intrinsical_properties(p):
                            | properties_material intrinsical_properties
                            | properties_height intrinsical_properties
                            | properties_weight intrinsical_properties
+                           | properties_count intrinsical_properties
+                           | properties_fragility intrinsical_properties
+                           | properties_property intrinsical_properties
                            | INTRINSICAL_PROPERTIES_CLOSE
     '''
     if p[1] == "</basic-information:component-intrinsical-properties>":
@@ -298,6 +309,15 @@ def p_intrinsical_properties(p):
         p[2].append(p[1])
         p[0]=p[2]
     elif p[1][0] == "weight":
+        p[2].append(p[1])
+        p[0]=p[2]
+    elif p[1][0] == "count":
+        p[2].append(p[1])
+        p[0]=p[2]
+    elif p[1][0] == "fragility":
+        p[2].append(p[1])
+        p[0]=p[2]
+    elif p[1][0] == "property":
         p[2].append(p[1])
         p[0]=p[2]
     elif p[1] == "<basic-information:component-intrinsical-properties>":
@@ -342,6 +362,27 @@ def p_properties_weight(p):
     properties_weight : PROPERTIES_WEIGHT_OPEN str PROPERTIES_WEIGHT_CLOSE
     '''
     p[0]=("weight",p[2])
+    return
+#contiene string dentro
+def p_properties_count(p):
+    '''
+    properties_count : PROPERTIES_COUNT_OPEN str PROPERTIES_COUNT_CLOSE
+    '''
+    p[0]=("count",p[2])
+    return
+#contiene string dentro
+def p_properties_fragility(p):
+    '''
+    properties_fragility : PROPERTIES_FRAGILITY_OPEN str PROPERTIES_FRAGILITY_CLOSE
+    '''
+    p[0]=("fragility",p[2])
+    return
+#contiene string dentro
+def p_properties_property(p):
+    '''
+    properties_property : PROPERTIES_PROPERTY_OPEN str PROPERTIES_PROPERTY_CLOSE
+    '''
+    p[0]=("property",p[2])
     return
 #-------------------------------Basic information-------------------------------
 
