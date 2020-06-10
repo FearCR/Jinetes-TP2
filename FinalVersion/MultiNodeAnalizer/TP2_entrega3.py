@@ -1217,9 +1217,12 @@ with open('prueba.xml','r') as myfile:
 
 parser=yacc.yacc()
 parser.parse(data)
-print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
+#print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
+print("Equipo:Los 4 Jinetes del Apocalipsis")
+print("Funciona con el archivo xml modificado prueba.xml")
 user_input=""
 while user_input!= "exit":
+
     print("\n\n\n\033[92mMenu de usuario:\033[0m")
     print("\033[4mEscriba un \033[92mnumero\033[0m\033[4m correspondiente a la accion deseada\033[0m")
     print("\n1- imprimir todos los nodos y toda su informacion")
