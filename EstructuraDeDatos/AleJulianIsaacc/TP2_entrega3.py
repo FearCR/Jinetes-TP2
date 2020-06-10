@@ -4,6 +4,7 @@ import container
 import sys
 import re
 
+
 tokens=[
 #DOCUMENT START AND END
     'XML_VERSION','COMMENT_OPEN','GENERAL_CLOSE','OFFICE_DOCUMENT_OPEN','OFFICE_DOCUMENT_CLOSE',
