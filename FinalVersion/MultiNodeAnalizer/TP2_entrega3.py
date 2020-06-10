@@ -1233,3 +1233,39 @@ while user_input!= "exit":
         print("Nodos disponibles:")
         for key,value in nodeDictionary.items():
             print(key)
+        print("escriba el nombre del nodo que desea desplegar:")
+        nodeKey=input()
+        if nodeKey in nodeDictionary:
+            print("escriba el numero correspondiente accion que desea realizar")
+            print("\n1- imprimir toda su informacion")
+            print("\n2- imprimir informacion basica")
+            print("\n3- imprimir Amenazas")
+            print("\n4- imprimir Riesgos")
+            print("\n5- imprimir Controles de seguridad")
+            print("\n6- imprimir Politicas de seguridad")
+            print("\n7- imprimir Relaciondes de seguridad")
+            print("\n8- imprimir Objetivos de seguridad")
+            print("\n8- imprimir Vulnerabilidades")
+            user_input=input()
+            if user_input=="1":
+                nodeDictionary.get(nodeKey).printAll()
+            elif user_input=="2":
+                nodeDictionary.get(nodeKey).basic_Information.printBasic_Information()
+            elif user_input=="3":
+                nodeDictionary.get(nodeKey).threats.printThreats()
+            elif user_input=="4":
+                nodeDictionary.get(nodeKey).risks.printRisks()
+            elif user_input=="5":
+                nodeDictionary.get(nodeKey).security_Controls.printSecurity_Controls()
+            elif user_input=="6":
+                nodeDictionary.get(nodeKey).security_policies.print_security_policies()
+            elif user_input=="7":
+                nodeDictionary.get(nodeKey).security_relationships.print_security_relationships()
+            elif user_input=="8":
+                nodeDictionary.get(nodeKey).security_objectives.printObjectives()
+            elif user_input=="9":
+                nodeDictionary.get(nodeKey).vulnerabilities.printVulnerabilities()
+            else:
+                print("input invalido")
+        else:
+            print("la llave ingresada no existe, intentelo de nuevo")
