@@ -1210,7 +1210,7 @@ for line in file:
 file.close()
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
 """
-print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
+#print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
 
 with open('prueba.xml','r') as myfile:
     data=myfile.read()
@@ -1220,11 +1220,11 @@ parser.parse(data)
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
 user_input=""
 while user_input!= "exit":
-    print("\n\n\nMenu de usuario:")
-    print("Escriba un numerio correspondiente a la accion deseada")
+    print("\n\n\n\033[92mMenu de usuario:\033[0m")
+    print("\033[4mEscriba un \033[92mnumero\033[0m\033[4m correspondiente a la accion deseada\033[0m")
     print("\n1- imprimir todos los nodos y toda su informacion")
     print("\n2- imprimir informacion de un nodo especifico")
-    print("\n\n\nEscriba exit para salir del programa")
+    print("\n\n\nEscriba \033[93mexit\033[0m para salir del programa\n")
     user_input=input()
     os.system('cls' if os.name=='nt' else 'clear')
     if user_input=="1":
@@ -1235,11 +1235,11 @@ while user_input!= "exit":
         print("Nodos disponibles:")
         for key,value in nodeDictionary.items():
             print(key)
-        print("escriba el nombre del nodo que desea desplegar:")
+        print("escriba el \033[92mnombre\033[0m del nodo que desea desplegar:")
         nodeKey=input()
         if nodeKey in nodeDictionary:
             while user_input!="10":
-                print("\n\nescriba el numero correspondiente accion que desea realizar")
+                print("\033[0m\n\n\033[4mEscriba el \033[92mnumero\033[0m\033[4m correspondiente accion que desea realizar\033[0m")
                 print("\n1- imprimir toda su informacion")
                 print("\n2- imprimir informacion basica")
                 print("\n3- imprimir Amenazas")
@@ -1271,9 +1271,13 @@ while user_input!= "exit":
                 elif user_input=="9":
                     nodeDictionary.get(nodeKey).vulnerabilities.printVulnerabilities()
                 elif user_input=="10":
-                    print("\nvolviendo al menu principal\n")
+                    print("\033[93m\nvolviendo al menu principal\n\033[0m")
 
                 else:
-                    print("\ninput invalido\n")
+                    print("\033[93m\ninput invalido\n\033[0m")
         else:
-            print("\nla llave ingresada no existe, intentelo de nuevo\n")
+            print("\033[93m\nla llave ingresada no existe, intentelo de nuevo\n\033[0m")
+    elif user_input=="exit":
+        print("")
+    else:
+        print("\033[93m\nInput invalido\033[0m\n")

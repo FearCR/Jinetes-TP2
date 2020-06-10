@@ -32,7 +32,7 @@ class Node:
         self.risks = risks
 #Print all, hay que agregar un print para cada parte para probarla
     def printAll(self):
-        print("IMPRESION DE NODO")
+        print("\033[94mIMPRESION DE NODO")
         print("ID NODO= "+self.id)
         print("LISTA DE BASIC INFORMATION:")
         self.basic_Information.printBasic_Information()
@@ -93,7 +93,7 @@ class Threat:
         self.vulnerability=newVulnerability
 #Print
     def printThreat(self):
-        print(self.id,self.name, self.description,self.vulnerability)
+        print("\033[94m",self.id,self.name, self.description,self.vulnerability)
 #------------------------Clase THREAT----------------------------
 
 #---------------------Clase de Lista de VULNERABILITIES-------------------
@@ -157,7 +157,7 @@ class Vulnerability:
         self.severity=newSeverity
 #Print
     def printVulnerability(self):
-        print(self.id,self.sourceDB,self.name,self.referenceSecurity,self.overview,self.description,self.impact,self.severity)
+        print("\033[94m",self.id,self.sourceDB,self.name,self.referenceSecurity,self.overview,self.description,self.impact,self.severity)
 #---------------------------Clase VULNERABILITY----------------------------------
 
 #-----------------------Clase de Lista de SECURITY CONTROL-----------------------
@@ -202,7 +202,7 @@ class Security_Control:
         self.securityPolicyID=newSecurityPolicyID
 #Print
     def printSecurity_Control(self):
-        print(self.id,self.name,self.description,self.securityPolicyID)
+        print("\033[94m",self.id,self.name,self.description,self.securityPolicyID)
 #-----------------------Clase SECURITY CONTROL-----------------------------
 
 #-----------------------Clase BASIC INFORMATION-----------------------------
@@ -227,7 +227,7 @@ class Basic_Information:
 
 #Print
     def printBasic_Information(self):
-        print(self.name,self.overview, self.properties)
+        print("\033[94m",self.name,self.overview, self.properties)
 #-----------------------Clase BASIC INFORMATION-----------------------------
 
 
@@ -266,7 +266,7 @@ class security_policy:
 
 	def print_security_policy(self):
 		t = (self.id, self.name, self.description, self.objective)
-		print(t)
+		print("\033[94m",t)
 
 
 class security_relationships:
@@ -325,7 +325,7 @@ class Security_objective:
         self.source = newSource
 
     def printObjective(self):
-        print("ID=",self.id,"Name=",self.name, "Description",self.descrip,
+        print("\033[94mID=",self.id,"Name=",self.name, "Description",self.descrip,
         "Objective=",self.objType,"Service=",self.service,
         "Temporality=",self.temp,"Source=",self.source)
 
@@ -377,7 +377,7 @@ class Risk:
         self.temporality = newTemporality
 
     def printRisk(self):
-        print("ID=",self.id,"Nombre=",self.name,
+        print("\033[94mID=",self.id,"Nombre=",self.name,
         "Objective=",self.objId,"Vulnerability=",self.vulne,
         "Threat=",self.threatId, "Description=",self.descrip,
         "Likelihood=",self.likelihood,
@@ -396,4 +396,4 @@ class security_relationship:
 
 	def print_security_relationship(self):
 		t = (self.id, self.interactions_id)
-		print(t)
+		print("\033[94m",t)
