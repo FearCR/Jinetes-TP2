@@ -4,7 +4,7 @@ import container
 import sys
 import re
 
-
+dict={}
 tokens=[
 #DOCUMENT START AND END
     'XML_VERSION','COMMENT_OPEN','GENERAL_CLOSE','OFFICE_DOCUMENT_OPEN','OFFICE_DOCUMENT_CLOSE',
@@ -297,6 +297,7 @@ def p_model_node(p):
         p[0]=p[2]
         p[0].printAll()
         print("\n\n\n")
+        dict[p[0].id]=p[0]
     elif p[1][0]=="listaSControls":
         p[2].setSecurity_Controls(p[1][1])
         p[0]=p[2]
@@ -1218,3 +1219,13 @@ with open('prueba.xml','r') as myfile:
 parser=yacc.yacc()
 parser.parse(data)
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
+user_input=""
+while user_input!= "exit":
+    print("Menu de usuario:")
+    print("Escriba un numerio correspondiente a la accion deseada")
+    print("1- imprimir todos los nodos y toda su informacion")
+    print("Escriba exit para salir del programa")
+    user_input=input()
+    if user_input=="1":
+        for key,value in dict.items():
+            value.printAll()
