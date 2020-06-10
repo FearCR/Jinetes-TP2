@@ -3,6 +3,7 @@ import ply.yacc as yacc
 import container
 import sys
 import re
+import os
 
 nodeDictionary={}
 tokens=[
@@ -1225,6 +1226,7 @@ while user_input!= "exit":
     print("\n2- imprimir informacion de un nodo especifico")
     print("\n\n\nEscriba exit para salir del programa")
     user_input=input()
+    os.system('cls' if os.name=='nt' else 'clear')
     if user_input=="1":
         for key,value in nodeDictionary.items():
             value.printAll()
@@ -1236,36 +1238,42 @@ while user_input!= "exit":
         print("escriba el nombre del nodo que desea desplegar:")
         nodeKey=input()
         if nodeKey in nodeDictionary:
-            print("escriba el numero correspondiente accion que desea realizar")
-            print("\n1- imprimir toda su informacion")
-            print("\n2- imprimir informacion basica")
-            print("\n3- imprimir Amenazas")
-            print("\n4- imprimir Riesgos")
-            print("\n5- imprimir Controles de seguridad")
-            print("\n6- imprimir Politicas de seguridad")
-            print("\n7- imprimir Relaciondes de seguridad")
-            print("\n8- imprimir Objetivos de seguridad")
-            print("\n8- imprimir Vulnerabilidades")
-            user_input=input()
-            if user_input=="1":
-                nodeDictionary.get(nodeKey).printAll()
-            elif user_input=="2":
-                nodeDictionary.get(nodeKey).basic_Information.printBasic_Information()
-            elif user_input=="3":
-                nodeDictionary.get(nodeKey).threats.printThreats()
-            elif user_input=="4":
-                nodeDictionary.get(nodeKey).risks.printRisks()
-            elif user_input=="5":
-                nodeDictionary.get(nodeKey).security_Controls.printSecurity_Controls()
-            elif user_input=="6":
-                nodeDictionary.get(nodeKey).security_policies.print_security_policies()
-            elif user_input=="7":
-                nodeDictionary.get(nodeKey).security_relationships.print_security_relationships()
-            elif user_input=="8":
-                nodeDictionary.get(nodeKey).security_objectives.printObjectives()
-            elif user_input=="9":
-                nodeDictionary.get(nodeKey).vulnerabilities.printVulnerabilities()
-            else:
-                print("input invalido")
+            while user_input!="10":
+                print("\n\nescriba el numero correspondiente accion que desea realizar")
+                print("\n1- imprimir toda su informacion")
+                print("\n2- imprimir informacion basica")
+                print("\n3- imprimir Amenazas")
+                print("\n4- imprimir Riesgos")
+                print("\n5- imprimir Controles de seguridad")
+                print("\n6- imprimir Politicas de seguridad")
+                print("\n7- imprimir Relaciondes de seguridad")
+                print("\n8- imprimir Objetivos de seguridad")
+                print("\n9- imprimir Vulnerabilidades")
+                print("\n10- Salir de este menu")
+                user_input=input()
+                os.system('cls' if os.name=='nt' else 'clear')
+                if user_input=="1":
+                    nodeDictionary.get(nodeKey).printAll()
+                elif user_input=="2":
+                    nodeDictionary.get(nodeKey).basic_Information.printBasic_Information()
+                elif user_input=="3":
+                    nodeDictionary.get(nodeKey).threats.printThreats()
+                elif user_input=="4":
+                    nodeDictionary.get(nodeKey).risks.printRisks()
+                elif user_input=="5":
+                    nodeDictionary.get(nodeKey).security_Controls.printSecurity_Controls()
+                elif user_input=="6":
+                    nodeDictionary.get(nodeKey).security_policies.print_security_policies()
+                elif user_input=="7":
+                    nodeDictionary.get(nodeKey).security_relationships.print_security_relationships()
+                elif user_input=="8":
+                    nodeDictionary.get(nodeKey).security_objectives.printObjectives()
+                elif user_input=="9":
+                    nodeDictionary.get(nodeKey).vulnerabilities.printVulnerabilities()
+                elif user_input=="10":
+                    print("\nvolviendo al menu principal\n")
+
+                else:
+                    print("\ninput invalido\n")
         else:
-            print("la llave ingresada no existe, intentelo de nuevo")
+            print("\nla llave ingresada no existe, intentelo de nuevo\n")
