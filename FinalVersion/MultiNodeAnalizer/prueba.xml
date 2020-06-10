@@ -102,18 +102,18 @@ Universidad de Costa Rica
           </security-policies:security-policy>
         </node:security-policies>
         <node:security-controls>
+          <security-controls:security-control control-id="Lost-protection">
+            <security-control:name>Cup lost protection</security-control:name>
+            <security-control:description>Install a lock in the box, proportional to the level of robustness of the container</security-control:description>
+            <security-control:security-policies>
+              <security-policies:security-policy-id> DO[1][2] </security-policies:security-policy-id>
+            </security-control:security-policies>
+          </security-controls:security-control>
           <security-controls:security-control control-id="Hit-protection">
             <security-control:name>Cup hit protection</security-control:name>
             <security-control:description>Install a soft padded protection around every cup, such that they do not hit to each other, and they do not move or hit the box</security-control:description>
             <security-control:security-policies>
               <security-policies:security-policy-id> DO[1][1] </security-policies:security-policy-id>
-            </security-control:security-policies>
-          </security-controls:security-control>
-          <security-controls:security-control control-id="2Hit-protection">
-            <security-control:name>2Cup hit protection</security-control:name>
-            <security-control:description>2Install a soft padded protection around every cup, such that they do not hit to each other, and they do not move or hit the box</security-control:description>
-            <security-control:security-policies>
-              <security-policies:security-policy-id> 2DO[1][1] </security-policies:security-policy-id>
             </security-control:security-policies>
           </security-controls:security-control>
         </node:security-controls>
@@ -277,18 +277,18 @@ Universidad de Costa Rica
           </security-policies:security-policy>
         </node:security-policies>
         <node:security-controls>
+          <security-controls:security-control control-id="Lost-protection">
+            <security-control:name>Cup lost protection</security-control:name>
+            <security-control:description>Install a lock in the box, proportional to the level of robustness of the container</security-control:description>
+            <security-control:security-policies>
+              <security-policies:security-policy-id> DO[2][2] </security-policies:security-policy-id>
+            </security-control:security-policies>
+          </security-controls:security-control>
           <security-controls:security-control control-id="Hit-protection">
             <security-control:name>Cup hit protection</security-control:name>
             <security-control:description>Install a soft padded protection around every cup, such that they do not hit to each other, and they do not move or hit the box</security-control:description>
             <security-control:security-policies>
               <security-policies:security-policy-id> DO[1][1] </security-policies:security-policy-id>
-            </security-control:security-policies>
-          </security-controls:security-control>
-          <security-controls:security-control control-id="2Hit-protection">
-            <security-control:name>2Cup hit protection</security-control:name>
-            <security-control:description>2Install a soft padded protection around every cup, such that they do not hit to each other, and they do not move or hit the box</security-control:description>
-            <security-control:security-policies>
-              <security-policies:security-policy-id> 2DO[1][1] </security-policies:security-policy-id>
             </security-control:security-policies>
           </security-controls:security-control>
         </node:security-controls>
@@ -452,24 +452,24 @@ Universidad de Costa Rica
         </security-policies:security-policy>
       </node:security-policies>
       <node:security-controls>
-        <security-controls:security-control control-id="Hit-protection">
-          <security-control:name>unicorn hit protection</security-control:name>
+        <security-controls:security-control control-id="Horn-protection">
+          <security-control:name>unicorn horn protection</security-control:name>
           <security-control:description>Install a soft padded protection around every unicorn horn, such that they do not hit to each other, and they do not move or hit the box</security-control:description>
           <security-control:security-policies>
             <security-policies:security-policy-id> DO[1][1] </security-policies:security-policy-id>
           </security-control:security-policies>
         </security-controls:security-control>
-        <security-controls:security-control control-id="2Hit-protection">
+        <security-controls:security-control control-id="Hit-protection">
           <security-control:name>unicorn hit protection</security-control:name>
           <security-control:description>Install a soft padded protection around every unicorn, such that they do not hit to each other, and they do not move or hit the box</security-control:description>
           <security-control:security-policies>
-            <security-policies:security-policy-id> 2DO[1][1] </security-policies:security-policy-id>
+            <security-policies:security-policy-id> DO[2][2] </security-policies:security-policy-id>
           </security-control:security-policies>
         </security-controls:security-control>
       </node:security-controls>
       <node:vulnerabilities>
-        <vulnerabilities:vulnerability vunerability-id="Cup-fragility" source-database="None">
-          <vulnerability:name> Fragility </vulnerability:name>
+        <vulnerabilities:vulnerability vunerability-id="Horn-fragility" source-database="MagicCreatures">
+          <vulnerability:name> Horn Fragility </vulnerability:name>
           <vulnerability:reference-security-services>
             <reference-security-services:reference-security-service> Integrity </reference-security-services:reference-security-service>
           </vulnerability:reference-security-services>
@@ -478,7 +478,7 @@ Universidad de Costa Rica
           <vulnerability:impact> The unicorn could break </vulnerability:impact>
           <vulnerability:severity> High </vulnerability:severity>
         </vulnerabilities:vulnerability>
-        <vulnerabilities:vulnerability vunerability-id="Cup-loss">
+        <vulnerabilities:vulnerability vunerability-id="Unicorn-Loss">
           <vulnerability:name> Loss </vulnerability:name>
           <vulnerability:reference-security-services>
             <reference-security-services:reference-security-service> Availability </reference-security-services:reference-security-service>

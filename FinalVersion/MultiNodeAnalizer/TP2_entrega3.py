@@ -27,7 +27,7 @@ tokens=[
     #SECURITY  RELATIONSHIPS
 	'SECURITY_RELATIONSHIP_OPEN', 'SECURITY_RELATIONSHIP_CLOSE', 'LINKED_NODE_OPEN', 'LINKED_NODE_CLOSE',
 	'RELATIONSHIP_TYPE_OPEN', 'RELATIONSHIP_TYPE_CLOSE',
-	'SECURITY_OBJECTIVES_OPEN', 'SECURITY_OBJECTIVES_CLOSE', 'SECURITY_OBJECTIVE_OPEN', 'SECURITY_OBJECTIVE_CLOSE',
+	'SECURITY_OBJECTIVES_OPEN', 'SECURITY_OBJECTIVES_CLOSE', 'SECURITY_OBJECTIVE_OPEN',
 	'SELF_OBJECTIVE_OPEN', 'SELF_OBJECTIVE_CLOSE', 'PEER_OBJECTIVE_OPEN', 'PEER_OBJECTIVE_CLOSE',
 	#SECURITY RELATIONSHIPS && SECURITY POLICIES
 	'ID',
@@ -35,7 +35,7 @@ tokens=[
 	'SECURITY_POLICIES_OPEN', 'SECURITY_POLICIES_CLOSE', 'SECURITY_POLICY_OPEN',
 	'SECURITY_POLICY_CLOSE', 'POLICY_NAME_OPEN', 'POLICY_NAME_CLOSE', 'POLICY_DESCRIPTION_OPEN', 'POLICY_DESCRIPTION_CLOSE',
 	'SP_OBJECTIVES_OPEN', 'SP_OBJECTIVES_CLOSE',
-	'SP_ADDITIONAL_INFORMATION_OPEN', 'SP_ADDITIONAL_INFORMATION_CLOSE', 'ADDITIONAL_INFO_OPEN', 'ADDITIONAL_INFO_CLOSE',
+	'ADDITIONAL_INFO_OPEN', 'ADDITIONAL_INFO_CLOSE',
     #VULNERABILITY
     'VULNERABILITIES_OPEN','VULNERABILITIES_CLOSE',
     'VULNERABILITY_OPEN','VULNERABILITY_CLOSE','VULN_NAME_OPEN','VULN_NAME_CLOSE',
@@ -53,14 +53,12 @@ tokens=[
     'RISK_NAME_CLOSE', 'RISK_OBJ_OPEN', 'RISK_OBJ_CLOSE', 'RISK_VUL_OPEN', 'RISK_VUL_CLOSE',
     'RISK_THREAT_OPEN', 'RISK_THREAT_CLOSE', 'RISK_DESCRIPTION_OPEN', 'RISK_DESCRIPTION_CLOSE',
     'RISK_LIKHD_OPEN', 'RISK_LIKHD_CLOSE', 'RISK_IMPACT_OPEN', 'RISK_IMPACT_CLOSE',
-    'RISK_TEMP_OPEN', 'RISK_TEMP_CLOSE', 'RISK_ADDINFO_OPEN', 'RISK_ADDINFO_CLOSE',
-    'ADDINFOCOMM_OPEN','ADDINFOCOMM_CLOSE',
+    'RISK_TEMP_OPEN', 'RISK_TEMP_CLOSE',
      # SECURITY OBJECTIVES
     'NODE_SECUOBJ_OPEN', 'NODE_SECUOBJ_CLOSE', 'SECUOBJ_OBJ_OPEN',
     'SECUOBJ_NAME_OPEN', 'SECUOBJ_NAME_CLOSE', 'SECUOBJ_DESCRIP_OPEN', 'SECUOBJ_DESCRIP_CLOSE',
     'SECUOBJ_OBJTYPE_OPEN', 'SECUOBJ_OBJTYPE_CLOSE', 'SECUOBJ_SECUSERV_OPEN', 'SECUOBJ_SECUSERV_CLOSE',
-    'SECUOBJ_TEMP_OPEN', 'SECUOBJ_TEMP_CLOSE', 'SECUOBJ_ADDINFO_OPEN',
-    'SECUOBJ_ADDINFO_CLOSE', 'SECUOBJ_OBJSOUR_OPEN', 'SECUOBJ_OBJSOUR_CLOSE', 'SECUOBJ_OBJSP_OPEN',
+    'SECUOBJ_TEMP_OPEN', 'SECUOBJ_TEMP_CLOSE', 'SECUOBJ_OBJSOUR_OPEN', 'SECUOBJ_OBJSOUR_CLOSE',
     #TOKEN QUE COMPARTO CON RONNY
     'SECUOBJ_OBJ_CLOSE'
 
@@ -149,10 +147,7 @@ t_POLICY_DESCRIPTION_OPEN = r'<security-policy:description>'
 t_POLICY_DESCRIPTION_CLOSE = r'</security-policy:description>'
 t_SP_OBJECTIVES_OPEN = r'(<security-policy:security-objectives>|<security-policies:security-objectives>)'
 t_SP_OBJECTIVES_CLOSE = r'(</security-policy:security-objectives>|</security-policies:security-objectives>)'
-t_SP_ADDITIONAL_INFORMATION_OPEN = r'<security-policy:additional-information>'
-t_SP_ADDITIONAL_INFORMATION_CLOSE = r'</security-policy:additional-information>'
-t_ADDITIONAL_INFO_OPEN = r'<additional-information:comment>'
-t_ADDITIONAL_INFO_CLOSE = r'</additional-information:comment>'
+
 
 #VULNERABILITY
 t_VULNERABILITIES_OPEN       = r'<node:vulnerabilities>'
@@ -173,8 +168,6 @@ t_VULN_IMPACT_OPEN           = r'<vulnerability:impact>'
 t_VULN_IMPACT_CLOSE          = r'</vulnerability:impact>'
 t_VULN_SEVERITY_OPEN         = r'<vulnerability:severity>'
 t_VULN_SEVERITY_CLOSE        = r'</vulnerability:severity>'
-t_VULN_ADDITIONAL_INFO_OPEN  = r'<vulnerability:additional-information>'
-t_VULN_ADDITIONAL_INFO_CLOSE = r'</vulnerability:additional-information>'
 #SECURITY CONTROLS
 t_SECURITY_CONTROLS_OPEN         = r'<node:security-controls>'
 t_SECURITY_CONTROLS_CLOSE        = r'</node:security-controls>'
@@ -191,7 +184,6 @@ t_SECPOLICY_ID_CLOSE                = r'</security-policies:security-policy-id>'
 t_SECCONT_ADDITIONAL_INFO_OPEN      = r'<security-control:additional-information>'
 t_SECCONT_ADDITIONAL_INFO_CLOSE     = r'</security-control:additional-information>'
 #SECURITY OBJECTIVES
-t_SECUOBJ_OBJSP_OPEN=r'<security-objectives:security-objective>'
 t_NODE_SECUOBJ_OPEN=r'<node:security-objectives>'
 t_NODE_SECUOBJ_CLOSE=r'</node:security-objectives>'
 t_SECUOBJ_OBJ_OPEN=r'<security-objectives:security-objective\sobjective-id=".*">'
@@ -205,12 +197,8 @@ t_SECUOBJ_SECUSERV_OPEN=r'<security-objective:security-service>'
 t_SECUOBJ_SECUSERV_CLOSE=r'</security-objective:security-service>'
 t_SECUOBJ_TEMP_OPEN=r'<security-objective:temporality>'
 t_SECUOBJ_TEMP_CLOSE=r'</security-objective:temporality>'
-t_SECUOBJ_ADDINFO_OPEN=r'<security-objective:additional-information>'
-t_SECUOBJ_ADDINFO_CLOSE=r'</security-objective:additional-information>'
 t_SECUOBJ_OBJSOUR_OPEN=r'<security-objective:objective-source>'
 t_SECUOBJ_OBJSOUR_CLOSE=r'</security-objective:objective-source>'
-t_ADDINFOCOMM_OPEN=r'<additional-information:comment>'
-t_ADDINFOCOMM_CLOSE=r'</additional-information:comment>'
 #RISK
 t_NODE_RISKS_OPEN=r'<node:risks>'
 t_NODE_RISKS_CLOSE=r'</node:risks>'
@@ -828,11 +816,6 @@ def p_security_objectives_SP(t):
 	t[0] = t[3]
 	return
 
-def p_additional_info_SP(t):
-	'''
-	additional_info_SP : SP_ADDITIONAL_INFORMATION_OPEN ADDITIONAL_INFO_OPEN ADDITIONAL_INFO_CLOSE SP_ADDITIONAL_INFORMATION_CLOSE
-	'''
-	return
 #-------------------------------Security Policies-----------------------------
 
 #------------------------------Security Relationships------------------------------
