@@ -49,8 +49,8 @@ tokens=[
     'SECCONT_ADDITIONAL_INFO_OPEN','SECCONT_ADDITIONAL_INFO_CLOSE',
     #TOKEN QUE COMPARTO CON RONNY
     'SECUOBJ_OBJ_CLOSE'
-    
-    
+
+
 ]
 #DOCUMENT START AND END
 t_XML_VERSION=r'<\?xml\sversion=".+"\sencoding=".+"\?>'
@@ -565,14 +565,14 @@ def p_security_relationships(t):
                            | SECURITY_RELATIONSHIP_CLOSE
     '''
     if t[1] == "</node:security-relationships>":
-		list_security_relationships = container.security_relationships()
-		t[0] = list_security_relationships
+        list_security_relationships = container.security_relationships()
+        t[0] = list_security_relationships
     else:
-		if t[1][0] == "nodo":
-			t[2].add_security_relationship(t[1][1])
-			t[0] = t[2]
-		else:
-			t[0] = t[2]
+        if t[1][0] == "nodo":
+            t[2].add_security_relationship(t[1][1])
+            t[0] = t[2]
+        else:
+            t[0] = t[2]
     return
 
 
@@ -583,16 +583,16 @@ def p_expression_linked_node(t):
 				| LINKED_NODE_CLOSE
     '''
     if t[1] == "</security-relationships:linked-node>":
-		node_security_relationship = container.security_relationship()
-		t[0] = node_security_relationship
+        node_security_relationship = container.security_relationship()
+        t[0] = node_security_relationship
     else:
-		if t[1][0] == "interaction_id":
-			t[2].add_interaction_id(t[1][1])
-			t[0] = t[2]
-		else:
-			if t[1][0] == "node_id":
-				t[2].set_id(t[1][1])
-				t[0] = ("nodo",t[2])
+        if t[1][0] == "interaction_id":
+            t[2].add_interaction_id(t[1][1])
+            t[0] = t[2]
+        else:
+            if t[1][0] == "node_id":
+                t[2].set_id(t[1][1])
+                t[0] = ("nodo",t[2])
     return
 
 
@@ -611,7 +611,7 @@ def p_expression_relationship_type(t):
     '''
     match = re.search('<linked-node:relationship-type\stype="[a-zA-Z]+"\sinteraction-id=', str(t[1]))
     if match:
-		t[0] = ("interaction_id",t[2])
+        t[0] = ("interaction_id",t[2])
     return
 
 

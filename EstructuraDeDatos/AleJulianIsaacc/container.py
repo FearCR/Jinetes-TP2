@@ -15,9 +15,9 @@ class Node:
     def setThreats(self, threats):
         self.threats = threats
     def setSecurity_Policies(self, security_policies):
-		self.security_policies = security_policies
+        self.security_policies = security_policies
     def setSecurity_Relationships(self, security_relationships):
-		self.security_relationships = security_relationships
+        self.security_relationships = security_relationships
     def setVulnerabilities(self, vulnerabilities):
         self.vulnerabilities = vulnerabilities
     def setSecurity_Controls(self, security_controls):
@@ -225,10 +225,10 @@ class Basic_Information:
 class security_policies:
 	def __init__(self):
 		self.security_policies_list = []
-	
+
 	def add_security_policie(self, security_policie):
 		self.security_policies_list.append(security_policie)
-	
+
 	def print_security_policies(self):
 		for security_policy in self.security_policies_list:
 			security_policy.print_security_policy()
@@ -241,24 +241,24 @@ class security_policy:
 		self.name=""
 		self.description=""
 		self.objective=""
-	
+
 	def set_id(self, id):
 		self.id = id
-	
+
 	def set_name(self, name):
 		self.name = name
-	
+
 	def set_description(self, description):
 		self.description = description
-	
+
 	def set_objective(self, objective):
 		self.objective = objective
-	
+
 	def print_security_policy(self):
 		t = (self.id, self.name, self.description, self.objective)
 		print(t)
-	
-	
+
+
 class security_relationships:
 	def __init__(self):
 		self.security_relationships_list = []
@@ -276,15 +276,13 @@ class security_relationship:
 	def __init__(self):
 		self.id=""
 		self.interactions_id = []
-	
+
 	def set_id(self, id):
 		self.id=id
-	
+
 	def add_interaction_id(self, interaction_id):
 		self.interactions_id.append(interaction_id)
 
 	def print_security_relationship(self):
 		t = (self.id, self.interactions_id)
 		print(t)
-
-
