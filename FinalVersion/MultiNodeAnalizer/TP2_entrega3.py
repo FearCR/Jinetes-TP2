@@ -4,7 +4,7 @@ import container
 import sys
 import re
 
-dict={}
+nodeDictionary={}
 tokens=[
 #DOCUMENT START AND END
     'XML_VERSION','COMMENT_OPEN','GENERAL_CLOSE','OFFICE_DOCUMENT_OPEN','OFFICE_DOCUMENT_CLOSE',
@@ -295,9 +295,7 @@ def p_model_node(p):
         array = p[1].split("\"")
         p[2].setId(array[1])
         p[0]=p[2]
-        p[0].printAll()
-        print("\n\n\n")
-        dict[p[0].id]=p[0]
+        nodeDictionary[p[0].id]=p[0]
     elif p[1][0]=="listaSControls":
         p[2].setSecurity_Controls(p[1][1])
         p[0]=p[2]
@@ -341,7 +339,7 @@ def p_node_security_objective(p):
         p[0] = p[2]
     elif p[1]=="<node:security-objectives>":
         p[0] = ("objs", p[2])
-        p[0][1].printObjectives()
+        #p[0][1].printObjectives()
     return
 
 
@@ -438,7 +436,7 @@ def p_node_risks(p):
         p[0] = p[2]
     elif p[1] == "<node:risks>":
         p[0] = ("risks", p[2])
-        p[0][1].printRisks()
+        #p[0][1].printRisks()
     return
 
 def p_risks_risk(p):
@@ -562,7 +560,7 @@ def p_basic_information(p):
                | intrinsical_properties basic_info
                | BASIC_INFORMATION_CLOSE
     '''
-    print(p[1])
+    #print(p[1])
     if p[1] == "</node:basic-information>":
         newsBasic=container.Basic_Information()
         p[0]=newsBasic
@@ -578,7 +576,7 @@ def p_basic_information(p):
         #Si se llega al final, se pasa la Lista al nivel superior.
     elif p[1] == "<node:basic-information>":
         p[0]=("listaBasic",p[2])
-        print("AGREGANDO NUEVO BASIC INFOTMATION")
+        #print("AGREGANDO NUEVO BASIC INFOTMATION")
     return
 # contiene string dentro
 def p_component_name(p):
@@ -626,7 +624,7 @@ def p_intrinsical_properties(p):
         p[0]=p[2]
     elif p[1] == "<basic-information:component-intrinsical-properties>":
         p[0]=p[2]
-        print("Enviando propiedades")
+        #print("Enviando propiedades")
     return
 
 
@@ -709,8 +707,8 @@ def p_threats(p):
     #Si se llega al final, se pasa la Lista al nivel superior.
     elif p[1] == "<node:threats>":
         p[0]=("listaThreats",p[2])
-        print("AGREGANDO NUEVA LISTA THREATS")
-        p[0][1].printThreats()
+        #print("AGREGANDO NUEVA LISTA THREATS")
+        #p[0][1].printThreats()
 
 
 
@@ -741,8 +739,8 @@ def p_threat(p):
         array = p[1].split("\"")
         p[2].setId(array[1])
         p[0]=("threat",p[2])
-        print("AGREGANDO NUEVO THREAT")
-        p[0][1].printThreat()
+        #print("AGREGANDO NUEVO THREAT")
+        #p[0][1].printThreat()
     return
 
 
@@ -788,7 +786,7 @@ def p_structure_security_policies(t):
 	'''
 	structure_security_policies : security_policies
 	'''
-	t[1].print_security_policies()
+	#t[1].print_security_policies()
 	t[0] = ("listaSPolicies", t[1])
 	return
 
@@ -843,7 +841,7 @@ def p_structure_security_relationships(t):
 	'''
 	structure_security_relationships : security-relationships
 	'''
-	t[1].print_security_relationships()
+	#t[1].print_security_relationships()
 	t[0] = ("listaSRelationships", t[1])
 	return
 
@@ -939,8 +937,8 @@ def p_vulnerabilities(p):
     #Si se llega al final, se pasa la Lista al nivel superior.
     elif p[1] == "<node:vulnerabilities>":
         p[0]=("listaVuln",p[2])
-        print("AGREGANDO NUEVA LISTA VULNERABILITIES")
-        p[0][1].printVulnerabilities()
+        #print("AGREGANDO NUEVA LISTA VULNERABILITIES")
+        #p[0][1].printVulnerabilities()
     return
 def p_vulnerability(p):
     '''
@@ -957,7 +955,7 @@ def p_vulnerability(p):
     if p[1]=="</vulnerabilities:vulnerability>":
         newVulnerability = container.Vulnerability()
         p[0]= newVulnerability
-        print("CREA VUL")
+        #print("CREA VUL")
     elif p[1][0]=="vulSeveriy":
         p[2].setSeverity(p[1][1])
         p[0]=p[2]
@@ -978,16 +976,16 @@ def p_vulnerability(p):
         p[0]=p[2]
     elif "=" in p[1]:
         array = p[1].split("\"")
-        print(array)
-        print(len(array))
+        #print(array)
+        #print(len(array))
         p[2].setId(array[1])
         if len(array)== 5:
             p[2].setSourceDB(array[3])
         else:
             p[2].setSourceDB("Not Provided")
         p[0]=("vulnerability",p[2])
-        print("AGREGANDO NUEVA VULNERABILITY")
-        p[0][1].printVulnerability()
+        #print("AGREGANDO NUEVA VULNERABILITY")
+        #p[0][1].printVulnerability()
     else:
         p[0]=p[2]
     return
@@ -1047,7 +1045,7 @@ def p_vulnerability_severity(p):
     '''
     vulnerability_severity : VULN_SEVERITY_OPEN str VULN_SEVERITY_CLOSE
     '''
-    print("LLEGA FONDO SEVERITY")
+    #print("LLEGA FONDO SEVERITY")
     p[0]=("vulSeveriy",p[2])
     return
 #------------------------------------------Vulnerabilities------------------------------
@@ -1070,8 +1068,8 @@ def p_security_controls(p):
     #Si se llega al final, se pasa la Lista al nivel superior.
     elif p[1] == "<node:security-controls>":
         p[0]=("listaSControls",p[2])
-        print("AGREGANDO NUEVA LISTA SECURITY CONTROLS")
-        p[0][1].printSecurity_Controls()
+        #print("AGREGANDO NUEVA LISTA SECURITY CONTROLS")
+        #p[0][1].printSecurity_Controls()
     return
 def p_security_control(p):
     '''
@@ -1098,8 +1096,8 @@ def p_security_control(p):
         array = p[1].split("\"")
         p[2].setId(array[1])
         p[0]=("sControl",p[2])
-        print("AGREGANDO NUEVO SECURITY CONTROL")
-        p[0][1].printSecurity_Control()
+        #print("AGREGANDO NUEVO SECURITY CONTROL")
+        #p[0][1].printSecurity_Control()
     else:
         p[0]=p[2]
     return
@@ -1193,7 +1191,7 @@ nodeTest.printAll()
 """
 lexer=lex.lex()
 
-
+"""
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
 file = open('prueba.xml','r')
 count = 0
@@ -1210,7 +1208,7 @@ for line in file:
         break
 file.close()
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
-
+"""
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
 
 with open('prueba.xml','r') as myfile:
@@ -1228,9 +1226,10 @@ while user_input!= "exit":
     print("\n\n\nEscriba exit para salir del programa")
     user_input=input()
     if user_input=="1":
-        for key,value in dict.items():
+        for key,value in nodeDictionary.items():
             value.printAll()
+            print("\n\n\n")
     elif user_input=="2":
         print("Nodos disponibles:")
-        for key,value in dict.items():
+        for key,value in nodeDictionary.items():
             print(key)
