@@ -47,6 +47,19 @@ tokens=[
     'SECCONT_NAME_OPEN','SECCONT_NAME_CLOSE','SECCONT_DESCRIPTION_OPEN','SECCONT_DESCRIPTION_CLOSE',
     'SECCONT_SECURITY_POLICIES_OPEN','SECCONT_SECURITY_POLICIES_CLOSE','SECPOLICY_ID_OPEN','SECPOLICY_ID_CLOSE',
     'SECCONT_ADDITIONAL_INFO_OPEN','SECCONT_ADDITIONAL_INFO_CLOSE',
+    #RISK
+    'NODE_RISKS_OPEN', 'NODE_RISKS_CLOSE', 'RISKS_RISK_OPEN', 'RISKS_RISK_CLOSE', 'RISK_NAME_OPEN',
+    'RISK_NAME_CLOSE', 'RISK_OBJ_OPEN', 'RISK_OBJ_CLOSE', 'RISK_VUL_OPEN', 'RISK_VUL_CLOSE',
+    'RISK_THREAT_OPEN', 'RISK_THREAT_CLOSE', 'RISK_DESCRIPTION_OPEN', 'RISK_DESCRIPTION_CLOSE',
+    'RISK_LIKHD_OPEN', 'RISK_LIKHD_CLOSE', 'RISK_IMPACT_OPEN', 'RISK_IMPACT_CLOSE',
+    'RISK_TEMP_OPEN', 'RISK_TEMP_CLOSE', 'RISK_ADDINFO_OPEN', 'RISK_ADDINFO_CLOSE',
+    'ADDINFOCOMM_OPEN','ADDINFOCOMM_CLOSE',
+     # SECURITY OBJECTIVES
+    'NODE_SECUOBJ_OPEN', 'NODE_SECUOBJ_CLOSE', 'SECUOBJ_OBJ_OPEN',
+    'SECUOBJ_NAME_OPEN', 'SECUOBJ_NAME_CLOSE', 'SECUOBJ_DESCRIP_OPEN', 'SECUOBJ_DESCRIP_CLOSE',
+    'SECUOBJ_OBJTYPE_OPEN', 'SECUOBJ_OBJTYPE_CLOSE', 'SECUOBJ_SECUSERV_OPEN', 'SECUOBJ_SECUSERV_CLOSE',
+    'SECUOBJ_TEMP_OPEN', 'SECUOBJ_TEMP_CLOSE', 'SECUOBJ_ADDINFO_OPEN',
+    'SECUOBJ_ADDINFO_CLOSE', 'SECUOBJ_OBJSOUR_OPEN', 'SECUOBJ_OBJSOUR_CLOSE', 'SECUOBJ_OBJSP_OPEN',
     #TOKEN QUE COMPARTO CON RONNY
     'SECUOBJ_OBJ_CLOSE'
 
@@ -176,6 +189,48 @@ t_SECPOLICY_ID_OPEN                 = r'<security-policies:security-policy-id>'
 t_SECPOLICY_ID_CLOSE                = r'</security-policies:security-policy-id>'
 t_SECCONT_ADDITIONAL_INFO_OPEN      = r'<security-control:additional-information>'
 t_SECCONT_ADDITIONAL_INFO_CLOSE     = r'</security-control:additional-information>'
+#SECURITY OBJECTIVES
+t_SECUOBJ_OBJSP_OPEN=r'<security-objectives:security-objective>'
+t_NODE_SECUOBJ_OPEN=r'<node:security-objectives>'
+t_NODE_SECUOBJ_CLOSE=r'</node:security-objectives>'
+t_SECUOBJ_OBJ_OPEN=r'<security-objectives:security-objective\sobjective-id=".*">'
+t_SECUOBJ_NAME_OPEN = r'<security-objective:name>'
+t_SECUOBJ_NAME_CLOSE = r'</security-objective:name>'
+t_SECUOBJ_DESCRIP_OPEN=r'<security-objective:description>'
+t_SECUOBJ_DESCRIP_CLOSE=r'</security-objective:description>'
+t_SECUOBJ_OBJTYPE_OPEN=r'<security-objective:objective-type>'
+t_SECUOBJ_OBJTYPE_CLOSE=r'</security-objective:objective-type>'
+t_SECUOBJ_SECUSERV_OPEN=r'<security-objective:security-service>'
+t_SECUOBJ_SECUSERV_CLOSE=r'</security-objective:security-service>'
+t_SECUOBJ_TEMP_OPEN=r'<security-objective:temporality>'
+t_SECUOBJ_TEMP_CLOSE=r'</security-objective:temporality>'
+t_SECUOBJ_ADDINFO_OPEN=r'<security-objective:additional-information>'
+t_SECUOBJ_ADDINFO_CLOSE=r'</security-objective:additional-information>'
+t_SECUOBJ_OBJSOUR_OPEN=r'<security-objective:objective-source>'
+t_SECUOBJ_OBJSOUR_CLOSE=r'</security-objective:objective-source>'
+t_ADDINFOCOMM_OPEN=r'<additional-information:comment>'
+t_ADDINFOCOMM_CLOSE=r'</additional-information:comment>'
+#RISK
+t_NODE_RISKS_OPEN=r'<node:risks>'
+t_NODE_RISKS_CLOSE=r'</node:risks>'
+t_RISKS_RISK_OPEN=r'<risks:risk\srisk-id=".*">'
+t_RISKS_RISK_CLOSE=r'</risks:risk>'
+t_RISK_NAME_OPEN=r'<risk:name>'
+t_RISK_NAME_CLOSE=r'</risk:name>'
+t_RISK_OBJ_OPEN=r'<risk:objective-id>'
+t_RISK_OBJ_CLOSE=r'</risk:objective-id>'
+t_RISK_VUL_OPEN=r'<risk:vulnerability-id>'
+t_RISK_VUL_CLOSE=r'</risk:vulnerability-id>'
+t_RISK_THREAT_OPEN=r'<risk:threat-id>'
+t_RISK_THREAT_CLOSE=r'</risk:threat-id>'
+t_RISK_DESCRIPTION_OPEN=r'<risk:description>'
+t_RISK_DESCRIPTION_CLOSE=r'</risk:description>'
+t_RISK_LIKHD_OPEN=r'<risk:likelihood>'
+t_RISK_LIKHD_CLOSE=r'</risk:likelihood>'
+t_RISK_IMPACT_OPEN=r'<risk:impact>'
+t_RISK_IMPACT_CLOSE=r'</risk:impact>'
+t_RISK_TEMP_OPEN=r'<risk:temporality>'
+t_RISK_TEMP_CLOSE=r'</risk:temporality>'
 
 
 
@@ -226,7 +281,9 @@ def p_model_node(p):
 			   | structure_security_policies model_node
 			   | structure_security_relationships model_node
                | vulnerabilities model_node
+               | node_risks model_node
                | security_controls model_node
+               | node_security_objective model_node
                | MODEL_NODE_CLOSE
     '''
     #Si se llega a cierre, se crea un nuevo nodo
@@ -259,8 +316,240 @@ def p_model_node(p):
     elif p[1][0]=="listaSRelationships":
         p[2].setSecurity_Relationships(p[1][1])
         p[0]=p[2]
+    elif p[1][0]=="objs":
+        p[2].setListObj(p[1][1])
+        p[0]=p[2]
+    elif p[1][0]=="risks":
+        p[2].setRiks(p[1][1])
+        p[0]=p[2]
     return
 #-------------------------------inicio del documento-------------------------------
+
+#-------------------------------SECURITY OBJECTIVES-------------------------------
+def p_node_security_objective(p):
+    '''
+    node_security_objective : NODE_SECUOBJ_OPEN node_security_objective
+                               | security_objective_obj node_security_objective
+                               | NODE_SECUOBJ_CLOSE
+    '''
+    if p[1] == "</node:security-objectives>":
+        security_objectives=container.Security_objectives()
+        p[0]=security_objectives
+    elif p[1][0]=="obj":
+        p[2].addSecurity_objective(p[1][1])
+        p[0] = p[2]
+    elif p[1]=="<node:security-objectives>":
+        p[0] = ("objs", p[2])
+        p[0][1].printObjectives()
+    return
+
+
+def p_security_objective_obj(p):
+    #'security_objective_obj : SECUOBJ_OBJ_OPEN security_objective_name security_objective_description SECUOBJ_OBJ_CLOSE'
+
+    '''
+    security_objective_obj : SECUOBJ_OBJ_OPEN security_objective_obj
+                              | security_objective_name security_objective_obj
+                              | security_objective_description security_objective_obj
+                              | security_objective_objective_type security_objective_obj
+                              | security_objective_security_service security_objective_obj
+                              | security_objective_temporality security_objective_obj
+                              | security_objective_source security_objective_obj
+                              | SECUOBJ_OBJ_CLOSE
+    '''
+
+    if p[1]=="</security-objectives:security-objective>":
+        objective=container.Security_objective()
+        p[0]=objective
+    elif p[1][0]=="source":
+        p[2].setSource(p[1][1])
+        p[0] = p[2]
+    elif p[1][0]=="temp":
+        p[2].setTemp(p[1][1])
+        p[0] = p[2]
+    elif p[1][0] == "service":
+        p[2].setService(p[1][1])
+        p[0] = p[2]
+    elif p[1][0] == "type":
+        p[2].setObjType(p[1][1])
+        p[0] = p[2]
+    elif p[1][0] == "descri":
+        p[2].setDescrip(p[1][1])
+        p[0] = p[2]
+    elif p[1][0] == "name":
+        p[2].setName(p[1][1])
+        p[0] = p[2]
+    elif "=" in p[1]:
+        array = p[1].split("\"")
+        p[2].setId(array[1])
+        p[0] = ("obj", p[2])
+    return
+
+
+
+
+
+
+def p_security_objective_name(p):
+    'security_objective_name : SECUOBJ_NAME_OPEN STRING SECUOBJ_NAME_CLOSE'
+    p[0] = ("name", p[2])
+    return
+
+
+def p_security_objective_description(p):
+    'security_objective_description : SECUOBJ_DESCRIP_OPEN STRING SECUOBJ_DESCRIP_CLOSE'
+    p[0] = ("descri", p[2])
+    return
+
+
+def p_security_objective_objective_type(p):
+    'security_objective_objective_type : SECUOBJ_OBJTYPE_OPEN STRING SECUOBJ_OBJTYPE_CLOSE'
+    p[0] = ("type", p[2])
+    return
+
+def p_security_objective_security_service(p):
+    'security_objective_security_service : SECUOBJ_SECUSERV_OPEN STRING SECUOBJ_SECUSERV_CLOSE'
+    p[0] = ("service", p[2])
+    return
+
+def p_security_objective_temporality(p):
+    'security_objective_temporality : SECUOBJ_TEMP_OPEN STRING SECUOBJ_TEMP_CLOSE'
+    p[0] = ("temp", p[2])
+    return
+def p_security_objective_source(p):
+    'security_objective_source : SECUOBJ_OBJSOUR_OPEN STRING SECUOBJ_OBJSOUR_CLOSE'
+    p[0] = ("source", p[2])
+    return
+#-------------------------------SECURITY OBJECTIVES-------------------------------
+
+# -------------------------------RISK-------------------------------
+def p_node_risks(p):
+    '''
+    node_risks : NODE_RISKS_OPEN node_risks
+               | risks_risk node_risks
+               | NODE_RISKS_CLOSE
+    '''
+    if p[1] == "</node:risks>":
+        risks=container.Risks()
+        p[0]=risks
+    elif p[1][0] == "risk":
+        p[2].addRisk(p[1][1])
+        p[0] = p[2]
+    elif p[1] == "<node:risks>":
+        p[0] = ("risks", p[2])
+        p[0][1].printRisks()
+    return
+
+def p_risks_risk(p):
+    '''
+    risks_risk : RISKS_RISK_OPEN risks_risk
+                | risk_name risks_risk
+                | risk_objective risks_risk
+                | risk_vulnerability risks_risk
+                | risk_threat risks_risk
+                | risk_description risks_risk
+                | risk_likelihood risks_risk
+                | risk_impact risks_risk
+                | risk_temporality risks_risk
+                | RISKS_RISK_CLOSE
+    '''
+
+    if p[1]=="</risks:risk>":
+        risk=container.Risk()
+        p[0]=risk
+    elif p[1][0] == "temp":
+        p[2].setTemporality(p[1][1])
+        p[0] = p[2]
+    elif p[1][0] == "imp":
+        p[2].setImpact(p[1][1])
+        p[0] = p[2]
+    elif p[1][0] == "like":
+        p[2].setLikelihood(p[1][1])
+        p[0] = p[2]
+    elif p[1][0] == "descrip":
+        p[2].setDescrip(p[1][1])
+        p[0] = p[2]
+    elif p[1][0] == "thr":
+        p[2].setThreatId(p[1][1])
+        p[0] = p[2]
+    elif p[1][0] == "vul":
+        p[2].setVulne(p[1][1])
+        p[0] = p[2]
+    elif p[1][0] == "obj":
+        p[2].setObjId(p[1][1])
+        p[0] = p[2]
+    elif p[1][0] == "name":
+        p[2].setName(p[1][1])
+        p[0] = p[2]
+    elif "=" in p[1]:
+        array = p[1].split("\"")
+        p[2].setId(array[1])
+        p[0] = ("risk", p[2])
+    return
+
+def p_risk_name(p):
+    '''
+    risk_name : RISK_NAME_OPEN risk_name
+              | STRING risk_name
+              | RISK_NAME_CLOSE
+    '''
+
+    if p[1] == "</risk:name>":
+        name=""
+        p[0]=name
+    elif p[1] != "</risk:name>"  and    p[1] != "<risk:name>":
+        p[2]=p[1]
+        p[0]=p[2]
+    elif p[1] == "<risk:name>":
+        p[0] = ("name", p[2])
+    return
+
+def p_risk_objective(p):
+    '''
+    risk_objective : RISK_OBJ_OPEN STRING RISK_OBJ_CLOSE
+    '''
+    p[0] = ("obj", p[2])
+    return
+def p_risk_vulnerability(p):
+    '''
+    risk_vulnerability : RISK_VUL_OPEN STRING RISK_VUL_CLOSE
+    '''
+    p[0] = ("vul", p[2])
+    return
+
+def p_risk_threat(p):
+    '''
+    risk_threat : RISK_THREAT_OPEN STRING RISK_THREAT_CLOSE
+    '''
+    p[0] = ("thr", p[2])
+    return
+
+def p_risk_description(p):
+    '''
+    risk_description : RISK_DESCRIPTION_OPEN STRING RISK_DESCRIPTION_CLOSE
+    '''
+    p[0] = ("descrip", p[2])
+    return
+def p_risk_likelihood(p):
+    '''
+    risk_likelihood : RISK_LIKHD_OPEN STRING RISK_LIKHD_CLOSE
+    '''
+    p[0] = ("like", p[2])
+    return
+
+def p_risk_impact(p):
+    '''
+    risk_impact : RISK_IMPACT_OPEN STRING RISK_IMPACT_CLOSE
+    '''
+    p[0] = ("imp", p[2])
+    return
+def p_risk_temporality(p):
+    '''
+    risk_temporality : RISK_TEMP_OPEN STRING RISK_TEMP_CLOSE
+    '''
+    p[0] = ("temp", p[2])
+    return
+# -------------------------------RISK-------------------------------
 
 #-------------------------------Basic information-------------------------------
 #adentro tiene todo basic information, nombre overview categorias propiedades y otros detalles
@@ -903,7 +1192,7 @@ nodeTest.printAll()
 """
 lexer=lex.lex()
 
-"""
+
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
 file = open('prueba.xml','r')
 count = 0
@@ -920,7 +1209,7 @@ for line in file:
         break
 file.close()
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE TOKENS------------------")
-"""
+
 print("------------------INICIO DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
 
 with open('prueba.xml','r') as myfile:
