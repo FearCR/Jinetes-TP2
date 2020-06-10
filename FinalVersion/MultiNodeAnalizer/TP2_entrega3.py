@@ -1221,11 +1221,16 @@ parser.parse(data)
 print("------------------FIN DE PRUEBA DE RECONOCIMIENTO DE GRAMATICA------------------")
 user_input=""
 while user_input!= "exit":
-    print("Menu de usuario:")
+    print("\n\n\nMenu de usuario:")
     print("Escriba un numerio correspondiente a la accion deseada")
-    print("1- imprimir todos los nodos y toda su informacion")
-    print("Escriba exit para salir del programa")
+    print("\n1- imprimir todos los nodos y toda su informacion")
+    print("\n2- imprimir informacion de un nodo especifico")
+    print("\n\n\nEscriba exit para salir del programa")
     user_input=input()
     if user_input=="1":
         for key,value in dict.items():
             value.printAll()
+    elif user_input=="2":
+        print("Nodos disponibles:")
+        for key,value in dict.items():
+            print(key)
