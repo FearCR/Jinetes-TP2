@@ -1,3 +1,3 @@
 # Jinetes-TP2
-Tokens --> Contiene todas las pruebas inciales de PLY  
-Entregable3 --> Contiene las uniones de las gramaticas de cada miembro del grupo
+SingleNodeAnalizer --> Contiene una version final incompleta pero funcional(respaldo)
+MultiNodeAnalizer --> Contiene una version final completa capaz de analizar lexica y gramaticamente el archivo XML dado o cualquier otro con la misma estructura y tags(Security tree del profesor Villalon)
